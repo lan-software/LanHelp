@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Actions\SyncUserRolesFromLanCore;
 use App\Exceptions\InvalidLanCoreUserException;
 use App\Exceptions\LanCoreDisabledException;
 use App\Exceptions\LanCoreRequestException;
@@ -18,6 +19,7 @@ class LanCoreAuthController extends Controller
     public function __construct(
         private readonly LanCoreClient $client,
         private readonly UserSyncService $syncService,
+        private readonly SyncUserRolesFromLanCore $syncRoles,
     ) {}
 
     /**
@@ -48,6 +50,7 @@ class LanCoreAuthController extends Controller
         try {
             $lanCoreUser = $this->client->exchangeCode($code);
             $user = $this->syncService->resolveFromUpstream($lanCoreUser);
+            $this->syncRoles->handle($user, $lanCoreUser->roles ?? []);
         } catch (LanCoreRequestException $e) {
             $message = match ($e->statusCode) {
                 400 => 'The login link has expired. Please try again.',
