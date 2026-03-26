@@ -1,5 +1,6 @@
 services:
     laravel.test:
+        container_name: lanhelp.test
         build:
             context: ./vendor/laravel/sail/runtimes/8.5
             dockerfile: Dockerfile
@@ -75,6 +76,8 @@ services:
 networks:
     sail:
         driver: bridge
+    lanparty:
+        external: true
 volumes:
     sail-pgsql:
         driver: local

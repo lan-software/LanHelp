@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import { dashboard, login, register } from '@/routes';
+import { redirect as lanCoreRedirect } from '@/routes/lancore';
 
 withDefaults(
     defineProps<{
         canRegister: boolean;
+        lanCoreEnabled: boolean;
     }>(),
     {
         canRegister: true,
+        lanCoreEnabled: false,
     },
 );
 </script>
@@ -33,7 +36,7 @@ withDefaults(
                 </Link>
                 <template v-else>
                     <Link
-                        :href="login()"
+                        :href="lanCoreEnabled ? lanCoreRedirect().url : login()"
                         class="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
                     >
                         Log in

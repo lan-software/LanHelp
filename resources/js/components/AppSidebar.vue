@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-vue-next';
+import { Link, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
+import { BookOpen, ClipboardList, HelpCircle, LayoutGrid, Settings, Shield } from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -15,28 +16,35 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import { index as ticketsIndex } from '@/routes/tickets';
+import { index as kbIndex } from '@/routes/kb';
+import { index as staffTicketsIndex } from '@/routes/staff/tickets';
+import { index as adminKbIndex } from '@/routes/admin/kb';
 import type { NavItem } from '@/types';
 
-const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
-];
+const page = usePage();
+const user = computed(() => page.props.auth?.user as any);
+const isStaff = computed(() => user.value?.role === 'staff' || user.value?.role === 'admin');
+const isAdmin = computed(() => user.value?.role === 'admin');
 
-const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/laravel/vue-starter-kit',
-        icon: FolderGit2,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#vue',
-        icon: BookOpen,
-    },
-];
+const mainNavItems = computed((): NavItem[] => [
+    { title: 'Dashboard', href: dashboard(), icon: LayoutGrid },
+    { title: 'My Tickets', href: ticketsIndex(), icon: HelpCircle },
+    { title: 'Knowledge Base', href: kbIndex(), icon: BookOpen },
+]);
+
+const staffNavItems = computed((): NavItem[] => {
+    if (!isStaff.value) return [];
+    const items: NavItem[] = [
+        { title: 'Staff Board', href: staffTicketsIndex(), icon: ClipboardList },
+    ];
+    if (isAdmin.value) {
+        items.push({ title: 'Manage KB', href: adminKbIndex(), icon: Shield });
+    }
+    return items;
+});
+
+const footerNavItems: NavItem[] = [];
 </script>
 
 <template>
@@ -55,6 +63,7 @@ const footerNavItems: NavItem[] = [
 
         <SidebarContent>
             <NavMain :items="mainNavItems" />
+            <NavMain v-if="staffNavItems.length > 0" :items="staffNavItems" />
         </SidebarContent>
 
         <SidebarFooter>

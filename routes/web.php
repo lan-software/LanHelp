@@ -1,21 +1,33 @@
 <?php
 
+use App\Http\Controllers\Admin\KnowledgeBaseArticleController;
 use App\Http\Controllers\Auth\LanCoreAuthController;
 use App\Http\Controllers\KnowledgeBaseController;
+use App\Http\Controllers\Staff\TicketBoardController;
+use App\Http\Controllers\TicketAssignmentController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketReplyController;
-use App\Http\Controllers\TicketAssignmentController;
 use App\Http\Controllers\TicketStatusController;
-use App\Http\Controllers\Staff\TicketBoardController;
-use App\Http\Controllers\Admin\KnowledgeBaseArticleController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
-// Landing page — auto-redirects to LanCore SSO when enabled
-Route::inertia('/', 'Welcome', [
-    'canRegister' => Features::enabled(Features::registration()),
-    'lanCoreEnabled' => (bool) config('lancore.enabled'),
-])->name('home');
+// Landing page — auto-redirects to LanCore SSO when enabled (unless there is a
+// flash error, which means the user just returned from a failed SSO attempt).
+Route::get('/', function (Request $request) {
+    if (auth()->check()) {
+        return redirect()->route('dashboard');
+    }
+
+    if (config('lancore.enabled') && ! $request->session()->has('error')) {
+        return redirect()->route('lancore.redirect');
+    }
+
+    return inertia('Welcome', [
+        'canRegister' => Features::enabled(Features::registration()),
+        'lanCoreEnabled' => (bool) config('lancore.enabled'),
+    ]);
+})->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');

@@ -4,10 +4,13 @@ use App\Models\User;
 use Illuminate\Support\Facades\RateLimiter;
 use Laravel\Fortify\Features;
 
-test('login screen can be rendered', function () {
-    $response = $this->get(route('login'));
+test('login screen redirects to LanCore when enabled', function () {
+    // LanCore is enabled in .env — the login page should redirect to SSO.
+    $this->get(route('login'))->assertRedirect();
+});
 
-    $response->assertOk();
+test('login screen can be rendered with ?local parameter', function () {
+    $this->get(route('login', ['local' => '']))->assertOk();
 });
 
 test('users can authenticate using the login screen', function () {
