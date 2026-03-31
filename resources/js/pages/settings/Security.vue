@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Form, Head } from '@inertiajs/vue3';
+import { Form, Head, usePage } from '@inertiajs/vue3';
 import { ShieldCheck } from 'lucide-vue-next';
-import { onUnmounted, ref } from 'vue';
+import { computed, onUnmounted, ref } from 'vue';
 import SecurityController from '@/actions/App/Http/Controllers/Settings/SecurityController';
 import Heading from '@/components/Heading.vue';
 import InputError from '@/components/InputError.vue';
@@ -37,6 +37,9 @@ defineOptions({
     },
 });
 
+const page = usePage();
+const isSsoUser = computed(() => !!page.props.auth.user?.lancore_user_id);
+
 const { hasSetupData, clearTwoFactorAuthData } = useTwoFactorAuth();
 const showSetupModal = ref<boolean>(false);
 
@@ -55,7 +58,16 @@ onUnmounted(() => clearTwoFactorAuthData());
             description="Ensure your account is using a long, random password to stay secure"
         />
 
+        <div
+            v-if="isSsoUser"
+            class="rounded-lg border border-blue-100 bg-blue-50 p-4 text-sm text-blue-800 dark:border-blue-200/10 dark:bg-blue-700/10 dark:text-blue-300"
+        >
+            Password management is not available for SSO accounts. Your
+            account security is handled through LanCore.
+        </div>
+
         <Form
+            v-else
             v-bind="SecurityController.update.form()"
             :options="{
                 preserveScroll: true,
@@ -130,7 +142,7 @@ onUnmounted(() => clearTwoFactorAuthData());
         </Form>
     </div>
 
-    <div v-if="canManageTwoFactor" class="space-y-6">
+    <div v-if="canManageTwoFactor && !isSsoUser" class="space-y-6">
         <Heading
             variant="small"
             title="Two-factor authentication"

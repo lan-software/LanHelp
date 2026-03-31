@@ -169,15 +169,29 @@ const contextLinks = computed(() => {
                         <h3 class="font-medium">Add Reply</h3>
                         <Textarea name="body" placeholder="Write your reply…" rows="4" required />
                         <InputError :message="errors.body" />
-                        <div class="flex items-center justify-between">
-                            <label v-if="isStaff" class="flex items-center gap-2 text-sm">
-                                <input type="checkbox" name="is_internal" value="1" class="rounded" />
-                                Internal note (staff only)
-                            </label>
-                            <span v-else />
-                            <Button type="submit" :disabled="processing">
-                                {{ processing ? 'Sending…' : 'Send Reply' }}
-                            </Button>
+                        <div class="flex flex-col gap-3">
+                            <div v-if="isStaff" class="flex flex-wrap items-center gap-4">
+                                <label class="flex items-center gap-2 text-sm">
+                                    <input type="checkbox" name="is_internal" value="1" class="rounded" />
+                                    Internal note (staff only)
+                                </label>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="text-muted-foreground">Email notification:</span>
+                                    <label class="flex items-center gap-1">
+                                        <input type="radio" name="notify_mode" value="link" checked class="rounded" />
+                                        Link only
+                                    </label>
+                                    <label class="flex items-center gap-1">
+                                        <input type="radio" name="notify_mode" value="content" class="rounded" />
+                                        Include content
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex justify-end">
+                                <Button type="submit" :disabled="processing">
+                                    {{ processing ? 'Sending…' : 'Send Reply' }}
+                                </Button>
+                            </div>
                         </div>
                     </Form>
                 </div>

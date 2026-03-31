@@ -19,7 +19,9 @@ type Ticket = {
 type PaginatedTickets = {
     data: Ticket[];
     links: { url: string | null; label: string; active: boolean }[];
-    meta: { current_page: number; last_page: number; total: number };
+    current_page: number;
+    last_page: number;
+    total: number;
 };
 
 defineProps<{ tickets: PaginatedTickets }>();
@@ -54,7 +56,7 @@ const statusLabel: Record<string, string> = {
         <div class="flex items-center justify-between">
             <h1 class="text-2xl font-semibold">My Tickets</h1>
             <Button as-child>
-                <Link :href="create()">New Ticket</Link>
+                <Link :href="create()">Open a New Ticket</Link>
             </Button>
         </div>
 
@@ -95,7 +97,7 @@ const statusLabel: Record<string, string> = {
         </div>
 
         <!-- Pagination -->
-        <div v-if="tickets.meta.last_page > 1" class="flex justify-center gap-1">
+        <div v-if="tickets.last_page > 1" class="flex justify-center gap-1">
             <template v-for="link in tickets.links" :key="link.label">
                 <Link
                     v-if="link.url"

@@ -16,7 +16,9 @@ use Laravel\Fortify\Features;
 // flash error, which means the user just returned from a failed SSO attempt).
 Route::get('/', function (Request $request) {
     if (auth()->check()) {
-        return redirect()->route('dashboard');
+        return auth()->user()->isAdmin()
+            ? redirect()->route('dashboard')
+            : redirect()->route('tickets.index');
     }
 
     if (config('lancore.enabled') && ! $request->session()->has('error')) {
@@ -29,7 +31,7 @@ Route::get('/', function (Request $request) {
     ]);
 })->name('home');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
 });
 

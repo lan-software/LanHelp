@@ -87,4 +87,20 @@ class User extends Authenticatable
     {
         return $this->display_name ?? $this->name;
     }
+
+    // ── Auth overrides ───────────────────────────────────────────────────────
+
+    /**
+     * LanCore SSO users have no local password and must not receive password
+     * reset emails. We silently skip the notification so that the forgot-password
+     * form still shows a success message without leaking user status.
+     */
+    public function sendPasswordResetNotification(#[\SensitiveParameter] $token): void
+    {
+        if ($this->isLanCoreUser()) {
+            return;
+        }
+
+        parent::sendPasswordResetNotification($token);
+    }
 }

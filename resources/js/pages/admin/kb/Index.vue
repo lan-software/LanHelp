@@ -16,7 +16,9 @@ type Article = {
 type PaginatedArticles = {
     data: Article[];
     links: { url: string | null; label: string; active: boolean }[];
-    meta: { current_page: number; last_page: number; total: number };
+    current_page: number;
+    last_page: number;
+    total: number;
 };
 
 defineProps<{ articles: PaginatedArticles }>();
@@ -87,7 +89,7 @@ defineOptions({
             <div v-if="articles.data.length === 0" class="py-12 text-center text-muted-foreground">No articles yet.</div>
         </div>
 
-        <div v-if="articles.meta.last_page > 1" class="flex justify-center gap-1">
+        <div v-if="articles.last_page > 1" class="flex justify-center gap-1">
             <template v-for="link in articles.links" :key="link.label">
                 <Link
                     v-if="link.url"

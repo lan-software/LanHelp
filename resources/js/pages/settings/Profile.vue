@@ -31,6 +31,7 @@ defineOptions({
 
 const page = usePage();
 const user = computed(() => page.props.auth.user);
+const isSsoUser = computed(() => !!user.value.lancore_user_id);
 </script>
 
 <template>
@@ -45,7 +46,16 @@ const user = computed(() => page.props.auth.user);
             description="Update your name and email address"
         />
 
+        <div
+            v-if="isSsoUser"
+            class="rounded-lg border border-blue-100 bg-blue-50 p-4 text-sm text-blue-800 dark:border-blue-200/10 dark:bg-blue-700/10 dark:text-blue-300"
+        >
+            Your profile is managed through LanCore SSO. To update your name
+            or email address, please make changes in LanCore.
+        </div>
+
         <Form
+            v-else
             v-bind="ProfileController.update.form()"
             class="space-y-6"
             v-slot="{ errors, processing, recentlySuccessful }"
@@ -121,5 +131,5 @@ const user = computed(() => page.props.auth.user);
         </Form>
     </div>
 
-    <DeleteUser />
+    <DeleteUser v-if="!isSsoUser" />
 </template>

@@ -27,11 +27,17 @@ const user = computed(() => page.props.auth?.user as any);
 const isStaff = computed(() => user.value?.role === 'staff' || user.value?.role === 'admin');
 const isAdmin = computed(() => user.value?.role === 'admin');
 
-const mainNavItems = computed((): NavItem[] => [
-    { title: 'Dashboard', href: dashboard(), icon: LayoutGrid },
-    { title: 'My Tickets', href: ticketsIndex(), icon: HelpCircle },
-    { title: 'Knowledge Base', href: kbIndex(), icon: BookOpen },
-]);
+const mainNavItems = computed((): NavItem[] => {
+    const items: NavItem[] = [];
+    if (isAdmin.value) {
+        items.push({ title: 'Dashboard', href: dashboard(), icon: LayoutGrid });
+    }
+    items.push(
+        { title: 'My Tickets', href: ticketsIndex(), icon: HelpCircle },
+        { title: 'Knowledge Base', href: kbIndex(), icon: BookOpen },
+    );
+    return items;
+});
 
 const staffNavItems = computed((): NavItem[] => {
     if (!isStaff.value) return [];

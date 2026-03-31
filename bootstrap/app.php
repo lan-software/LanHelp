@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\EnsurePasswordIsConfirmed;
 use App\Http\Middleware\HandleAppearance;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\StaffMiddleware;
@@ -19,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'staff' => StaffMiddleware::class,
             'admin' => AdminMiddleware::class,
+            'password.confirm' => EnsurePasswordIsConfirmed::class,
         ]);
 
         $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);

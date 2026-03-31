@@ -15,6 +15,7 @@ class NewReplyNotification extends Notification
     public function __construct(
         public readonly Ticket $ticket,
         public readonly TicketReply $reply,
+        public readonly string $notifyMode = 'link',
     ) {}
 
     public function via(object $notifiable): array
@@ -28,10 +29,19 @@ class NewReplyNotification extends Notification
         $reply = $this->reply;
         $url = route('tickets.show', $ticket);
 
-        return (new MailMessage)
+        $mail = (new MailMessage)
             ->subject("[#{$ticket->id}] New reply: {$ticket->subject}")
-            ->greeting('Hello!')
-            ->line("{$reply->author->displayName()} has replied to ticket **#{$ticket->id} — {$ticket->subject}**.")
-            ->action('View Conversation', $url);
+            ->greeting('Hello!');
+
+        if ($this->notifyMode === 'content') {
+            $mail->line("{$reply->author->displayName()} has replied to ticket **#{$ticket->id} — {$ticket->subject}**:")
+                ->line($reply->body)
+                ->action('View Conversation', $url);
+        } else {
+            $mail->line("{$reply->author->displayName()} has replied to ticket **#{$ticket->id} — {$ticket->subject}**.")
+                ->action('View Conversation', $url);
+        }
+
+        return $mail;
     }
 }
