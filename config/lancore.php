@@ -35,7 +35,9 @@ return [
 
     'app_slug' => env('LANCORE_APP_SLUG', 'lanhelp'),
 
-    'callback_url' => env('LANCORE_CALLBACK_URL', env('APP_URL').'/auth/lancore/callback'),
+    'callback_url' => env('LANCORE_CALLBACK_URL', env('APP_URL').'/auth/callback'),
+
+    'roles_webhook_secret' => env('LANCORE_ROLES_WEBHOOK_SECRET'),
 
     /*
     |--------------------------------------------------------------------------

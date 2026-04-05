@@ -51,13 +51,22 @@ it('does not change role when provided roles are empty and current role is user'
     expect($user->fresh()->role)->toBe(UserRole::User);
 });
 
-it('ignores unknown LanCore roles like moderator and superadmin', function () {
+it('maps moderator to the local staff role', function () {
     $user = User::factory()->lanCoreUser(42)->create(['role' => UserRole::User]);
     Http::fake();
 
-    app(SyncUserRolesFromLanCore::class)->handle($user, ['moderator', 'superadmin']);
+    app(SyncUserRolesFromLanCore::class)->handle($user, ['moderator']);
 
-    expect($user->fresh()->role)->toBe(UserRole::User);
+    expect($user->fresh()->role)->toBe(UserRole::Staff);
+});
+
+it('maps superadmin to the local admin role', function () {
+    $user = User::factory()->lanCoreUser(42)->create(['role' => UserRole::User]);
+    Http::fake();
+
+    app(SyncUserRolesFromLanCore::class)->handle($user, ['superadmin']);
+
+    expect($user->fresh()->role)->toBe(UserRole::Admin);
 });
 
 // ── Resolve via API ───────────────────────────────────────────────────────────

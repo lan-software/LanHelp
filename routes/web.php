@@ -36,6 +36,12 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
 });
 
 // LanCore SSO routes
+Route::prefix('auth')->name('auth.')->group(function () {
+    Route::get('redirect', [LanCoreAuthController::class, 'redirect'])->name('redirect');
+    Route::get('callback', [LanCoreAuthController::class, 'callback'])->name('callback');
+    Route::get('status', [LanCoreAuthController::class, 'status'])->name('status');
+});
+
 Route::prefix('auth/lancore')->name('lancore.')->group(function () {
     Route::get('redirect', [LanCoreAuthController::class, 'redirect'])->name('redirect');
     Route::get('callback', [LanCoreAuthController::class, 'callback'])->name('callback');

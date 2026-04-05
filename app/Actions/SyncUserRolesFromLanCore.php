@@ -82,9 +82,8 @@ class SyncUserRolesFromLanCore
     /**
      * Apply the given LanCore roles to the user's local role field.
      *
-     * LanCore is authoritative for UserRole::User and UserRole::Admin.
-     * UserRole::Staff is a local-only role and will not be downgraded by LanCore.
-     * Unknown LanCore roles (e.g. "moderator", "superadmin") are ignored.
+        * LanCore is authoritative for all shared roles.
+        * The local Staff role is used as the LanHelp equivalent of moderator.
      *
      * @param  array<string>  $lanCoreRoles
      */
@@ -116,17 +115,22 @@ class SyncUserRolesFromLanCore
 
     /**
      * Return the highest-privilege UserRole from a LanCore roles array,
-     * considering only the roles that LanCore is authoritative for.
+     * mapped into the local LanHelp role model.
      *
      * @param  array<string>  $lanCoreRoles
      */
     private function highestMappedRole(array $lanCoreRoles): ?UserRole
     {
-        $managed = [UserRole::User, UserRole::Admin];
-
         return collect($lanCoreRoles)
-            ->map(fn (string $r) => UserRole::tryFrom($r))
-            ->filter(fn (?UserRole $r) => $r !== null && in_array($r, $managed))
+            ->map(function (string $role): ?UserRole {
+                return match ($role) {
+                    'superadmin', 'admin' => UserRole::Admin,
+                    'moderator' => UserRole::Staff,
+                    'user' => UserRole::User,
+                    default => null,
+                };
+            })
+            ->filter(fn (?UserRole $role) => $role !== null)
             ->sortByDesc(fn (UserRole $r) => $this->priority($r))
             ->first();
     }
