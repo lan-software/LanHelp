@@ -13,6 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class LanCoreAuthController extends Controller
 {
@@ -25,7 +26,7 @@ class LanCoreAuthController extends Controller
     /**
      * Redirect the browser to the LanCore SSO authorization page.
      */
-    public function redirect(): RedirectResponse
+    public function redirect(): \Symfony\Component\HttpFoundation\Response
     {
         try {
             $url = $this->client->ssoAuthorizeUrl();
@@ -33,7 +34,7 @@ class LanCoreAuthController extends Controller
             return redirect()->route('login');
         }
 
-        return redirect()->away($url);
+        return Inertia::location($url);
     }
 
     /**
@@ -69,7 +70,7 @@ class LanCoreAuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard'));
+        return redirect()->intended(route('home'));
     }
 
     /**
