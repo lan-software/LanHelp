@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\KnowledgeBaseArticleController;
 use App\Http\Controllers\Auth\LanCoreAuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KnowledgeBaseController;
 use App\Http\Controllers\Staff\TicketBoardController;
 use App\Http\Controllers\TicketAssignmentController;
@@ -15,13 +16,7 @@ use Laravel\Fortify\Features;
 // Landing page — auto-redirects to LanCore SSO when enabled (unless there is a
 // flash error, which means the user just returned from a failed SSO attempt).
 Route::get('/', function (Request $request) {
-    if (auth()->check()) {
-        return auth()->user()->isAdmin()
-            ? redirect()->route('dashboard')
-            : redirect()->route('tickets.index');
-    }
-
-    if (config('lancore.enabled') && ! $request->session()->has('error')) {
+    if (! auth()->check() && config('lancore.enabled') && ! $request->session()->has('error')) {
         return redirect()->route('lancore.redirect');
     }
 
@@ -32,7 +27,7 @@ Route::get('/', function (Request $request) {
 })->name('home');
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
-    Route::inertia('dashboard', 'Dashboard')->name('dashboard');
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
 });
 
 // LanCore SSO routes

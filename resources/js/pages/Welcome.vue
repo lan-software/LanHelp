@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { Head, Link } from '@inertiajs/vue3';
-import { LifeBuoy } from 'lucide-vue-next';
+import { Head, Link, usePage } from '@inertiajs/vue3';
+import { LifeBuoy, LayoutGrid } from 'lucide-vue-next';
+import { computed } from 'vue';
 
 defineProps<{
     canRegister: boolean;
     lanCoreEnabled: boolean;
 }>();
+
+const page = usePage();
+const user = computed(() => (page.props.auth as any)?.user);
 </script>
 
 <template>
@@ -26,19 +30,38 @@ defineProps<{
                 >
                     Knowledge Base
                 </Link>
-                <Link
-                    href="/login"
-                    class="rounded-full border border-border px-5 py-2 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-foreground"
-                >
-                    Sign in
-                </Link>
-                <Link
-                    v-if="canRegister"
-                    href="/register"
-                    class="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
-                >
-                    Register
-                </Link>
+                <template v-if="user">
+                    <Link
+                        v-if="user.role === 'admin'"
+                        href="/dashboard"
+                        class="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
+                    >
+                        <LayoutGrid class="mr-1.5 inline-block h-4 w-4" />
+                        Dashboard
+                    </Link>
+                    <Link
+                        v-else
+                        href="/tickets"
+                        class="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
+                    >
+                        My Tickets
+                    </Link>
+                </template>
+                <template v-else>
+                    <Link
+                        href="/login"
+                        class="rounded-full border border-border px-5 py-2 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-foreground"
+                    >
+                        Sign in
+                    </Link>
+                    <Link
+                        v-if="canRegister"
+                        href="/register"
+                        class="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
+                    >
+                        Register
+                    </Link>
+                </template>
             </div>
         </header>
 
@@ -54,18 +77,42 @@ defineProps<{
             </p>
 
             <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <Link
-                    href="/kb"
-                    class="rounded-xl bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
-                >
-                    Browse Knowledge Base
-                </Link>
-                <Link
-                    href="/login"
-                    class="rounded-xl border border-border px-7 py-3 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-foreground"
-                >
-                    Sign in to submit a ticket
-                </Link>
+                <template v-if="user">
+                    <Link
+                        v-if="user.role === 'admin'"
+                        href="/dashboard"
+                        class="rounded-xl bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
+                    >
+                        <LayoutGrid class="mr-1.5 inline-block h-4 w-4" />
+                        Go to Dashboard
+                    </Link>
+                    <Link
+                        href="/tickets"
+                        class="rounded-xl border border-border px-7 py-3 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-foreground"
+                    >
+                        My Tickets
+                    </Link>
+                    <Link
+                        href="/kb"
+                        class="rounded-xl border border-border px-7 py-3 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-foreground"
+                    >
+                        Knowledge Base
+                    </Link>
+                </template>
+                <template v-else>
+                    <Link
+                        href="/kb"
+                        class="rounded-xl bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
+                    >
+                        Browse Knowledge Base
+                    </Link>
+                    <Link
+                        href="/login"
+                        class="rounded-xl border border-border px-7 py-3 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-foreground"
+                    >
+                        Sign in to submit a ticket
+                    </Link>
+                </template>
             </div>
 
             <div class="mx-auto mt-20 grid max-w-3xl gap-6 sm:grid-cols-3">
