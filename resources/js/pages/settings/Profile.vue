@@ -50,8 +50,8 @@ const isSsoUser = computed(() => !!user.value.lancore_user_id);
             v-if="isSsoUser"
             class="rounded-lg border border-blue-100 bg-blue-50 p-4 text-sm text-blue-800 dark:border-blue-200/10 dark:bg-blue-700/10 dark:text-blue-300"
         >
-            Your profile is managed through LanCore SSO. To update your name
-            or email address, please make changes in LanCore.
+            Your profile is managed through LanCore SSO. To update your name or
+            email address, please make changes in LanCore.
         </div>
 
         <Form

@@ -29,20 +29,28 @@ setLayoutProps({
         <div class="mb-2 flex items-center gap-2 text-sm text-muted-foreground">
             <Link :href="index()" class="hover:underline">Knowledge Base</Link>
             <span>›</span>
-            <span v-if="article.category" class="capitalize">{{ article.category }}</span>
+            <span v-if="article.category" class="capitalize">{{
+                article.category
+            }}</span>
         </div>
 
         <h1 class="mb-2 text-3xl font-bold">{{ article.title }}</h1>
 
         <p class="mb-8 text-sm text-muted-foreground">
-            By {{ article.author.display_name ?? article.author.name }}
-            · {{ new Date(article.published_at).toLocaleDateString() }}
+            By {{ article.author.display_name ?? article.author.name }} ·
+            {{ new Date(article.published_at).toLocaleDateString() }}
         </p>
 
-        <div class="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">{{ article.content }}</div>
+        <div
+            class="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap"
+        >
+            {{ article.content }}
+        </div>
 
         <div class="mt-10 border-t pt-6">
-            <Link :href="index()" class="text-sm text-primary hover:underline">← Back to Knowledge Base</Link>
+            <Link :href="index()" class="text-sm text-primary hover:underline"
+                >← Back to Knowledge Base</Link
+            >
         </div>
     </div>
 </template>

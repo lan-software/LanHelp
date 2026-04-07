@@ -34,9 +34,12 @@ defineOptions({
 
 const statusColor: Record<string, string> = {
     open: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-    in_progress: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
-    waiting_for_user: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
-    resolved: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+    in_progress:
+        'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
+    waiting_for_user:
+        'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+    resolved:
+        'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
     closed: 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300',
 };
 
@@ -60,7 +63,10 @@ const statusLabel: Record<string, string> = {
             </Button>
         </div>
 
-        <div v-if="tickets.data.length === 0" class="py-16 text-center text-muted-foreground">
+        <div
+            v-if="tickets.data.length === 0"
+            class="py-16 text-center text-muted-foreground"
+        >
             <p class="text-lg">You have no tickets yet.</p>
             <Button as-child class="mt-4">
                 <Link :href="create()">Open a support request</Link>
@@ -77,18 +83,38 @@ const statusLabel: Record<string, string> = {
                 <div class="flex items-start justify-between gap-4">
                     <div class="min-w-0 flex-1">
                         <div class="flex items-center gap-2">
-                            <span class="text-xs text-muted-foreground">#{{ ticket.id }}</span>
-                            <span v-if="ticket.category" class="text-xs text-muted-foreground">· {{ ticket.category }}</span>
+                            <span class="text-xs text-muted-foreground"
+                                >#{{ ticket.id }}</span
+                            >
+                            <span
+                                v-if="ticket.category"
+                                class="text-xs text-muted-foreground"
+                                >· {{ ticket.category }}</span
+                            >
                         </div>
-                        <p class="mt-1 truncate font-medium">{{ ticket.subject }}</p>
+                        <p class="mt-1 truncate font-medium">
+                            {{ ticket.subject }}
+                        </p>
                         <p class="mt-1 text-xs text-muted-foreground">
-                            Updated {{ new Date(ticket.updated_at).toLocaleDateString() }}
-                            <span v-if="ticket.assignee"> · Assigned to {{ ticket.assignee.display_name ?? ticket.assignee.name }}</span>
+                            Updated
+                            {{
+                                new Date(ticket.updated_at).toLocaleDateString()
+                            }}
+                            <span v-if="ticket.assignee">
+                                · Assigned to
+                                {{
+                                    ticket.assignee.display_name ??
+                                    ticket.assignee.name
+                                }}</span
+                            >
                         </p>
                     </div>
                     <span
                         class="shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium"
-                        :class="statusColor[ticket.status] ?? 'bg-gray-100 text-gray-800'"
+                        :class="
+                            statusColor[ticket.status] ??
+                            'bg-gray-100 text-gray-800'
+                        "
                     >
                         {{ statusLabel[ticket.status] ?? ticket.status }}
                     </span>
@@ -103,10 +129,18 @@ const statusLabel: Record<string, string> = {
                     v-if="link.url"
                     :href="link.url"
                     class="rounded border px-3 py-1 text-sm"
-                    :class="link.active ? 'border-primary bg-primary text-primary-foreground' : 'hover:bg-muted'"
+                    :class="
+                        link.active
+                            ? 'border-primary bg-primary text-primary-foreground'
+                            : 'hover:bg-muted'
+                    "
                     v-html="link.label"
                 />
-                <span v-else class="rounded border px-3 py-1 text-sm text-muted-foreground" v-html="link.label" />
+                <span
+                    v-else
+                    class="rounded border px-3 py-1 text-sm text-muted-foreground"
+                    v-html="link.label"
+                />
             </template>
         </div>
     </div>

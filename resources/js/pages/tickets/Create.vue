@@ -4,7 +4,13 @@ import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { index, create, store } from '@/routes/tickets';
 
@@ -34,13 +40,22 @@ defineOptions({
             class="flex flex-col gap-5"
         >
             <div class="flex flex-col gap-1.5">
-                <Label for="subject">Subject <span class="text-destructive">*</span></Label>
-                <Input id="subject" name="subject" placeholder="Briefly describe your issue" required />
+                <Label for="subject"
+                    >Subject <span class="text-destructive">*</span></Label
+                >
+                <Input
+                    id="subject"
+                    name="subject"
+                    placeholder="Briefly describe your issue"
+                    required
+                />
                 <InputError :message="errors.subject" />
             </div>
 
             <div class="flex flex-col gap-1.5">
-                <Label for="description">Description <span class="text-destructive">*</span></Label>
+                <Label for="description"
+                    >Description <span class="text-destructive">*</span></Label
+                >
                 <Textarea
                     id="description"
                     name="description"
@@ -57,16 +72,26 @@ defineOptions({
                     <select
                         id="priority"
                         name="priority"
-                        class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus:outline-none focus:ring-1 focus:ring-ring"
+                        class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus:ring-1 focus:ring-ring focus:outline-none"
                     >
-                        <option v-for="p in priorities" :key="p.value" :value="p.value">{{ p.label }}</option>
+                        <option
+                            v-for="p in priorities"
+                            :key="p.value"
+                            :value="p.value"
+                        >
+                            {{ p.label }}
+                        </option>
                     </select>
                     <InputError :message="errors.priority" />
                 </div>
 
                 <div class="flex flex-col gap-1.5">
                     <Label for="category">Category</Label>
-                    <Input id="category" name="category" placeholder="e.g. account, technical" />
+                    <Input
+                        id="category"
+                        name="category"
+                        placeholder="e.g. account, technical"
+                    />
                     <InputError :message="errors.category" />
                 </div>
             </div>

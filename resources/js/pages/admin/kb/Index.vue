@@ -43,7 +43,9 @@ defineOptions({
 
         <div class="overflow-hidden rounded-lg border bg-card shadow-sm">
             <table class="w-full text-sm">
-                <thead class="border-b bg-muted/50 text-left text-xs uppercase tracking-wider text-muted-foreground">
+                <thead
+                    class="border-b bg-muted/50 text-left text-xs tracking-wider text-muted-foreground uppercase"
+                >
                     <tr>
                         <th class="px-4 py-3">Title</th>
                         <th class="px-4 py-3">Category</th>
@@ -54,29 +56,63 @@ defineOptions({
                     </tr>
                 </thead>
                 <tbody class="divide-y">
-                    <tr v-for="article in articles.data" :key="article.id" class="hover:bg-muted/30">
+                    <tr
+                        v-for="article in articles.data"
+                        :key="article.id"
+                        class="hover:bg-muted/30"
+                    >
                         <td class="max-w-sm px-4 py-3">
                             <span class="font-medium">{{ article.title }}</span>
                         </td>
-                        <td class="px-4 py-3 capitalize text-muted-foreground">{{ article.category ?? '—' }}</td>
+                        <td class="px-4 py-3 text-muted-foreground capitalize">
+                            {{ article.category ?? '—' }}
+                        </td>
                         <td class="px-4 py-3">
                             <span
                                 class="rounded-full px-2 py-0.5 text-xs font-medium"
-                                :class="article.is_published ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-gray-100 text-gray-600'"
+                                :class="
+                                    article.is_published
+                                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                                        : 'bg-gray-100 text-gray-600'
+                                "
                             >
-                                {{ article.is_published ? 'Published' : 'Draft' }}
+                                {{
+                                    article.is_published ? 'Published' : 'Draft'
+                                }}
                             </span>
                         </td>
-                        <td class="px-4 py-3 text-muted-foreground">{{ article.author.display_name ?? article.author.name }}</td>
-                        <td class="px-4 py-3 text-xs text-muted-foreground">{{ new Date(article.updated_at).toLocaleDateString() }}</td>
+                        <td class="px-4 py-3 text-muted-foreground">
+                            {{
+                                article.author.display_name ??
+                                article.author.name
+                            }}
+                        </td>
+                        <td class="px-4 py-3 text-xs text-muted-foreground">
+                            {{
+                                new Date(
+                                    article.updated_at,
+                                ).toLocaleDateString()
+                            }}
+                        </td>
                         <td class="px-4 py-3">
                             <div class="flex items-center gap-2">
-                                <Link :href="edit(article.id)" class="text-xs text-primary hover:underline">Edit</Link>
-                                <Form v-bind="destroy.form(article.id)" class="inline">
+                                <Link
+                                    :href="edit(article.id)"
+                                    class="text-xs text-primary hover:underline"
+                                    >Edit</Link
+                                >
+                                <Form
+                                    v-bind="destroy.form(article.id)"
+                                    class="inline"
+                                >
                                     <button
                                         type="submit"
                                         class="text-xs text-destructive hover:underline"
-                                        @click.prevent="$event.currentTarget.closest('form')?.requestSubmit()"
+                                        @click.prevent="
+                                            $event.currentTarget
+                                                .closest('form')
+                                                ?.requestSubmit()
+                                        "
                                     >
                                         Delete
                                     </button>
@@ -86,7 +122,12 @@ defineOptions({
                     </tr>
                 </tbody>
             </table>
-            <div v-if="articles.data.length === 0" class="py-12 text-center text-muted-foreground">No articles yet.</div>
+            <div
+                v-if="articles.data.length === 0"
+                class="py-12 text-center text-muted-foreground"
+            >
+                No articles yet.
+            </div>
         </div>
 
         <div v-if="articles.last_page > 1" class="flex justify-center gap-1">
@@ -95,10 +136,18 @@ defineOptions({
                     v-if="link.url"
                     :href="link.url"
                     class="rounded border px-3 py-1 text-sm"
-                    :class="link.active ? 'border-primary bg-primary text-primary-foreground' : 'hover:bg-muted'"
+                    :class="
+                        link.active
+                            ? 'border-primary bg-primary text-primary-foreground'
+                            : 'hover:bg-muted'
+                    "
                     v-html="link.label"
                 />
-                <span v-else class="rounded border px-3 py-1 text-sm text-muted-foreground" v-html="link.label" />
+                <span
+                    v-else
+                    class="rounded border px-3 py-1 text-sm text-muted-foreground"
+                    v-html="link.label"
+                />
             </template>
         </div>
     </div>

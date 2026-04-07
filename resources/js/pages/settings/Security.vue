@@ -62,8 +62,8 @@ onUnmounted(() => clearTwoFactorAuthData());
             v-if="isSsoUser"
             class="rounded-lg border border-blue-100 bg-blue-50 p-4 text-sm text-blue-800 dark:border-blue-200/10 dark:bg-blue-700/10 dark:text-blue-300"
         >
-            Password management is not available for SSO accounts. Your
-            account security is handled through LanCore.
+            Password management is not available for SSO accounts. Your account
+            security is handled through LanCore.
         </div>
 
         <Form

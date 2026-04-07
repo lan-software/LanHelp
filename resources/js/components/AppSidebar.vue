@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
-import { BookOpen, ClipboardList, HelpCircle, LayoutGrid, Settings, Shield } from 'lucide-vue-next';
+import {
+    BookOpen,
+    ClipboardList,
+    HelpCircle,
+    LayoutGrid,
+    Settings,
+    Shield,
+} from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -24,7 +31,9 @@ import type { NavItem } from '@/types';
 
 const page = usePage();
 const user = computed(() => page.props.auth?.user as any);
-const isStaff = computed(() => user.value?.role === 'staff' || user.value?.role === 'admin');
+const isStaff = computed(
+    () => user.value?.role === 'staff' || user.value?.role === 'admin',
+);
 const isAdmin = computed(() => user.value?.role === 'admin');
 
 const mainNavItems = computed((): NavItem[] => {
@@ -42,7 +51,11 @@ const mainNavItems = computed((): NavItem[] => {
 const staffNavItems = computed((): NavItem[] => {
     if (!isStaff.value) return [];
     const items: NavItem[] = [
-        { title: 'Staff Board', href: staffTicketsIndex(), icon: ClipboardList },
+        {
+            title: 'Staff Board',
+            href: staffTicketsIndex(),
+            icon: ClipboardList,
+        },
     ];
     if (isAdmin.value) {
         items.push({ title: 'Manage KB', href: adminKbIndex(), icon: Shield });
