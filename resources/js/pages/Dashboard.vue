@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { dashboard } from '@/routes';
-import { show as ticketShow } from '@/routes/tickets';
-import { index as staffTicketsIndex } from '@/routes/staff/tickets';
 import {
     AlertTriangle,
     BookOpen,
@@ -15,6 +12,9 @@ import {
     Users,
     UserCog,
 } from 'lucide-vue-next';
+import { dashboard } from '@/routes';
+import { index as staffTicketsIndex } from '@/routes/staff/tickets';
+import { show as ticketShow } from '@/routes/tickets';
 
 defineOptions({
     layout: {

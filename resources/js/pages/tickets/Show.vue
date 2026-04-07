@@ -85,7 +85,11 @@ function formatDate(dt: string) {
 
 const contextEntries = computed(() => {
     const snap = props.ticket.context_snapshot;
-    if (!snap) return [];
+
+    if (!snap) {
+return [];
+}
+
     return Object.entries(snap).filter(
         ([, v]) => v !== null && v !== undefined && typeof v !== 'object',
     );
@@ -93,7 +97,11 @@ const contextEntries = computed(() => {
 
 const contextLinks = computed(() => {
     const snap = props.ticket.context_snapshot;
-    if (!snap || typeof snap.links !== 'object') return [];
+
+    if (!snap || typeof snap.links !== 'object') {
+return [];
+}
+
     return Object.entries(snap.links as Record<string, string>);
 });
 </script>

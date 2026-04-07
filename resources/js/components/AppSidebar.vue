@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import { computed } from 'vue';
 import {
     BookOpen,
     ClipboardList,
@@ -9,6 +8,7 @@ import {
     Settings,
     Shield,
 } from 'lucide-vue-next';
+import { computed } from 'vue';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -23,10 +23,10 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard, home } from '@/routes';
-import { index as ticketsIndex } from '@/routes/tickets';
+import { index as adminKbIndex } from '@/routes/admin/kb';
 import { index as kbIndex } from '@/routes/kb';
 import { index as staffTicketsIndex } from '@/routes/staff/tickets';
-import { index as adminKbIndex } from '@/routes/admin/kb';
+import { index as ticketsIndex } from '@/routes/tickets';
 import type { NavItem } from '@/types';
 
 const page = usePage();
@@ -38,18 +38,24 @@ const isAdmin = computed(() => user.value?.role === 'admin');
 
 const mainNavItems = computed((): NavItem[] => {
     const items: NavItem[] = [];
+
     if (isAdmin.value) {
         items.push({ title: 'Dashboard', href: dashboard(), icon: LayoutGrid });
     }
+
     items.push(
         { title: 'My Tickets', href: ticketsIndex(), icon: HelpCircle },
         { title: 'Knowledge Base', href: kbIndex(), icon: BookOpen },
     );
+
     return items;
 });
 
 const staffNavItems = computed((): NavItem[] => {
-    if (!isStaff.value) return [];
+    if (!isStaff.value) {
+return [];
+}
+
     const items: NavItem[] = [
         {
             title: 'Staff Board',
@@ -57,9 +63,11 @@ const staffNavItems = computed((): NavItem[] => {
             icon: ClipboardList,
         },
     ];
+
     if (isAdmin.value) {
         items.push({ title: 'Manage KB', href: adminKbIndex(), icon: Shield });
     }
+
     return items;
 });
 
