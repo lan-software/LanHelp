@@ -123,4 +123,16 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Demo Mode
+    |--------------------------------------------------------------------------
+    */
+
+    'demo' => env('APP_DEMO', false),
+
+    'demo_banner_message' => env('APP_DEMO_BANNER_MESSAGE', "This is a public demo — resets hourly. Please don't enter real data."),
+
+    'demo_mailpit_url' => env('APP_DEMO_MAILPIT_URL'),
+
 ];

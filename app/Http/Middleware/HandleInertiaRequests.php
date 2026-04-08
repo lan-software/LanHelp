@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Services\LanCoreAnnouncementFeed;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -46,6 +47,11 @@ class HandleInertiaRequests extends Middleware
                 ] : null,
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+            'demoBanner' => fn () => config('app.demo') ? [
+                'message' => config('app.demo_banner_message'),
+                'mailpit_url' => config('app.demo_mailpit_url'),
+            ] : null,
+            'announcements' => fn () => app(LanCoreAnnouncementFeed::class)->fetch(),
         ];
     }
 }

@@ -49,4 +49,18 @@ return [
     'retries' => (int) env('LANCORE_RETRIES', 2),
 
     'retry_delay' => (int) env('LANCORE_RETRY_DELAY', 100),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Announcements Feed
+    |--------------------------------------------------------------------------
+    |
+    | URL of the public LanCore announcements feed consumed by satellites.
+    | Falls back to LANCORE_BASE_URL + /api/announcements/feed.
+    |
+    */
+    'announcements_feed_url' => env(
+        'LANCORE_ANNOUNCEMENTS_FEED_URL',
+        rtrim(env('LANCORE_INTERNAL_URL') ?? env('LANCORE_BASE_URL', 'http://lancore.lan'), '/').'/api/announcements/feed'
+    ),
 ];
