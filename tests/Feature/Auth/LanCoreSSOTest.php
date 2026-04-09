@@ -52,7 +52,7 @@ it('creates a new shadow user on first successful SSO login', function () {
     $code = str_repeat('a', 64);
 
     $this->get(route('lancore.callback', ['code' => $code]))
-        ->assertRedirect(route('dashboard'));
+        ->assertRedirect(route('home'));
 
     $this->assertDatabaseHas('users', [
         'lancore_user_id' => 42,
@@ -80,7 +80,7 @@ it('updates an existing shadow user on repeat SSO login', function () {
     $code = str_repeat('b', 64);
 
     $this->get(route('lancore.callback', ['code' => $code]))
-        ->assertRedirect(route('dashboard'));
+        ->assertRedirect(route('home'));
 
     expect($existing->fresh()->name)->toBe('johndoe_updated');
 });
@@ -111,7 +111,7 @@ it('redirects with error when LanCore is unreachable', function () {
         },
     ]);
 
-    config(['lancore.retries' => 0]);
+    config(['lancore.http.retries' => 0]);
 
     $code = str_repeat('d', 64);
 
@@ -139,7 +139,7 @@ it('returns enabled=false when LanCore is disabled', function () {
 
 it('preserves existing display_name on re-sync', function () {
     $user = User::factory()->lanCoreUser(99)->create(['display_name' => 'Custom Name']);
-    $dto = new LanCoreUser(99, 'newusername', 'en', null, null, 'new@example.com', null);
+    $dto = new LanCoreUser(id: 99, username: 'newusername', email: 'new@example.com', locale: 'en');
 
     $service = app(UserSyncService::class);
     $service->resolveFromUpstream($dto);

@@ -16,7 +16,7 @@ function lanHelpRolesWebhookHeaders(string $body, string $secret): array
 }
 
 beforeEach(function () {
-    config(['lancore.roles_webhook_secret' => 'lanhelp-webhook-secret']);
+    config(['lancore.webhooks.secret' => 'lanhelp-webhook-secret']);
 });
 
 it('syncs LanHelp roles from the LanCore webhook payload', function () {
@@ -62,5 +62,5 @@ it('rejects a roles webhook with an invalid signature', function () {
         'X-Webhook-Event' => 'user.roles_updated',
         'X-Webhook-Signature' => 'sha256=invalid',
         'Content-Type' => 'application/json',
-    ])->assertForbidden();
+    ])->assertUnauthorized();
 });

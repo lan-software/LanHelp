@@ -205,7 +205,7 @@ it('syncs roles from SSO exchange response without a second API request', functi
     $code = str_repeat('a', 64);
 
     $this->get(route('lancore.callback', ['code' => $code]))
-        ->assertRedirect(route('dashboard'));
+        ->assertRedirect(route('home'));
 
     $user = User::where('lancore_user_id', 42)->first();
     expect($user->role)->toBe(UserRole::Admin);
