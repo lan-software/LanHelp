@@ -1,61 +1,25 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| LanHelp-specific LanCore overrides
+|--------------------------------------------------------------------------
+|
+| The base config is published by the lan-software/lancore-client package.
+| This file adds keys specific to LanHelp (merged on top of the package
+| config via config:publish or manual placement).
+|
+*/
+
 return [
-    /*
-    |--------------------------------------------------------------------------
-    | LanCore Integration
-    |--------------------------------------------------------------------------
-    |
-    | Toggle the LanCore SSO integration on or off. When disabled, the local
-    | Fortify login form is shown instead of redirecting to LanCore.
-    |
-    */
-    'enabled' => env('LANCORE_ENABLED', false),
-
-    /*
-    |--------------------------------------------------------------------------
-    | LanCore URLs
-    |--------------------------------------------------------------------------
-    |
-    | base_url  — Browser-facing URL used for SSO authorize redirects.
-    | internal_url — Server-to-server URL used for API calls (Docker fix).
-    |                Falls back to base_url if not set.
-    |
-    */
-    'base_url' => env('LANCORE_BASE_URL', 'http://lancore.lan'),
-
-    'internal_url' => env('LANCORE_INTERNAL_URL') ?? env('LANCORE_BASE_URL', 'http://lancore.lan'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Integration Credentials
-    |--------------------------------------------------------------------------
-    */
-    'token' => env('LANCORE_TOKEN'),
-
     'app_slug' => env('LANCORE_APP_SLUG', 'lanhelp'),
-
-    'callback_url' => env('LANCORE_CALLBACK_URL', env('APP_URL').'/auth/callback'),
-
-    'roles_webhook_secret' => env('LANCORE_ROLES_WEBHOOK_SECRET'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | HTTP Client Tuning
-    |--------------------------------------------------------------------------
-    */
-    'timeout' => (int) env('LANCORE_TIMEOUT', 5),
-
-    'retries' => (int) env('LANCORE_RETRIES', 2),
-
-    'retry_delay' => (int) env('LANCORE_RETRY_DELAY', 100),
 
     /*
     |--------------------------------------------------------------------------
     | Announcements Feed
     |--------------------------------------------------------------------------
     |
-    | URL of the public LanCore announcements feed consumed by satellites.
+    | URL of the public LanCore announcements feed consumed by LanHelp.
     | Falls back to LANCORE_BASE_URL + /api/announcements/feed.
     |
     */

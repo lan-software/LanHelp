@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Actions\SyncUserRolesFromLanCore;
 use App\Models\User;
-use App\Services\LanCoreClient;
 use Carbon\CarbonImmutable;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Date;
@@ -20,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(LanCoreClient::class);
+        //
     }
 
     /**

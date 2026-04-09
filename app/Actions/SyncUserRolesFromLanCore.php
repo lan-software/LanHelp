@@ -3,11 +3,11 @@
 namespace App\Actions;
 
 use App\Enums\UserRole;
-use App\Exceptions\LanCoreDisabledException;
-use App\Exceptions\LanCoreRequestException;
 use App\Models\User;
-use App\Services\LanCoreClient;
 use Illuminate\Support\Facades\Log;
+use LanSoftware\LanCoreClient\Exceptions\LanCoreDisabledException;
+use LanSoftware\LanCoreClient\Exceptions\LanCoreRequestException;
+use LanSoftware\LanCoreClient\LanCoreClient;
 
 class SyncUserRolesFromLanCore
 {
@@ -82,8 +82,8 @@ class SyncUserRolesFromLanCore
     /**
      * Apply the given LanCore roles to the user's local role field.
      *
-        * LanCore is authoritative for all shared roles.
-        * The local Staff role is used as the LanHelp equivalent of moderator.
+     * LanCore is authoritative for all shared roles.
+     * The local Staff role is used as the LanHelp equivalent of moderator.
      *
      * @param  array<string>  $lanCoreRoles
      */

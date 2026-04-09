@@ -1,6 +1,6 @@
 <?php
 
-use App\DTOs\LanCoreUser;
+use LanSoftware\LanCoreClient\DTOs\LanCoreUser;
 use App\Models\User;
 use App\Services\UserSyncService;
 use Illuminate\Foundation\Testing\RefreshDatabase;

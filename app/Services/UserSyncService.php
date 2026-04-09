@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use App\DTOs\LanCoreUser;
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use LanSoftware\LanCoreClient\DTOs\LanCoreUser;
 
 class UserSyncService
 {

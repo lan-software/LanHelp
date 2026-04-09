@@ -3,17 +3,19 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Actions\SyncUserRolesFromLanCore;
-use App\Exceptions\InvalidLanCoreUserException;
-use App\Exceptions\LanCoreDisabledException;
-use App\Exceptions\LanCoreRequestException;
 use App\Http\Controllers\Controller;
-use App\Services\LanCoreClient;
 use App\Services\UserSyncService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use LanSoftware\LanCoreClient\Exceptions\InvalidLanCoreUserException;
+use LanSoftware\LanCoreClient\Exceptions\LanCoreDisabledException;
+use LanSoftware\LanCoreClient\Exceptions\LanCoreRequestException;
+use LanSoftware\LanCoreClient\Exceptions\LanCoreUnavailableException;
+use LanSoftware\LanCoreClient\LanCoreClient;
+use Symfony\Component\HttpFoundation\Response;
 
 class LanCoreAuthController extends Controller
 {
@@ -26,7 +28,7 @@ class LanCoreAuthController extends Controller
     /**
      * Redirect the browser to the LanCore SSO authorization page.
      */
-    public function redirect(): \Symfony\Component\HttpFoundation\Response
+    public function redirect(): Response
     {
         try {
             $url = $this->client->ssoAuthorizeUrl();
@@ -52,6 +54,8 @@ class LanCoreAuthController extends Controller
             $lanCoreUser = $this->client->exchangeCode($code);
             $user = $this->syncService->resolveFromUpstream($lanCoreUser);
             $this->syncRoles->handle($user, $lanCoreUser->roles ?? []);
+        } catch (LanCoreUnavailableException) {
+            return redirect()->route('home')->with('error', 'Could not connect to authentication service. Please try again later.');
         } catch (LanCoreRequestException $e) {
             $message = match ($e->statusCode) {
                 400 => 'The login link has expired. Please try again.',
