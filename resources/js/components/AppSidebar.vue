@@ -5,7 +5,6 @@ import {
     ClipboardList,
     HelpCircle,
     LayoutGrid,
-    Settings,
     Shield,
 } from 'lucide-vue-next';
 import { computed } from 'vue';

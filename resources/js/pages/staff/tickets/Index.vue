@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
-import { useVueTable, getCoreRowModel, FlexRender } from '@tanstack/vue-table';
+import { useVueTable, getCoreRowModel } from '@tanstack/vue-table';
 import type { ColumnDef } from '@tanstack/vue-table';
 import { ArrowUpDown } from 'lucide-vue-next';
-import { ref, watch, h } from 'vue';
+import { ref, watch } from 'vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -425,8 +425,9 @@ const table = useVueTable({
                                 ? 'border-primary bg-primary text-primary-foreground'
                                 : 'hover:bg-muted'
                         "
-                        v-html="link.label"
-                    />
+                    >
+                        <span v-html="link.label" />
+                    </Link>
                     <span
                         v-else
                         class="rounded border px-3 py-1 text-sm text-muted-foreground"

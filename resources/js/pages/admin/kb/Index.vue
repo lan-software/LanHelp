@@ -141,8 +141,9 @@ defineOptions({
                             ? 'border-primary bg-primary text-primary-foreground'
                             : 'hover:bg-muted'
                     "
-                    v-html="link.label"
-                />
+                >
+                    <span v-html="link.label" />
+                </Link>
                 <span
                     v-else
                     class="rounded border px-3 py-1 text-sm text-muted-foreground"

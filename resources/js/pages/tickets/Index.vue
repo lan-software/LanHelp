@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { index, create, show } from '@/routes/tickets';
 
 type Ticket = {
@@ -134,8 +132,9 @@ const statusLabel: Record<string, string> = {
                             ? 'border-primary bg-primary text-primary-foreground'
                             : 'hover:bg-muted'
                     "
-                    v-html="link.label"
-                />
+                >
+                    <span v-html="link.label" />
+                </Link>
                 <span
                     v-else
                     class="rounded border px-3 py-1 text-sm text-muted-foreground"

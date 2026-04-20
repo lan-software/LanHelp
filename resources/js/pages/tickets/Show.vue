@@ -54,7 +54,6 @@ setLayoutProps({
 });
 
 const page = usePage();
-const currentUser = computed(() => page.props.auth.user as User);
 const isStaff = computed(
     () =>
         (page.props.auth.user as any)?.role === 'staff' ||

@@ -6,7 +6,6 @@ import {
     CheckCircle2,
     Clock,
     Inbox,
-    LifeBuoy,
     Loader2,
     MessageSquare,
     Users,
