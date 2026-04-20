@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
-import {
-    useVueTable,
-    getCoreRowModel,
-    FlexRender
-    
-} from '@tanstack/vue-table';
-import type {ColumnDef} from '@tanstack/vue-table';
+import { useVueTable, getCoreRowModel, FlexRender } from '@tanstack/vue-table';
+import type { ColumnDef } from '@tanstack/vue-table';
 import { ArrowUpDown } from 'lucide-vue-next';
 import { ref, watch, h } from 'vue';
 import { Button } from '@/components/ui/button';
@@ -134,8 +129,8 @@ watch(searchQuery, () => {
 
 function assignTicket(ticketId: number, assigneeId: string) {
     if (!assigneeId) {
-return;
-}
+        return;
+    }
 
     router.patch(assign(ticketId).url, { assignee_id: assigneeId });
 }

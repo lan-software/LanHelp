@@ -53,8 +53,8 @@ const mainNavItems = computed((): NavItem[] => {
 
 const staffNavItems = computed((): NavItem[] => {
     if (!isStaff.value) {
-return [];
-}
+        return [];
+    }
 
     const items: NavItem[] = [
         {

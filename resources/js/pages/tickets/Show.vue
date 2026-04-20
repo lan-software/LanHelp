@@ -87,8 +87,8 @@ const contextEntries = computed(() => {
     const snap = props.ticket.context_snapshot;
 
     if (!snap) {
-return [];
-}
+        return [];
+    }
 
     return Object.entries(snap).filter(
         ([, v]) => v !== null && v !== undefined && typeof v !== 'object',
@@ -99,8 +99,8 @@ const contextLinks = computed(() => {
     const snap = props.ticket.context_snapshot;
 
     if (!snap || typeof snap.links !== 'object') {
-return [];
-}
+        return [];
+    }
 
     return Object.entries(snap.links as Record<string, string>);
 });
@@ -140,9 +140,7 @@ return [];
                 </h1>
                 <p class="mt-1 text-sm text-muted-foreground">
                     Opened by
-                    {{
-                        ticket.requester.display_name ?? ticket.requester.name
-                    }}
+                    {{ ticket.requester.display_name ?? ticket.requester.name }}
                     · {{ formatDate(ticket.created_at) }}
                     <span v-if="ticket.assignee">
                         · Assigned to
