@@ -1,0 +1,25 @@
+{
+    "common": {
+        "appName": "LanHelp",
+        "loading": "Chargement...",
+        "error": "Erreur",
+        "success": "Succès",
+        "save": "Enregistrer",
+        "cancel": "Annuler",
+        "close": "Fermer",
+        "submit": "Envoyer",
+        "back": "Retour"
+    },
+    "navigation": {
+        "home": "Accueil",
+        "dashboard": "Tableau de bord",
+        "tickets": "Tickets",
+        "knowledgeBase": "Base de connaissances"
+    },
+    "settings": {
+        "language": {
+            "current": "Langue d'affichage",
+            "managedInLanCore": "Modifiez votre langue dans votre profil LanCore."
+        }
+    }
+}

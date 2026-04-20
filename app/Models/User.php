@@ -21,6 +21,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
     'avatar_url',
     'lancore_synced_at',
     'role',
+    'locale',
 ])]
 #[Hidden(['password', 'two_factor_secret', 'two_factor_recovery_codes', 'remember_token'])]
 class User extends Authenticatable

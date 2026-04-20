@@ -26,6 +26,10 @@ class UserSyncService
             $user->email = $lanCoreUser->email;
         }
 
+        if ($lanCoreUser->locale !== null) {
+            $user->locale = $lanCoreUser->locale;
+        }
+
         if ($isNew) {
             // New user: set display_name from username, mark email as verified
             $user->lancore_user_id = $lanCoreUser->id;
