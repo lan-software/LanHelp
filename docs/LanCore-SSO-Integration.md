@@ -186,7 +186,7 @@ The "shadow user" pattern — creates or updates a local user from LanCore data:
 - **`lancore_synced_at`** is updated on every sync
 
 ```php
-$user = $syncService->resolveFromUpstream($lanCoreUser);
+$user = $syncService->resolveFromLanCore($lanCoreUser);
 // Returns existing or newly created User model
 ```
 

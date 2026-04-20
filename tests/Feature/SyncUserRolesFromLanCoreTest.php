@@ -4,9 +4,7 @@ use App\Actions\SyncUserRolesFromLanCore;
 use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 uses(RefreshDatabase::class);
 
@@ -69,94 +67,6 @@ it('maps superadmin to the local admin role', function () {
     expect($user->fresh()->role)->toBe(UserRole::Admin);
 });
 
-// ── Resolve via API ───────────────────────────────────────────────────────────
-
-it('resolves roles from LanCore by user ID and syncs them', function () {
-    $user = User::factory()->lanCoreUser(42)->create(['role' => UserRole::User]);
-
-    Http::fake([
-        '*/api/integration/user/resolve' => Http::response([
-            'data' => [
-                'id' => 42,
-                'username' => 'alice',
-                'roles' => ['user', 'admin'],
-            ],
-        ]),
-    ]);
-
-    app(SyncUserRolesFromLanCore::class)->handle($user);
-
-    expect($user->fresh()->role)->toBe(UserRole::Admin);
-});
-
-it('resolves roles from LanCore by email when no lancore_user_id is set', function () {
-    $user = User::factory()->create(['role' => UserRole::User, 'email' => 'alice@example.com']);
-
-    Http::fake([
-        '*/api/integration/user/resolve' => Http::response([
-            'data' => [
-                'id' => 99,
-                'username' => 'alice',
-                'roles' => ['admin'],
-            ],
-        ]),
-    ]);
-
-    app(SyncUserRolesFromLanCore::class)->handle($user);
-
-    expect($user->fresh()->role)->toBe(UserRole::Admin);
-});
-
-// ── 404 — user not found in LanCore ──────────────────────────────────────────
-
-it('leaves role unchanged when LanCore returns 404', function () {
-    $user = User::factory()->lanCoreUser(42)->create(['role' => UserRole::Admin]);
-
-    Http::fake([
-        '*/api/integration/user/resolve' => Http::response(['error' => 'Not found'], 404),
-    ]);
-
-    app(SyncUserRolesFromLanCore::class)->handle($user);
-
-    expect($user->fresh()->role)->toBe(UserRole::Admin);
-});
-
-// ── Network / unexpected error ────────────────────────────────────────────────
-
-it('leaves role unchanged and logs error when a network error occurs', function () {
-    $user = User::factory()->lanCoreUser(42)->create(['role' => UserRole::Admin]);
-
-    Http::fake([
-        '*/api/integration/user/resolve' => function () {
-            throw new ConnectionException('Connection refused');
-        },
-    ]);
-
-    Log::shouldReceive('error')
-        ->once()
-        ->with('LanCore role sync failed', Mockery::subset(['user_id' => $user->id]));
-
-    app(SyncUserRolesFromLanCore::class)->handle($user);
-
-    expect($user->fresh()->role)->toBe(UserRole::Admin);
-});
-
-it('leaves role unchanged and logs error on unexpected non-404 response', function () {
-    $user = User::factory()->lanCoreUser(42)->create(['role' => UserRole::Admin]);
-
-    Http::fake([
-        '*/api/integration/user/resolve' => Http::response(['error' => 'Server error'], 500),
-    ]);
-
-    Log::shouldReceive('error')
-        ->once()
-        ->with('LanCore role sync failed', Mockery::subset(['user_id' => $user->id]));
-
-    app(SyncUserRolesFromLanCore::class)->handle($user);
-
-    expect($user->fresh()->role)->toBe(UserRole::Admin);
-});
-
 // ── Local-only role preservation (Staff) ─────────────────────────────────────
 
 it('preserves staff role when LanCore returns only user role', function () {
@@ -211,27 +121,4 @@ it('syncs roles from SSO exchange response without a second API request', functi
     expect($user->role)->toBe(UserRole::Admin);
 
     Http::assertSentCount(1);
-});
-
-// ── Standard login integration ────────────────────────────────────────────────
-
-it('syncs roles after standard Fortify login', function () {
-    $user = User::factory()->create(['role' => UserRole::User]);
-
-    Http::fake([
-        '*/api/integration/user/resolve' => Http::response([
-            'data' => [
-                'id' => 99,
-                'username' => $user->name,
-                'roles' => ['admin'],
-            ],
-        ]),
-    ]);
-
-    $this->post(route('login.store'), [
-        'email' => $user->email,
-        'password' => 'password',
-    ]);
-
-    expect($user->fresh()->role)->toBe(UserRole::Admin);
 });

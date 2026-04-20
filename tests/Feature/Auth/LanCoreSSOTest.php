@@ -1,11 +1,11 @@
 <?php
 
-use LanSoftware\LanCoreClient\DTOs\LanCoreUser;
 use App\Models\User;
 use App\Services\UserSyncService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
+use LanSoftware\LanCoreClient\DTOs\LanCoreUser;
 
 uses(RefreshDatabase::class);
 
@@ -142,7 +142,7 @@ it('preserves existing display_name on re-sync', function () {
     $dto = new LanCoreUser(id: 99, username: 'newusername', email: 'new@example.com', locale: 'en');
 
     $service = app(UserSyncService::class);
-    $service->resolveFromUpstream($dto);
+    $service->resolveFromLanCore($dto);
 
     expect($user->fresh()->display_name)->toBe('Custom Name');
 });

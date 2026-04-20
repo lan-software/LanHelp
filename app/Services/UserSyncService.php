@@ -11,7 +11,7 @@ class UserSyncService
     /**
      * Create or update a local shadow user from LanCore identity data.
      */
-    public function resolveFromUpstream(LanCoreUser $lanCoreUser): User
+    public function resolveFromLanCore(LanCoreUser $lanCoreUser): User
     {
         $user = User::firstOrNew(['lancore_user_id' => $lanCoreUser->id]);
 

@@ -4,79 +4,20 @@ namespace App\Actions;
 
 use App\Enums\UserRole;
 use App\Models\User;
-use Illuminate\Support\Facades\Log;
-use LanSoftware\LanCoreClient\Exceptions\LanCoreDisabledException;
-use LanSoftware\LanCoreClient\Exceptions\LanCoreRequestException;
-use LanSoftware\LanCoreClient\LanCoreClient;
 
 class SyncUserRolesFromLanCore
 {
-    public function __construct(private readonly LanCoreClient $client) {}
-
     /**
-     * Sync the user's roles from LanCore.
+     * Sync the user's roles from a LanCore-authoritative role list.
      *
-     * Pass $roles directly (e.g. from an SSO exchange response) to skip the
-     * resolve API call. When null the user is resolved from LanCore first.
+     * Callers must supply the roles — from the SSO exchange response or
+     * webhook payload. The action never talks to LanCore itself.
      *
-     * @param  array<string>|null  $roles
+     * @param  array<int, string>  $roles
      */
-    public function handle(User $user, ?array $roles = null): void
+    public function handle(User $user, array $roles): void
     {
-        if ($roles === null) {
-            $fetched = $this->fetchRoles($user);
-
-            if ($fetched === null || $fetched === false) {
-                // 404 (user not in LanCore) or network error — leave roles untouched
-                return;
-            }
-
-            $roles = $fetched;
-        }
-
         $this->applyRoles($user, $roles);
-    }
-
-    /**
-     * Fetch roles from LanCore. Returns the roles array on success, null if the
-     * user was not found in LanCore, or false on network / unexpected error.
-     *
-     * @return array<string>|null|false
-     */
-    private function fetchRoles(User $user): array|null|false
-    {
-        try {
-            if ($user->lancore_user_id) {
-                $lanCoreUser = $this->client->resolveUserById($user->lancore_user_id);
-            } elseif ($user->email) {
-                $lanCoreUser = $this->client->resolveUserByEmail($user->email);
-            } else {
-                return [];
-            }
-
-            return $lanCoreUser->roles ?? [];
-        } catch (LanCoreDisabledException) {
-            return [];
-        } catch (LanCoreRequestException $e) {
-            if ($e->statusCode === 404) {
-                return null;
-            }
-
-            Log::error('LanCore role sync failed', [
-                'user_id' => $user->id,
-                'error' => $e->getMessage(),
-                'status' => $e->statusCode,
-            ]);
-
-            return false;
-        } catch (\Throwable $e) {
-            Log::error('LanCore role sync failed', [
-                'user_id' => $user->id,
-                'error' => $e->getMessage(),
-            ]);
-
-            return false;
-        }
     }
 
     /**

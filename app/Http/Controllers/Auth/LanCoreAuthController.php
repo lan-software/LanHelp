@@ -52,8 +52,8 @@ class LanCoreAuthController extends Controller
 
         try {
             $lanCoreUser = $this->client->exchangeCode($code);
-            $user = $this->syncService->resolveFromUpstream($lanCoreUser);
-            $this->syncRoles->handle($user, $lanCoreUser->roles ?? []);
+            $user = $this->syncService->resolveFromLanCore($lanCoreUser);
+            $this->syncRoles->handle($user, $lanCoreUser->roles);
         } catch (LanCoreUnavailableException) {
             return redirect()->route('home')->with('error', 'Could not connect to authentication service. Please try again later.');
         } catch (LanCoreRequestException $e) {
