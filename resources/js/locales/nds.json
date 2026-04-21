@@ -1,0 +1,283 @@
+{
+    "common": {
+        "appName": "LanHelp",
+        "loading": "Ladt...",
+        "saving": "Sekert...",
+        "error": "Fehler",
+        "success": "Klor",
+        "save": "Sekern",
+        "saved": "Sekert.",
+        "cancel": "Afbreken",
+        "delete": "Wegmaken",
+        "edit": "Bewarken",
+        "close": "Tomaken",
+        "submit": "Afschicken",
+        "search": "Söken",
+        "settings": "Instellungen",
+        "logout": "Utlogg",
+        "profile": "Profil",
+        "dashboard": "Översicht",
+        "admin": "Administration",
+        "users": "Bruker",
+        "back": "Torügg",
+        "create": "Anleggen",
+        "update": "Opfrischen",
+        "confirm": "Beglöven",
+        "yes": "Jo",
+        "no": "Nee",
+        "add": "Tofögen",
+        "remove": "Wegnehmen",
+        "actions": "Akschonen",
+        "view": "Ankieken",
+        "copy": "Koperen",
+        "copied": "Kopert",
+        "optional": "frietwillig",
+        "required": "nödig",
+        "loadingMore": "Mehr ladt...",
+        "noResults": "Keen Resultaten funnen",
+        "showMore": "Mehr wiesen",
+        "showLess": "Weniger wiesen"
+    },
+    "auth": {
+        "login": {
+            "title": "Meld di bi LanHelp an",
+            "description": "Meld di mit dien LanCore-Konto an",
+            "email": "E-Mail-Adress",
+            "emailPlaceholder": "epost@bispeel.de",
+            "password": "Passwoort",
+            "passwordPlaceholder": "Passwoort",
+            "rememberMe": "Behöll mi in'n Kopp",
+            "forgotPassword": "Passwoort vergeten?",
+            "button": "Anmellen",
+            "signInWithLanCore": "Mit LanCore anmellen"
+        },
+        "verifyEmail": {
+            "title": "Bestätig diene E-Mail-Adress",
+            "description": "Danke, dat du di anmellt hest! Bestätig bidde diene E-Mail.",
+            "resendButton": "Bestätigungs-E-Mail nochmal schicken",
+            "linkSent": "En nieg Bestätigungslink is schickt worrn.",
+            "logout": "Utlogg"
+        },
+        "confirmPassword": {
+            "title": "Bestätig dien Passwoort",
+            "description": "Dit is en sekern Rebeet. Bestätig dien Passwoort.",
+            "password": "Passwoort",
+            "passwordPlaceholder": "Passwoort",
+            "button": "Bestätigen"
+        },
+        "twoFactor": {
+            "title": "Twee-Faktor-Anmellung",
+            "description": "Giff den Kood vun diene Authenticator-App in.",
+            "code": "Anmell-Kood",
+            "recoveryCode": "Notfall-Kood",
+            "useRecovery": "Notfall-Kood bruken",
+            "useCode": "Anmell-Kood bruken",
+            "button": "Bestätigen"
+        }
+    },
+    "settings": {
+        "title": "Instellungen",
+        "description": "Verwalt diene Konto-Instellungen",
+        "profile": {
+            "title": "Profil",
+            "description": "Dien Profil warrt in LanCore verwalt't",
+            "name": "Naam",
+            "email": "E-Mail-Adress",
+            "displayName": "Wies-Naam",
+            "displayNameDescription": "So wiest sik dien Naam in Tickets un Antworten",
+            "updateButton": "Sekern",
+            "updated": "Sekert."
+        },
+        "appearance": {
+            "title": "Utseen",
+            "description": "Aktualisier de Utseen-Instellungen",
+            "theme": "Thema",
+            "light": "Hell",
+            "dark": "Düster",
+            "system": "System"
+        },
+        "language": {
+            "current": "Anzeig-Spraak",
+            "managedInLanCore": "Änner diene Spraak in dien LanCore-Profil."
+        },
+        "twoFactor": {
+            "title": "Twee-Faktor-Anmellung",
+            "description": "Föög dien Konto en extra Sekerheitsschicht to.",
+            "enable": "Anschalten",
+            "disable": "Utschalten",
+            "enabled": "Twee-Faktor-Anmellung is aan.",
+            "disabled": "Twee-Faktor-Anmellung is ut.",
+            "setupDescription": "Scann den QR-Kood un giff den generéerten Kood in.",
+            "recoveryCodes": "Notfall-Koden",
+            "recoveryCodesDescription": "Spieker düsse Koden in en sekern Passwoort-Manager.",
+            "regenerateCodes": "Koden nieg generéren",
+            "confirmCode": "Anmell-Kood",
+            "confirm": "Bestätigen",
+            "cancel": "Afbreken"
+        }
+    },
+    "navigation": {
+        "home": "Tohuus",
+        "dashboard": "Översicht",
+        "tickets": "Tickets",
+        "myTickets": "Mien Tickets",
+        "knowledgeBase": "Weetbank",
+        "staff": "Personaal",
+        "staffBoard": "Personaalbrett",
+        "manageKb": "Weetbank verwalten",
+        "admin": "Administration",
+        "settings": "Instellungen",
+        "profile": "Profil",
+        "appearance": "Utseen"
+    },
+    "landing": {
+        "title": "Willkamen bi LanHelp",
+        "subtitle": "Support-Tickets un Weetbank för diene LAN-Gemeinschap.",
+        "getStarted": "Loslegge",
+        "logIn": "Anmellen",
+        "signIn": "Anmellen",
+        "register": "Registréren",
+        "browseKb": "In de Weetbank stöbern",
+        "signInToSubmit": "Anmellen, üm en Ticket intoreken",
+        "goToDashboard": "Na Översicht",
+        "hero": "Hülp nödig? Wi hebbt dat.",
+        "heroDescription": "LanHelp is de Support-Steed för dien LAN-Evenement. Giff Tickets af, stöver in de Weetbank un kriegd Antworten vun't Personaal — allens an een Steed.",
+        "features": {
+            "tickets": {
+                "title": "Ticket-System",
+                "description": "Giff Support-Anfragen af, verfolg den Status un snack direkt mit't Personaal."
+            },
+            "kb": {
+                "title": "Weetbank",
+                "description": "Stöver in FAQ un Anleitungen vun de Organisatoren. Finn Antworten gau."
+            },
+            "staffDashboard": {
+                "title": "Personaal-Översicht",
+                "description": "Personaal kann vun en Kanban-Brett ut Tickets toordnen, triageern un lösen."
+            }
+        },
+        "footer": "Powered by LanHelp — Deel vun't Lan-Software-Ökosystem",
+        "headTitle": "LanHelp — Evenement-Support"
+    },
+    "dashboard": {
+        "title": "Översicht",
+        "welcome": "Willkamen torügg!",
+        "openTickets": "Apene Tickets",
+        "pendingTickets": "Tickets in Wacht",
+        "resolvedToday": "Vandag löst",
+        "activeTickets": "Aktiv Tickets",
+        "activeDetail": "{open} apen, {inProgress} in Warvel",
+        "urgent": "Dringend",
+        "unassignedDetail": "{count} nich toordnet",
+        "resolvedLabel": "Löst",
+        "ofTotal": "vun {total} Tickets tohopen",
+        "knowledgeBase": "Weetbank",
+        "draftsCount": "{count} Entwürp",
+        "recentTickets": "Naiste Tickets",
+        "viewAll": "All sien",
+        "noTickets": "Noch keen Tickets.",
+        "ticketStatus": "Ticket-Status",
+        "statusOpen": "Apen",
+        "statusInProgress": "In Warvel",
+        "statusWaiting": "Wacht",
+        "statusResolved": "Löst",
+        "statusClosed": "Tomaakt",
+        "categories": "Kategorien",
+        "noCategorized": "Noch keen kategoriseerte Tickets.",
+        "team": "Team",
+        "totalUsers": "Bruker tohopen",
+        "staffMembers": "Personaalmeedlieder"
+    },
+    "tickets": {
+        "title": "Tickets",
+        "create": "Ticket anleggen",
+        "createButton": "Nieg Ticket",
+        "subject": "Betreff",
+        "subjectPlaceholder": "Beschriev kort dien Probleem",
+        "description": "Beschrievung",
+        "descriptionPlaceholder": "Giff so veel Details as möglich",
+        "category": "Kategorie",
+        "priority": "Prioritäät",
+        "status": "Status",
+        "createdAt": "Anleggt",
+        "updatedAt": "Tolest opfrischt",
+        "assignee": "Toordnet",
+        "empty": "Noch keen Tickets.",
+        "createFirst": "Leg dien eerst Ticket an",
+        "reply": "Antwoord",
+        "replyPlaceholder": "Schriev en Antwoord...",
+        "send": "Antwoord schicken",
+        "internalNote": "Inner Notiz (blot Personaal)",
+        "markResolved": "As löst markéren",
+        "reopen": "Wedder apen maken",
+        "close": "Ticket tomaken",
+        "assign": "Toordnen",
+        "unassign": "Nich toordnen",
+        "priorities": {
+            "low": "Siet",
+            "normal": "Normaal",
+            "high": "Hooch",
+            "urgent": "Dringend"
+        },
+        "statuses": {
+            "open": "Apen",
+            "pending": "Wacht",
+            "resolved": "Löst",
+            "closed": "Tomaakt"
+        }
+    },
+    "kb": {
+        "title": "Weetbank",
+        "subtitle": "Stöver Anleitungen un Antworten.",
+        "search": "Artikels söken",
+        "category": "Kategorie",
+        "allCategories": "All Kategorien",
+        "empty": "Keen Artikels to de Söök.",
+        "readTime": "{minutes} min leest",
+        "lastUpdated": "Tolest opfrischt {date}",
+        "article": {
+            "relatedArticles": "Verwandt Artikels",
+            "wasHelpful": "War düsse Artikel hülprietig?",
+            "helpful": "Jo",
+            "notHelpful": "Nee"
+        },
+        "admin": {
+            "title": "Artikels verwalten",
+            "create": "Nieg Artikel",
+            "titleField": "Titel",
+            "slug": "Slug",
+            "category": "Kategorie",
+            "body": "Inhalt",
+            "published": "Veröffentlicht",
+            "draft": "Entwurf",
+            "publish": "Veröffentlichen",
+            "unpublish": "Torüggtrecken",
+            "saved": "Artikel sekert"
+        }
+    },
+    "staff": {
+        "title": "Personaal-Tickets",
+        "description": "Tickets, de dem Personaalteam toordnet sünd.",
+        "myTickets": "Mien Tickets",
+        "unassigned": "Nich toordnet",
+        "all": "All Tickets"
+    },
+    "admin": {
+        "title": "Administration",
+        "users": {
+            "title": "Bruker",
+            "name": "Naam",
+            "email": "E-Mail",
+            "role": "Rull",
+            "actions": "Akschonen"
+        }
+    },
+    "validation": {
+        "required": "Dit Feld is nödig",
+        "email": "Giff bidde en gellen E-Mail-Adress in",
+        "minLength": "Mutt tominnst {min} Tekens lang ween",
+        "maxLength": "Dröff nich mehr as {max} Tekens lang ween",
+        "passwordMatch": "Passwöör mööt översteen",
+        "invalid": "Ungellen Weert"
+    }
+}

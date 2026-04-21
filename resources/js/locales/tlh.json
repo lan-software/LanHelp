@@ -1,0 +1,283 @@
+{
+    "common": {
+        "appName": "LanHelp",
+        "loading": "ghoStaH...",
+        "saving": "polchoHtaH...",
+        "error": "Qagh",
+        "success": "Qapla'",
+        "save": "pol",
+        "saved": "polpu'.",
+        "cancel": "qIl",
+        "delete": "Qaw'",
+        "edit": "choH",
+        "close": "SoQmoH",
+        "submit": "nob",
+        "search": "nej",
+        "settings": "nabmey",
+        "logout": "mej",
+        "profile": "pong De'",
+        "dashboard": "De' jIH",
+        "admin": "che'wI'",
+        "users": "lo'wI'pu'",
+        "back": "tlhoS",
+        "create": "chen",
+        "update": "chu'choH",
+        "confirm": "lu'",
+        "yes": "HIja'",
+        "no": "ghobe'",
+        "add": "chel",
+        "remove": "teq",
+        "actions": "vangmey",
+        "view": "legh",
+        "copy": "velqa'moH",
+        "copied": "velqa'pu'",
+        "optional": "chaq",
+        "required": "poQlu'",
+        "loadingMore": "latlh ghoStaH...",
+        "noResults": "pagh Sampu'",
+        "showMore": "latlh 'aghHa'",
+        "showLess": "puS 'aghHa'"
+    },
+    "auth": {
+        "login": {
+            "title": "LanHelp 'el",
+            "description": "LanCore De'wI'lIj lo' 'ej taH",
+            "email": "De'wI' ngeb",
+            "emailPlaceholder": "email@example.com",
+            "password": "vo'ral",
+            "passwordPlaceholder": "vo'ral",
+            "rememberMe": "jIH qaw",
+            "forgotPassword": "vo'ral DalIjpu''a'?",
+            "button": "'el",
+            "signInWithLanCore": "LanCore lo' 'ej 'el"
+        },
+        "verifyEmail": {
+            "title": "De'wI' ngeblIj yIngu'",
+            "description": "Dachu'qa'moH batlh qatlho'! taHmeH De'wI' ngeblIj yIngu'.",
+            "resendButton": "De'wI' ngu'meH De' ngeHqa'",
+            "linkSent": "De'wI' chu' ngeHta'.",
+            "logout": "mej"
+        },
+        "confirmPassword": {
+            "title": "vo'ralIj yIlu'",
+            "description": "Hup Hol 'oH naDev'e'. vo'ralIj yIlu'.",
+            "password": "vo'ral",
+            "passwordPlaceholder": "vo'ral",
+            "button": "lu'"
+        },
+        "twoFactor": {
+            "title": "cha' DoS ngu'",
+            "description": "ngu'wI' App ngu' yIja'.",
+            "code": "ngu' yIn",
+            "recoveryCode": "choQ yIn",
+            "useRecovery": "choQ yIn lo'",
+            "useCode": "ngu' yIn lo'",
+            "button": "yIngu'"
+        }
+    },
+    "settings": {
+        "title": "nabmey",
+        "description": "De'wI'lIj nabmey DuH",
+        "profile": {
+            "title": "pong De'",
+            "description": "LanCore Daq pong De'lIj naw'lu'",
+            "name": "pong",
+            "email": "De'wI' ngeb",
+            "displayName": "'aghbogh pong",
+            "displayNameDescription": "tlheSmeH 'ej jang DaH ponglIj 'agh",
+            "updateButton": "pol",
+            "updated": "polpu'."
+        },
+        "appearance": {
+            "title": "boch",
+            "description": "De'wI' boch nabmey yIchu'",
+            "theme": "Dotlh",
+            "light": "wovbogh",
+            "dark": "Hurghbogh",
+            "system": "patlIj"
+        },
+        "language": {
+            "current": "'ang Hol",
+            "managedInLanCore": "LanCore pong De'Daq HollIj yIchoH."
+        },
+        "twoFactor": {
+            "title": "cha' DoS ngu'",
+            "description": "De'wI'lIjvaD Hup latlh chel.",
+            "enable": "jagh",
+            "disable": "jaghHa'",
+            "enabled": "cha' DoS ngu' Qap.",
+            "disabled": "cha' DoS ngu' Qapbe'.",
+            "setupDescription": "QR yIn yIwI' 'ej chu'pu' yIn yIja'.",
+            "recoveryCodes": "choQ yInmey",
+            "recoveryCodesDescription": "choQ yInmeyvam nur vo'ral pat yItuQ.",
+            "regenerateCodes": "yInmey chu' chenqa'",
+            "confirmCode": "ngu' yIn",
+            "confirm": "lu'",
+            "cancel": "qIl"
+        }
+    },
+    "navigation": {
+        "home": "juH",
+        "dashboard": "De' jIH",
+        "tickets": "tlheSmeH",
+        "myTickets": "jIH tlheSmeH",
+        "knowledgeBase": "Sov qach",
+        "staff": "vum rav",
+        "staffBoard": "vum ghaw'",
+        "manageKb": "Sov qach naw'",
+        "admin": "che'wI'",
+        "settings": "nabmey",
+        "profile": "pong De'",
+        "appearance": "boch"
+    },
+    "landing": {
+        "title": "LanHelp nuqneH",
+        "subtitle": "LAN ghomlIjvaD tlheSmeH 'ej Sov qach.",
+        "getStarted": "taghmoH",
+        "logIn": "'el",
+        "signIn": "'el",
+        "register": "chen",
+        "browseKb": "Sov qach yInej",
+        "signInToSubmit": "tlheSmeH nobmeH 'el",
+        "goToDashboard": "De' jIH jaH",
+        "hero": "boQ DaneH''a'? wIboQlaH.",
+        "heroDescription": "LANlIjvaD boQ Daq 'oH LanHelp'e'. tlheSmeH ngeH, Sov qach yInej 'ej vum ravvo' jang hev.",
+        "features": {
+            "tickets": {
+                "title": "tlheSmeH pat",
+                "description": "boQ nom poQ, Dotlh tlhaq 'ej vum rav tay' jatlh."
+            },
+            "kb": {
+                "title": "Sov qach",
+                "description": "tlhoSbogh De' 'ej mIw nej. Nom jangmey Sam."
+            },
+            "staffDashboard": {
+                "title": "vum rav De' jIH",
+                "description": "tlheSmeHmey jaq, 'aghmeH wIvmoH 'ej 'ur kanban ghaw' lo'."
+            }
+        },
+        "footer": "LanHelp vaj — Lan-Software pat'e'",
+        "headTitle": "LanHelp — wanI' boQ"
+    },
+    "dashboard": {
+        "title": "De' jIH",
+        "welcome": "narghmo' nuqneH!",
+        "openTickets": "poSbogh tlheSmey",
+        "pendingTickets": "loSbogh tlheSmey",
+        "resolvedToday": "DaHjaj rInpu'",
+        "activeTickets": "vangbogh tlheSmey",
+        "activeDetail": "{open} poS, {inProgress} vangtaH",
+        "urgent": "Dogh",
+        "unassignedDetail": "{count} wuqHa'lu'",
+        "resolvedLabel": "rInpu'",
+        "ofTotal": "{total} Hoch tlheSmey",
+        "knowledgeBase": "Sov qach",
+        "draftsCount": "{count} chenlu'taH",
+        "recentTickets": "DaH tlheSmey",
+        "viewAll": "Hoch legh",
+        "noTickets": "tlheSmey tu'lu'be'.",
+        "ticketStatus": "tlheSmeH Dotlh",
+        "statusOpen": "poS",
+        "statusInProgress": "vangtaH",
+        "statusWaiting": "loStaH",
+        "statusResolved": "rInpu'",
+        "statusClosed": "SoQpu'",
+        "categories": "Seghmey",
+        "noCategorized": "Segh tlheSmey tu'lu'be'.",
+        "team": "ghomHom",
+        "totalUsers": "lo'wI'pu' Hoch",
+        "staffMembers": "vum rav"
+    },
+    "tickets": {
+        "title": "tlheSmey",
+        "create": "tlheSmeH chen",
+        "createButton": "tlheSmeH chu'",
+        "subject": "QIn",
+        "subjectPlaceholder": "Qu'lIj loQ yIja'",
+        "description": "De' ja'",
+        "descriptionPlaceholder": "Hoch De' yIja'",
+        "category": "Segh",
+        "priority": "wIv",
+        "status": "Dotlh",
+        "createdAt": "chenlu'pu'",
+        "updatedAt": "Dung choHpu'",
+        "assignee": "wuqlu'bogh",
+        "empty": "tlheSmey tu'lu'be'.",
+        "createFirst": "wa'DIch tlheSmeHlIj chen",
+        "reply": "jang",
+        "replyPlaceholder": "jang yIqon...",
+        "send": "jang ngeH",
+        "internalNote": "pa' De' (vum rav neH)",
+        "markResolved": "rInpu' 'agh",
+        "reopen": "poSqa'moH",
+        "close": "tlheSmeH SoQmoH",
+        "assign": "wuqmoH",
+        "unassign": "wuqHa'moH",
+        "priorities": {
+            "low": "tIS",
+            "normal": "motlh",
+            "high": "'ev",
+            "urgent": "Dogh"
+        },
+        "statuses": {
+            "open": "poS",
+            "pending": "loS",
+            "resolved": "rInpu'",
+            "closed": "SoQpu'"
+        }
+    },
+    "kb": {
+        "title": "Sov qach",
+        "subtitle": "mIwmey 'ej De' nej.",
+        "search": "paq nej",
+        "category": "Segh",
+        "allCategories": "Hoch Seghmey",
+        "empty": "paq tu'lu'be'.",
+        "readTime": "{minutes} tup laD",
+        "lastUpdated": "Dung chu'pu' {date}",
+        "article": {
+            "relatedArticles": "rap paqmey",
+            "wasHelpful": "paqvam boQ'a'?",
+            "helpful": "HIja'",
+            "notHelpful": "ghobe'"
+        },
+        "admin": {
+            "title": "paqmey naw'",
+            "create": "paq chu'",
+            "titleField": "pong",
+            "slug": "slug",
+            "category": "Segh",
+            "body": "porgh",
+            "published": "'agh",
+            "draft": "chenlu'taH",
+            "publish": "'aghmoH",
+            "unpublish": "'aghHa'",
+            "saved": "paq polpu'"
+        }
+    },
+    "staff": {
+        "title": "vum rav tlheSmey",
+        "description": "vum rav ghomvaD wuqlu'bogh tlheSmey.",
+        "myTickets": "jIH tlheSmey",
+        "unassigned": "wuqHa'lu'",
+        "all": "Hoch tlheSmey"
+    },
+    "admin": {
+        "title": "che'wI'",
+        "users": {
+            "title": "lo'wI'pu'",
+            "name": "pong",
+            "email": "De'wI' ngeb",
+            "role": "patlh",
+            "actions": "vangmey"
+        }
+    },
+    "validation": {
+        "required": "yab vam poQlu'",
+        "email": "De'wI' ngeb lu'lu'bogh yIja'",
+        "minLength": "loQ {min} tetlh law'",
+        "maxLength": "law'be' {max} tetlh law'",
+        "passwordMatch": "vo'ralmey rurnIS",
+        "invalid": "lu'be'lu'bogh"
+    }
+}
