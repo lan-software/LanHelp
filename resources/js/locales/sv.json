@@ -1,0 +1,283 @@
+{
+    "common": {
+        "appName": "LanHelp",
+        "loading": "Laddar...",
+        "saving": "Sparar...",
+        "error": "Fel",
+        "success": "Klart",
+        "save": "Spara",
+        "saved": "Sparat.",
+        "cancel": "Avbryt",
+        "delete": "Radera",
+        "edit": "Redigera",
+        "close": "Stäng",
+        "submit": "Skicka",
+        "search": "Sök",
+        "settings": "Inställningar",
+        "logout": "Logga ut",
+        "profile": "Profil",
+        "dashboard": "Översikt",
+        "admin": "Administration",
+        "users": "Användare",
+        "back": "Tillbaka",
+        "create": "Skapa",
+        "update": "Uppdatera",
+        "confirm": "Bekräfta",
+        "yes": "Ja",
+        "no": "Nej",
+        "add": "Lägg till",
+        "remove": "Ta bort",
+        "actions": "Åtgärder",
+        "view": "Visa",
+        "copy": "Kopiera",
+        "copied": "Kopierat",
+        "optional": "valfritt",
+        "required": "obligatoriskt",
+        "loadingMore": "Laddar mer...",
+        "noResults": "Inga resultat hittades",
+        "showMore": "Visa mer",
+        "showLess": "Visa mindre"
+    },
+    "auth": {
+        "login": {
+            "title": "Logga in på LanHelp",
+            "description": "Logga in med ditt LanCore-konto för att fortsätta",
+            "email": "E-postadress",
+            "emailPlaceholder": "epost@exempel.se",
+            "password": "Lösenord",
+            "passwordPlaceholder": "Lösenord",
+            "rememberMe": "Kom ihåg mig",
+            "forgotPassword": "Glömt lösenordet?",
+            "button": "Logga in",
+            "signInWithLanCore": "Logga in med LanCore"
+        },
+        "verifyEmail": {
+            "title": "Verifiera din e-postadress",
+            "description": "Tack för att du registrerat dig! Verifiera din e-post för att fortsätta.",
+            "resendButton": "Skicka verifieringsmejl igen",
+            "linkSent": "En ny verifieringslänk har skickats till din e-postadress.",
+            "logout": "Logga ut"
+        },
+        "confirmPassword": {
+            "title": "Bekräfta ditt lösenord",
+            "description": "Detta är ett säkert område i programmet. Bekräfta ditt lösenord innan du fortsätter.",
+            "password": "Lösenord",
+            "passwordPlaceholder": "Lösenord",
+            "button": "Bekräfta"
+        },
+        "twoFactor": {
+            "title": "Tvåfaktorsautentisering",
+            "description": "Ange verifieringskoden från din autentiseringsapp.",
+            "code": "Verifieringskod",
+            "recoveryCode": "Återställningskod",
+            "useRecovery": "Använd en återställningskod",
+            "useCode": "Använd en verifieringskod",
+            "button": "Verifiera"
+        }
+    },
+    "settings": {
+        "title": "Inställningar",
+        "description": "Hantera dina kontoinställningar och preferenser",
+        "profile": {
+            "title": "Profil",
+            "description": "Din profil hanteras i LanCore",
+            "name": "Namn",
+            "email": "E-postadress",
+            "displayName": "Visningsnamn",
+            "displayNameDescription": "Så visas ditt namn i ärenden och svar",
+            "updateButton": "Spara",
+            "updated": "Sparat."
+        },
+        "appearance": {
+            "title": "Utseende",
+            "description": "Uppdatera kontots utseendeinställningar",
+            "theme": "Tema",
+            "light": "Ljust",
+            "dark": "Mörkt",
+            "system": "System"
+        },
+        "language": {
+            "current": "Visningsspråk",
+            "managedInLanCore": "Ändra ditt språk i din LanCore-profil."
+        },
+        "twoFactor": {
+            "title": "Tvåfaktorsautentisering",
+            "description": "Lägg till ett extra lager av säkerhet för ditt konto.",
+            "enable": "Aktivera",
+            "disable": "Inaktivera",
+            "enabled": "Tvåfaktorsautentisering är aktiverad.",
+            "disabled": "Tvåfaktorsautentisering är inaktiverad.",
+            "setupDescription": "Skanna QR-koden med din autentiseringsapp och ange den genererade koden för att slutföra konfigurationen.",
+            "recoveryCodes": "Återställningskoder",
+            "recoveryCodesDescription": "Spara dessa återställningskoder i en säker lösenordshanterare.",
+            "regenerateCodes": "Generera nya koder",
+            "confirmCode": "Verifieringskod",
+            "confirm": "Bekräfta",
+            "cancel": "Avbryt"
+        }
+    },
+    "navigation": {
+        "home": "Hem",
+        "dashboard": "Översikt",
+        "tickets": "Ärenden",
+        "myTickets": "Mina ärenden",
+        "knowledgeBase": "Kunskapsbas",
+        "staff": "Personal",
+        "staffBoard": "Personaltavla",
+        "manageKb": "Hantera KB",
+        "admin": "Administration",
+        "settings": "Inställningar",
+        "profile": "Profil",
+        "appearance": "Utseende"
+    },
+    "landing": {
+        "title": "Välkommen till LanHelp",
+        "subtitle": "Supportärenden och kunskapsbas för din LAN-gemenskap.",
+        "getStarted": "Kom igång",
+        "logIn": "Logga in",
+        "signIn": "Logga in",
+        "register": "Registrera",
+        "browseKb": "Bläddra i kunskapsbasen",
+        "signInToSubmit": "Logga in för att skicka in ett ärende",
+        "goToDashboard": "Gå till översikten",
+        "hero": "Behöver du hjälp? Vi hjälper dig.",
+        "heroDescription": "LanHelp är supportnavet för ditt LAN-evenemang. Skicka in ärenden, bläddra i kunskapsbasen och få svar från evenemangspersonalen — allt på ett ställe.",
+        "features": {
+            "tickets": {
+                "title": "Ärendesystem",
+                "description": "Skicka in supportförfrågningar, följ status och kommunicera direkt med personalen."
+            },
+            "kb": {
+                "title": "Kunskapsbas",
+                "description": "Bläddra bland vanliga frågor och guider publicerade av arrangörerna. Hitta svar snabbt."
+            },
+            "staffDashboard": {
+                "title": "Personalöversikt",
+                "description": "Evenemangspersonalen kan tilldela, sortera och lösa ärenden från en kanban-tavla."
+            }
+        },
+        "footer": "Drivs av LanHelp — Del av Lan-Software-ekosystemet",
+        "headTitle": "LanHelp — Evenemangssupport"
+    },
+    "dashboard": {
+        "title": "Översikt",
+        "welcome": "Välkommen tillbaka!",
+        "openTickets": "Öppna ärenden",
+        "pendingTickets": "Väntande ärenden",
+        "resolvedToday": "Lösta idag",
+        "activeTickets": "Aktiva ärenden",
+        "activeDetail": "{open} öppna, {inProgress} pågående",
+        "urgent": "Brådskande",
+        "unassignedDetail": "{count} otilldelade",
+        "resolvedLabel": "Löst",
+        "ofTotal": "av totalt {total} ärenden",
+        "knowledgeBase": "Kunskapsbas",
+        "draftsCount": "{count} utkast",
+        "recentTickets": "Senaste ärenden",
+        "viewAll": "Visa alla",
+        "noTickets": "Inga ärenden ännu.",
+        "ticketStatus": "Ärendestatus",
+        "statusOpen": "Öppet",
+        "statusInProgress": "Pågår",
+        "statusWaiting": "Väntar",
+        "statusResolved": "Löst",
+        "statusClosed": "Stängt",
+        "categories": "Kategorier",
+        "noCategorized": "Inga kategoriserade ärenden ännu.",
+        "team": "Team",
+        "totalUsers": "Totalt antal användare",
+        "staffMembers": "Personalmedlemmar"
+    },
+    "tickets": {
+        "title": "Ärenden",
+        "create": "Skapa ärende",
+        "createButton": "Nytt ärende",
+        "subject": "Ämne",
+        "subjectPlaceholder": "Beskriv kort ditt problem",
+        "description": "Beskrivning",
+        "descriptionPlaceholder": "Ge så mycket detaljer som möjligt",
+        "category": "Kategori",
+        "priority": "Prioritet",
+        "status": "Status",
+        "createdAt": "Skapad",
+        "updatedAt": "Senast uppdaterad",
+        "assignee": "Tilldelad",
+        "empty": "Inga ärenden ännu.",
+        "createFirst": "Skapa ditt första ärende",
+        "reply": "Svara",
+        "replyPlaceholder": "Skriv ett svar...",
+        "send": "Skicka svar",
+        "internalNote": "Intern anteckning (endast personal)",
+        "markResolved": "Markera som löst",
+        "reopen": "Öppna igen",
+        "close": "Stäng ärende",
+        "assign": "Tilldela",
+        "unassign": "Ta bort tilldelning",
+        "priorities": {
+            "low": "Låg",
+            "normal": "Normal",
+            "high": "Hög",
+            "urgent": "Brådskande"
+        },
+        "statuses": {
+            "open": "Öppet",
+            "pending": "Väntande",
+            "resolved": "Löst",
+            "closed": "Stängt"
+        }
+    },
+    "kb": {
+        "title": "Kunskapsbas",
+        "subtitle": "Bläddra bland guider och svar på vanliga frågor.",
+        "search": "Sök artiklar",
+        "category": "Kategori",
+        "allCategories": "Alla kategorier",
+        "empty": "Inga artiklar matchar din sökning.",
+        "readTime": "{minutes} min läsning",
+        "lastUpdated": "Senast uppdaterad {date}",
+        "article": {
+            "relatedArticles": "Relaterade artiklar",
+            "wasHelpful": "Var artikeln till hjälp?",
+            "helpful": "Ja",
+            "notHelpful": "Nej"
+        },
+        "admin": {
+            "title": "Hantera artiklar",
+            "create": "Ny artikel",
+            "titleField": "Titel",
+            "slug": "Slug",
+            "category": "Kategori",
+            "body": "Innehåll",
+            "published": "Publicerad",
+            "draft": "Utkast",
+            "publish": "Publicera",
+            "unpublish": "Avpublicera",
+            "saved": "Artikeln sparades"
+        }
+    },
+    "staff": {
+        "title": "Personalärenden",
+        "description": "Ärenden som tilldelats personalteamet.",
+        "myTickets": "Mina ärenden",
+        "unassigned": "Otilldelade",
+        "all": "Alla ärenden"
+    },
+    "admin": {
+        "title": "Administration",
+        "users": {
+            "title": "Användare",
+            "name": "Namn",
+            "email": "E-post",
+            "role": "Roll",
+            "actions": "Åtgärder"
+        }
+    },
+    "validation": {
+        "required": "Detta fält är obligatoriskt",
+        "email": "Ange en giltig e-postadress",
+        "minLength": "Måste vara minst {min} tecken",
+        "maxLength": "Får inte vara fler än {max} tecken",
+        "passwordMatch": "Lösenorden måste stämma överens",
+        "invalid": "Ogiltigt värde"
+    }
+}

@@ -1,0 +1,283 @@
+{
+    "common": {
+        "appName": "LanHelp",
+        "loading": "로드 중...",
+        "saving": "저장 중...",
+        "error": "오류",
+        "success": "성공",
+        "save": "저장",
+        "saved": "저장되었습니다.",
+        "cancel": "취소",
+        "delete": "삭제",
+        "edit": "편집",
+        "close": "닫기",
+        "submit": "제출",
+        "search": "검색",
+        "settings": "설정",
+        "logout": "로그아웃",
+        "profile": "프로필",
+        "dashboard": "대시보드",
+        "admin": "관리자",
+        "users": "사용자",
+        "back": "뒤로",
+        "create": "생성",
+        "update": "업데이트",
+        "confirm": "확인",
+        "yes": "예",
+        "no": "아니요",
+        "add": "추가",
+        "remove": "제거",
+        "actions": "작업",
+        "view": "보기",
+        "copy": "복사",
+        "copied": "복사됨",
+        "optional": "선택 사항",
+        "required": "필수",
+        "loadingMore": "더 불러오는 중...",
+        "noResults": "결과를 찾을 수 없습니다",
+        "showMore": "더 보기",
+        "showLess": "간략히 보기"
+    },
+    "auth": {
+        "login": {
+            "title": "LanHelp에 로그인",
+            "description": "LanCore 계정으로 로그인하여 계속하세요",
+            "email": "이메일 주소",
+            "emailPlaceholder": "email@example.com",
+            "password": "비밀번호",
+            "passwordPlaceholder": "비밀번호",
+            "rememberMe": "로그인 유지",
+            "forgotPassword": "비밀번호를 잊으셨나요?",
+            "button": "로그인",
+            "signInWithLanCore": "LanCore로 로그인"
+        },
+        "verifyEmail": {
+            "title": "이메일 주소 확인",
+            "description": "가입해 주셔서 감사합니다! 계속하려면 이메일을 확인하세요.",
+            "resendButton": "확인 이메일 다시 보내기",
+            "linkSent": "새 확인 링크가 이메일 주소로 전송되었습니다.",
+            "logout": "로그아웃"
+        },
+        "confirmPassword": {
+            "title": "비밀번호 확인",
+            "description": "애플리케이션의 보안 영역입니다. 계속하기 전에 비밀번호를 확인하세요.",
+            "password": "비밀번호",
+            "passwordPlaceholder": "비밀번호",
+            "button": "확인"
+        },
+        "twoFactor": {
+            "title": "2단계 인증",
+            "description": "인증 앱의 인증 코드를 입력하세요.",
+            "code": "인증 코드",
+            "recoveryCode": "복구 코드",
+            "useRecovery": "복구 코드 사용",
+            "useCode": "인증 코드 사용",
+            "button": "확인"
+        }
+    },
+    "settings": {
+        "title": "설정",
+        "description": "계정 설정 및 환경설정 관리",
+        "profile": {
+            "title": "프로필",
+            "description": "프로필은 LanCore에서 관리됩니다",
+            "name": "이름",
+            "email": "이메일 주소",
+            "displayName": "표시 이름",
+            "displayNameDescription": "티켓과 답변에 표시되는 이름",
+            "updateButton": "저장",
+            "updated": "저장되었습니다."
+        },
+        "appearance": {
+            "title": "모양",
+            "description": "계정의 모양 설정 업데이트",
+            "theme": "테마",
+            "light": "밝게",
+            "dark": "어둡게",
+            "system": "시스템"
+        },
+        "language": {
+            "current": "표시 언어",
+            "managedInLanCore": "LanCore 프로필에서 언어를 변경하세요."
+        },
+        "twoFactor": {
+            "title": "2단계 인증",
+            "description": "계정에 추가 보안 레이어를 더하세요.",
+            "enable": "활성화",
+            "disable": "비활성화",
+            "enabled": "2단계 인증이 활성화되어 있습니다.",
+            "disabled": "2단계 인증이 비활성화되어 있습니다.",
+            "setupDescription": "QR 코드를 인증 앱으로 스캔하고 생성된 코드를 입력하여 설정을 완료하세요.",
+            "recoveryCodes": "복구 코드",
+            "recoveryCodesDescription": "이 복구 코드를 안전한 비밀번호 관리자에 저장하세요.",
+            "regenerateCodes": "코드 재생성",
+            "confirmCode": "인증 코드",
+            "confirm": "확인",
+            "cancel": "취소"
+        }
+    },
+    "navigation": {
+        "home": "홈",
+        "dashboard": "대시보드",
+        "tickets": "티켓",
+        "myTickets": "내 티켓",
+        "knowledgeBase": "지식 베이스",
+        "staff": "스태프",
+        "staffBoard": "스태프 보드",
+        "manageKb": "KB 관리",
+        "admin": "관리자",
+        "settings": "설정",
+        "profile": "프로필",
+        "appearance": "모양"
+    },
+    "landing": {
+        "title": "LanHelp에 오신 것을 환영합니다",
+        "subtitle": "LAN 커뮤니티를 위한 지원 티켓 및 지식 베이스.",
+        "getStarted": "시작하기",
+        "logIn": "로그인",
+        "signIn": "로그인",
+        "register": "등록",
+        "browseKb": "지식 베이스 둘러보기",
+        "signInToSubmit": "로그인하여 티켓 제출",
+        "goToDashboard": "대시보드로 이동",
+        "hero": "도움이 필요하신가요? 저희가 도와드리겠습니다.",
+        "heroDescription": "LanHelp는 LAN 이벤트의 지원 허브입니다. 티켓을 제출하고, 지식 베이스를 둘러보고, 이벤트 스태프로부터 답변을 받으세요 — 모두 한 곳에서.",
+        "features": {
+            "tickets": {
+                "title": "티켓 시스템",
+                "description": "지원 요청을 제출하고, 상태를 추적하고, 스태프와 직접 소통하세요."
+            },
+            "kb": {
+                "title": "지식 베이스",
+                "description": "주최자가 게시한 FAQ와 가이드를 둘러보세요. 빠르게 답을 찾으세요."
+            },
+            "staffDashboard": {
+                "title": "스태프 대시보드",
+                "description": "이벤트 스태프는 칸반 보드에서 티켓을 할당하고, 분류하고, 해결할 수 있습니다."
+            }
+        },
+        "footer": "LanHelp 제공 — Lan-Software 생태계의 일부",
+        "headTitle": "LanHelp — 이벤트 지원"
+    },
+    "dashboard": {
+        "title": "대시보드",
+        "welcome": "다시 오신 것을 환영합니다!",
+        "openTickets": "열린 티켓",
+        "pendingTickets": "보류 중인 티켓",
+        "resolvedToday": "오늘 해결됨",
+        "activeTickets": "활성 티켓",
+        "activeDetail": "{open}개 열림, {inProgress}개 진행 중",
+        "urgent": "긴급",
+        "unassignedDetail": "미할당 {count}개",
+        "resolvedLabel": "해결됨",
+        "ofTotal": "전체 {total}개 티켓 중",
+        "knowledgeBase": "지식 베이스",
+        "draftsCount": "초안 {count}개",
+        "recentTickets": "최근 티켓",
+        "viewAll": "모두 보기",
+        "noTickets": "아직 티켓이 없습니다.",
+        "ticketStatus": "티켓 상태",
+        "statusOpen": "열림",
+        "statusInProgress": "진행 중",
+        "statusWaiting": "대기 중",
+        "statusResolved": "해결됨",
+        "statusClosed": "닫힘",
+        "categories": "카테고리",
+        "noCategorized": "아직 분류된 티켓이 없습니다.",
+        "team": "팀",
+        "totalUsers": "전체 사용자",
+        "staffMembers": "스태프 구성원"
+    },
+    "tickets": {
+        "title": "티켓",
+        "create": "티켓 생성",
+        "createButton": "새 티켓",
+        "subject": "제목",
+        "subjectPlaceholder": "문제를 간략히 설명해 주세요",
+        "description": "설명",
+        "descriptionPlaceholder": "가능한 한 자세히 설명해 주세요",
+        "category": "카테고리",
+        "priority": "우선순위",
+        "status": "상태",
+        "createdAt": "생성일",
+        "updatedAt": "마지막 업데이트",
+        "assignee": "담당자",
+        "empty": "아직 티켓이 없습니다.",
+        "createFirst": "첫 티켓을 생성하세요",
+        "reply": "답장",
+        "replyPlaceholder": "답장 작성...",
+        "send": "답장 보내기",
+        "internalNote": "내부 메모 (스태프만)",
+        "markResolved": "해결됨으로 표시",
+        "reopen": "다시 열기",
+        "close": "티켓 닫기",
+        "assign": "할당",
+        "unassign": "할당 해제",
+        "priorities": {
+            "low": "낮음",
+            "normal": "보통",
+            "high": "높음",
+            "urgent": "긴급"
+        },
+        "statuses": {
+            "open": "열림",
+            "pending": "보류 중",
+            "resolved": "해결됨",
+            "closed": "닫힘"
+        }
+    },
+    "kb": {
+        "title": "지식 베이스",
+        "subtitle": "가이드와 자주 묻는 질문에 대한 답변을 둘러보세요.",
+        "search": "문서 검색",
+        "category": "카테고리",
+        "allCategories": "모든 카테고리",
+        "empty": "검색과 일치하는 문서가 없습니다.",
+        "readTime": "{minutes}분 읽기",
+        "lastUpdated": "마지막 업데이트: {date}",
+        "article": {
+            "relatedArticles": "관련 문서",
+            "wasHelpful": "이 문서가 도움이 되었나요?",
+            "helpful": "예",
+            "notHelpful": "아니요"
+        },
+        "admin": {
+            "title": "문서 관리",
+            "create": "새 문서",
+            "titleField": "제목",
+            "slug": "슬러그",
+            "category": "카테고리",
+            "body": "본문",
+            "published": "게시됨",
+            "draft": "초안",
+            "publish": "게시",
+            "unpublish": "게시 취소",
+            "saved": "문서가 저장되었습니다"
+        }
+    },
+    "staff": {
+        "title": "스태프 티켓",
+        "description": "스태프 팀에 할당된 티켓.",
+        "myTickets": "내 티켓",
+        "unassigned": "미할당",
+        "all": "모든 티켓"
+    },
+    "admin": {
+        "title": "관리자",
+        "users": {
+            "title": "사용자",
+            "name": "이름",
+            "email": "이메일",
+            "role": "역할",
+            "actions": "작업"
+        }
+    },
+    "validation": {
+        "required": "필수 입력 항목입니다",
+        "email": "올바른 이메일 주소를 입력하세요",
+        "minLength": "{min}자 이상이어야 합니다",
+        "maxLength": "{max}자 이하이어야 합니다",
+        "passwordMatch": "비밀번호가 일치해야 합니다",
+        "invalid": "잘못된 값"
+    }
+}
