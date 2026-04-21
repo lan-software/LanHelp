@@ -41,12 +41,24 @@ const mainNavItems = computed((): NavItem[] => {
     const items: NavItem[] = [];
 
     if (isAdmin.value) {
-        items.push({ title: t('navigation.dashboard'), href: dashboard(), icon: LayoutGrid });
+        items.push({
+            title: t('navigation.dashboard'),
+            href: dashboard(),
+            icon: LayoutGrid,
+        });
     }
 
     items.push(
-        { title: t('navigation.myTickets'), href: ticketsIndex(), icon: HelpCircle },
-        { title: t('navigation.knowledgeBase'), href: kbIndex(), icon: BookOpen },
+        {
+            title: t('navigation.myTickets'),
+            href: ticketsIndex(),
+            icon: HelpCircle,
+        },
+        {
+            title: t('navigation.knowledgeBase'),
+            href: kbIndex(),
+            icon: BookOpen,
+        },
     );
 
     return items;
@@ -66,7 +78,11 @@ const staffNavItems = computed((): NavItem[] => {
     ];
 
     if (isAdmin.value) {
-        items.push({ title: t('navigation.manageKb'), href: adminKbIndex(), icon: Shield });
+        items.push({
+            title: t('navigation.manageKb'),
+            href: adminKbIndex(),
+            icon: Shield,
+        });
     }
 
     return items;
