@@ -2,24 +2,282 @@
     "common": {
         "appName": "LanHelp",
         "loading": "Loading...",
+        "saving": "Saving...",
         "error": "Error",
         "success": "Success",
         "save": "Save",
+        "saved": "Saved.",
         "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
         "close": "Close",
         "submit": "Submit",
-        "back": "Back"
+        "search": "Search",
+        "settings": "Settings",
+        "logout": "Log out",
+        "profile": "Profile",
+        "dashboard": "Dashboard",
+        "admin": "Admin",
+        "users": "Users",
+        "back": "Back",
+        "create": "Create",
+        "update": "Update",
+        "confirm": "Confirm",
+        "yes": "Yes",
+        "no": "No",
+        "add": "Add",
+        "remove": "Remove",
+        "actions": "Actions",
+        "view": "View",
+        "copy": "Copy",
+        "copied": "Copied",
+        "optional": "optional",
+        "required": "required",
+        "loadingMore": "Loading more...",
+        "noResults": "No results found",
+        "showMore": "Show more",
+        "showLess": "Show less"
+    },
+    "auth": {
+        "login": {
+            "title": "Log in to LanHelp",
+            "description": "Sign in with your LanCore account to continue",
+            "email": "Email address",
+            "emailPlaceholder": "email@example.com",
+            "password": "Password",
+            "passwordPlaceholder": "Password",
+            "rememberMe": "Remember me",
+            "forgotPassword": "Forgot password?",
+            "button": "Log in",
+            "signInWithLanCore": "Sign in with LanCore"
+        },
+        "verifyEmail": {
+            "title": "Verify your email address",
+            "description": "Thanks for signing up! Please verify your email to continue.",
+            "resendButton": "Resend verification email",
+            "linkSent": "A new verification link has been sent to your email address.",
+            "logout": "Log out"
+        },
+        "confirmPassword": {
+            "title": "Confirm your password",
+            "description": "This is a secure area of the application. Please confirm your password before continuing.",
+            "password": "Password",
+            "passwordPlaceholder": "Password",
+            "button": "Confirm"
+        },
+        "twoFactor": {
+            "title": "Two-factor authentication",
+            "description": "Enter the authentication code from your authenticator app.",
+            "code": "Authentication code",
+            "recoveryCode": "Recovery code",
+            "useRecovery": "Use a recovery code",
+            "useCode": "Use an authentication code",
+            "button": "Verify"
+        }
+    },
+    "settings": {
+        "title": "Settings",
+        "description": "Manage your account settings and preferences",
+        "profile": {
+            "title": "Profile",
+            "description": "Your profile is managed in LanCore",
+            "name": "Name",
+            "email": "Email address",
+            "displayName": "Display name",
+            "displayNameDescription": "How your name appears in tickets and replies",
+            "updateButton": "Save",
+            "updated": "Saved."
+        },
+        "appearance": {
+            "title": "Appearance",
+            "description": "Update your account's appearance settings",
+            "theme": "Theme",
+            "light": "Light",
+            "dark": "Dark",
+            "system": "System"
+        },
+        "language": {
+            "current": "Display language",
+            "managedInLanCore": "Change your language in your LanCore profile."
+        },
+        "twoFactor": {
+            "title": "Two-factor authentication",
+            "description": "Add an extra layer of security to your account.",
+            "enable": "Enable",
+            "disable": "Disable",
+            "enabled": "Two-factor authentication is enabled.",
+            "disabled": "Two-factor authentication is disabled.",
+            "setupDescription": "Scan the QR code with your authenticator app and enter the generated code to finish setup.",
+            "recoveryCodes": "Recovery codes",
+            "recoveryCodesDescription": "Store these recovery codes in a secure password manager.",
+            "regenerateCodes": "Regenerate codes",
+            "confirmCode": "Authentication code",
+            "confirm": "Confirm",
+            "cancel": "Cancel"
+        }
     },
     "navigation": {
         "home": "Home",
         "dashboard": "Dashboard",
         "tickets": "Tickets",
-        "knowledgeBase": "Knowledge base"
+        "myTickets": "My tickets",
+        "knowledgeBase": "Knowledge base",
+        "staff": "Staff",
+        "staffBoard": "Staff board",
+        "manageKb": "Manage KB",
+        "admin": "Admin",
+        "settings": "Settings",
+        "profile": "Profile",
+        "appearance": "Appearance"
     },
-    "settings": {
-        "language": {
-            "current": "Display language",
-            "managedInLanCore": "Change your language in your LanCore profile."
+    "landing": {
+        "title": "Welcome to LanHelp",
+        "subtitle": "Support tickets and knowledge base for your LAN community.",
+        "getStarted": "Get started",
+        "logIn": "Log in",
+        "signIn": "Sign in",
+        "register": "Register",
+        "browseKb": "Browse knowledge base",
+        "signInToSubmit": "Sign in to submit a ticket",
+        "goToDashboard": "Go to dashboard",
+        "hero": "Need help? We've got you covered.",
+        "heroDescription": "LanHelp is the support hub for your LAN event. Submit tickets, browse the knowledge base, and get answers from event staff — all in one place.",
+        "features": {
+            "tickets": {
+                "title": "Ticket system",
+                "description": "Submit support requests, track status, and communicate with staff directly."
+            },
+            "kb": {
+                "title": "Knowledge base",
+                "description": "Browse FAQs and guides published by organizers. Find answers fast."
+            },
+            "staffDashboard": {
+                "title": "Staff dashboard",
+                "description": "Event staff can assign, triage, and resolve tickets from a kanban board."
+            }
+        },
+        "footer": "Powered by LanHelp — Part of the Lan-Software ecosystem",
+        "headTitle": "LanHelp — Event support"
+    },
+    "dashboard": {
+        "title": "Dashboard",
+        "welcome": "Welcome back!",
+        "openTickets": "Open tickets",
+        "pendingTickets": "Pending tickets",
+        "resolvedToday": "Resolved today",
+        "activeTickets": "Active tickets",
+        "activeDetail": "{open} open, {inProgress} in progress",
+        "urgent": "Urgent",
+        "unassignedDetail": "{count} unassigned",
+        "resolvedLabel": "Resolved",
+        "ofTotal": "of {total} total tickets",
+        "knowledgeBase": "Knowledge base",
+        "draftsCount": "{count} drafts",
+        "recentTickets": "Recent tickets",
+        "viewAll": "View all",
+        "noTickets": "No tickets yet.",
+        "ticketStatus": "Ticket status",
+        "statusOpen": "Open",
+        "statusInProgress": "In progress",
+        "statusWaiting": "Waiting",
+        "statusResolved": "Resolved",
+        "statusClosed": "Closed",
+        "categories": "Categories",
+        "noCategorized": "No categorized tickets yet.",
+        "team": "Team",
+        "totalUsers": "Total users",
+        "staffMembers": "Staff members"
+    },
+    "tickets": {
+        "title": "Tickets",
+        "create": "Create ticket",
+        "createButton": "New ticket",
+        "subject": "Subject",
+        "subjectPlaceholder": "Briefly describe your issue",
+        "description": "Description",
+        "descriptionPlaceholder": "Provide as much detail as possible",
+        "category": "Category",
+        "priority": "Priority",
+        "status": "Status",
+        "createdAt": "Created",
+        "updatedAt": "Last update",
+        "assignee": "Assignee",
+        "empty": "No tickets yet.",
+        "createFirst": "Create your first ticket",
+        "reply": "Reply",
+        "replyPlaceholder": "Write a reply...",
+        "send": "Send reply",
+        "internalNote": "Internal note (staff only)",
+        "markResolved": "Mark as resolved",
+        "reopen": "Reopen",
+        "close": "Close ticket",
+        "assign": "Assign",
+        "unassign": "Unassign",
+        "priorities": {
+            "low": "Low",
+            "normal": "Normal",
+            "high": "High",
+            "urgent": "Urgent"
+        },
+        "statuses": {
+            "open": "Open",
+            "pending": "Pending",
+            "resolved": "Resolved",
+            "closed": "Closed"
         }
+    },
+    "kb": {
+        "title": "Knowledge base",
+        "subtitle": "Browse guides and answers to common questions.",
+        "search": "Search articles",
+        "category": "Category",
+        "allCategories": "All categories",
+        "empty": "No articles match your search.",
+        "readTime": "{minutes} min read",
+        "lastUpdated": "Last updated {date}",
+        "article": {
+            "relatedArticles": "Related articles",
+            "wasHelpful": "Was this article helpful?",
+            "helpful": "Yes",
+            "notHelpful": "No"
+        },
+        "admin": {
+            "title": "Manage articles",
+            "create": "New article",
+            "titleField": "Title",
+            "slug": "Slug",
+            "category": "Category",
+            "body": "Body",
+            "published": "Published",
+            "draft": "Draft",
+            "publish": "Publish",
+            "unpublish": "Unpublish",
+            "saved": "Article saved"
+        }
+    },
+    "staff": {
+        "title": "Staff tickets",
+        "description": "Tickets assigned to the staff team.",
+        "myTickets": "My tickets",
+        "unassigned": "Unassigned",
+        "all": "All tickets"
+    },
+    "admin": {
+        "title": "Admin",
+        "users": {
+            "title": "Users",
+            "name": "Name",
+            "email": "Email",
+            "role": "Role",
+            "actions": "Actions"
+        }
+    },
+    "validation": {
+        "required": "This field is required",
+        "email": "Please enter a valid email address",
+        "minLength": "Must be at least {min} characters",
+        "maxLength": "Must be no more than {max} characters",
+        "passwordMatch": "Passwords must match",
+        "invalid": "Invalid value"
     }
 }

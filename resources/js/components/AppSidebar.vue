@@ -8,6 +8,7 @@ import {
     Shield,
 } from 'lucide-vue-next';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -28,6 +29,7 @@ import { index as staffTicketsIndex } from '@/routes/staff/tickets';
 import { index as ticketsIndex } from '@/routes/tickets';
 import type { NavItem } from '@/types';
 
+const { t } = useI18n();
 const page = usePage();
 const user = computed(() => page.props.auth?.user as any);
 const isStaff = computed(
@@ -39,12 +41,12 @@ const mainNavItems = computed((): NavItem[] => {
     const items: NavItem[] = [];
 
     if (isAdmin.value) {
-        items.push({ title: 'Dashboard', href: dashboard(), icon: LayoutGrid });
+        items.push({ title: t('navigation.dashboard'), href: dashboard(), icon: LayoutGrid });
     }
 
     items.push(
-        { title: 'My Tickets', href: ticketsIndex(), icon: HelpCircle },
-        { title: 'Knowledge Base', href: kbIndex(), icon: BookOpen },
+        { title: t('navigation.myTickets'), href: ticketsIndex(), icon: HelpCircle },
+        { title: t('navigation.knowledgeBase'), href: kbIndex(), icon: BookOpen },
     );
 
     return items;
@@ -57,14 +59,14 @@ const staffNavItems = computed((): NavItem[] => {
 
     const items: NavItem[] = [
         {
-            title: 'Staff Board',
+            title: t('navigation.staffBoard'),
             href: staffTicketsIndex(),
             icon: ClipboardList,
         },
     ];
 
     if (isAdmin.value) {
-        items.push({ title: 'Manage KB', href: adminKbIndex(), icon: Shield });
+        items.push({ title: t('navigation.manageKb'), href: adminKbIndex(), icon: Shield });
     }
 
     return items;

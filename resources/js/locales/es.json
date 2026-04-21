@@ -2,24 +2,282 @@
     "common": {
         "appName": "LanHelp",
         "loading": "Cargando...",
+        "saving": "Guardando...",
         "error": "Error",
         "success": "Éxito",
         "save": "Guardar",
+        "saved": "Guardado.",
         "cancel": "Cancelar",
+        "delete": "Eliminar",
+        "edit": "Editar",
         "close": "Cerrar",
         "submit": "Enviar",
-        "back": "Atrás"
+        "search": "Buscar",
+        "settings": "Ajustes",
+        "logout": "Cerrar sesión",
+        "profile": "Perfil",
+        "dashboard": "Panel",
+        "admin": "Admin",
+        "users": "Usuarios",
+        "back": "Atrás",
+        "create": "Crear",
+        "update": "Actualizar",
+        "confirm": "Confirmar",
+        "yes": "Sí",
+        "no": "No",
+        "add": "Añadir",
+        "remove": "Quitar",
+        "actions": "Acciones",
+        "view": "Ver",
+        "copy": "Copiar",
+        "copied": "Copiado",
+        "optional": "opcional",
+        "required": "obligatorio",
+        "loadingMore": "Cargando más...",
+        "noResults": "No se encontraron resultados",
+        "showMore": "Mostrar más",
+        "showLess": "Mostrar menos"
+    },
+    "auth": {
+        "login": {
+            "title": "Inicia sesión en LanHelp",
+            "description": "Inicia sesión con tu cuenta de LanCore para continuar",
+            "email": "Correo electrónico",
+            "emailPlaceholder": "email@ejemplo.es",
+            "password": "Contraseña",
+            "passwordPlaceholder": "Contraseña",
+            "rememberMe": "Recuérdame",
+            "forgotPassword": "¿Olvidaste tu contraseña?",
+            "button": "Iniciar sesión",
+            "signInWithLanCore": "Iniciar sesión con LanCore"
+        },
+        "verifyEmail": {
+            "title": "Verificar tu correo electrónico",
+            "description": "¡Gracias por registrarte! Verifica tu correo electrónico para continuar.",
+            "resendButton": "Reenviar correo de verificación",
+            "linkSent": "Se ha enviado un nuevo enlace de verificación a tu correo electrónico.",
+            "logout": "Cerrar sesión"
+        },
+        "confirmPassword": {
+            "title": "Confirmar tu contraseña",
+            "description": "Esta es un área segura de la aplicación. Confirma tu contraseña antes de continuar.",
+            "password": "Contraseña",
+            "passwordPlaceholder": "Contraseña",
+            "button": "Confirmar"
+        },
+        "twoFactor": {
+            "title": "Autenticación de dos factores",
+            "description": "Introduce el código de autenticación de tu aplicación de autenticación.",
+            "code": "Código de autenticación",
+            "recoveryCode": "Código de recuperación",
+            "useRecovery": "Usar un código de recuperación",
+            "useCode": "Usar un código de autenticación",
+            "button": "Verificar"
+        }
+    },
+    "settings": {
+        "title": "Ajustes",
+        "description": "Gestiona los ajustes y preferencias de tu cuenta",
+        "profile": {
+            "title": "Perfil",
+            "description": "Tu perfil se gestiona en LanCore",
+            "name": "Nombre",
+            "email": "Correo electrónico",
+            "displayName": "Nombre de visualización",
+            "displayNameDescription": "Cómo aparece tu nombre en tickets y respuestas",
+            "updateButton": "Guardar",
+            "updated": "Guardado."
+        },
+        "appearance": {
+            "title": "Apariencia",
+            "description": "Actualiza los ajustes de apariencia de tu cuenta",
+            "theme": "Tema",
+            "light": "Claro",
+            "dark": "Oscuro",
+            "system": "Sistema"
+        },
+        "language": {
+            "current": "Idioma de visualización",
+            "managedInLanCore": "Cambia tu idioma en tu perfil de LanCore."
+        },
+        "twoFactor": {
+            "title": "Autenticación de dos factores",
+            "description": "Añade una capa extra de seguridad a tu cuenta.",
+            "enable": "Activar",
+            "disable": "Desactivar",
+            "enabled": "La autenticación de dos factores está activada.",
+            "disabled": "La autenticación de dos factores está desactivada.",
+            "setupDescription": "Escanea el código QR con tu aplicación de autenticación e introduce el código generado para terminar la configuración.",
+            "recoveryCodes": "Códigos de recuperación",
+            "recoveryCodesDescription": "Guarda estos códigos de recuperación en un gestor de contraseñas seguro.",
+            "regenerateCodes": "Regenerar códigos",
+            "confirmCode": "Código de autenticación",
+            "confirm": "Confirmar",
+            "cancel": "Cancelar"
+        }
     },
     "navigation": {
         "home": "Inicio",
         "dashboard": "Panel",
         "tickets": "Tickets",
-        "knowledgeBase": "Base de conocimientos"
+        "myTickets": "Mis tickets",
+        "knowledgeBase": "Base de conocimientos",
+        "staff": "Staff",
+        "staffBoard": "Panel del staff",
+        "manageKb": "Gestionar base de conocimientos",
+        "admin": "Admin",
+        "settings": "Ajustes",
+        "profile": "Perfil",
+        "appearance": "Apariencia"
     },
-    "settings": {
-        "language": {
-            "current": "Idioma de visualización",
-            "managedInLanCore": "Cambia tu idioma en tu perfil de LanCore."
+    "landing": {
+        "title": "Bienvenido a LanHelp",
+        "subtitle": "Tickets de soporte y base de conocimientos para tu comunidad LAN.",
+        "getStarted": "Empezar",
+        "logIn": "Iniciar sesión",
+        "signIn": "Iniciar sesión",
+        "register": "Registrarse",
+        "browseKb": "Explorar base de conocimientos",
+        "signInToSubmit": "Inicia sesión para enviar un ticket",
+        "goToDashboard": "Ir al panel",
+        "hero": "¿Necesitas ayuda? Te tenemos cubierto.",
+        "heroDescription": "LanHelp es el centro de soporte para tu evento LAN. Envía tickets, explora la base de conocimientos y obtén respuestas del equipo — todo en un solo lugar.",
+        "features": {
+            "tickets": {
+                "title": "Sistema de tickets",
+                "description": "Envía solicitudes de soporte, sigue el estado y comunícate directamente con el equipo."
+            },
+            "kb": {
+                "title": "Base de conocimientos",
+                "description": "Explora preguntas frecuentes y guías publicadas por los organizadores. Encuentra respuestas rápido."
+            },
+            "staffDashboard": {
+                "title": "Panel del staff",
+                "description": "El equipo puede asignar, priorizar y resolver tickets desde un tablero kanban."
+            }
+        },
+        "footer": "Desarrollado con LanHelp — Parte del ecosistema Lan-Software",
+        "headTitle": "LanHelp — Soporte de evento"
+    },
+    "dashboard": {
+        "title": "Panel",
+        "welcome": "¡Bienvenido de nuevo!",
+        "openTickets": "Tickets abiertos",
+        "pendingTickets": "Tickets pendientes",
+        "resolvedToday": "Resueltos hoy",
+        "activeTickets": "Tickets activos",
+        "activeDetail": "{open} abiertos, {inProgress} en curso",
+        "urgent": "Urgente",
+        "unassignedDetail": "{count} sin asignar",
+        "resolvedLabel": "Resueltos",
+        "ofTotal": "de {total} tickets totales",
+        "knowledgeBase": "Base de conocimientos",
+        "draftsCount": "{count} borradores",
+        "recentTickets": "Tickets recientes",
+        "viewAll": "Ver todos",
+        "noTickets": "Aún no hay tickets.",
+        "ticketStatus": "Estado de tickets",
+        "statusOpen": "Abierto",
+        "statusInProgress": "En curso",
+        "statusWaiting": "En espera",
+        "statusResolved": "Resuelto",
+        "statusClosed": "Cerrado",
+        "categories": "Categorías",
+        "noCategorized": "Aún no hay tickets categorizados.",
+        "team": "Equipo",
+        "totalUsers": "Usuarios totales",
+        "staffMembers": "Miembros del staff"
+    },
+    "tickets": {
+        "title": "Tickets",
+        "create": "Crear ticket",
+        "createButton": "Nuevo ticket",
+        "subject": "Asunto",
+        "subjectPlaceholder": "Describe brevemente tu problema",
+        "description": "Descripción",
+        "descriptionPlaceholder": "Proporciona tantos detalles como sea posible",
+        "category": "Categoría",
+        "priority": "Prioridad",
+        "status": "Estado",
+        "createdAt": "Creado",
+        "updatedAt": "Última actualización",
+        "assignee": "Asignado a",
+        "empty": "Aún no hay tickets.",
+        "createFirst": "Crea tu primer ticket",
+        "reply": "Responder",
+        "replyPlaceholder": "Escribe una respuesta...",
+        "send": "Enviar respuesta",
+        "internalNote": "Nota interna (solo staff)",
+        "markResolved": "Marcar como resuelto",
+        "reopen": "Reabrir",
+        "close": "Cerrar ticket",
+        "assign": "Asignar",
+        "unassign": "Desasignar",
+        "priorities": {
+            "low": "Baja",
+            "normal": "Normal",
+            "high": "Alta",
+            "urgent": "Urgente"
+        },
+        "statuses": {
+            "open": "Abierto",
+            "pending": "Pendiente",
+            "resolved": "Resuelto",
+            "closed": "Cerrado"
         }
+    },
+    "kb": {
+        "title": "Base de conocimientos",
+        "subtitle": "Explora guías y respuestas a preguntas frecuentes.",
+        "search": "Buscar artículos",
+        "category": "Categoría",
+        "allCategories": "Todas las categorías",
+        "empty": "No hay artículos que coincidan con tu búsqueda.",
+        "readTime": "{minutes} min de lectura",
+        "lastUpdated": "Última actualización {date}",
+        "article": {
+            "relatedArticles": "Artículos relacionados",
+            "wasHelpful": "¿Te resultó útil este artículo?",
+            "helpful": "Sí",
+            "notHelpful": "No"
+        },
+        "admin": {
+            "title": "Gestionar artículos",
+            "create": "Nuevo artículo",
+            "titleField": "Título",
+            "slug": "Slug",
+            "category": "Categoría",
+            "body": "Contenido",
+            "published": "Publicado",
+            "draft": "Borrador",
+            "publish": "Publicar",
+            "unpublish": "Despublicar",
+            "saved": "Artículo guardado"
+        }
+    },
+    "staff": {
+        "title": "Tickets del staff",
+        "description": "Tickets asignados al equipo de staff.",
+        "myTickets": "Mis tickets",
+        "unassigned": "Sin asignar",
+        "all": "Todos los tickets"
+    },
+    "admin": {
+        "title": "Admin",
+        "users": {
+            "title": "Usuarios",
+            "name": "Nombre",
+            "email": "Correo",
+            "role": "Rol",
+            "actions": "Acciones"
+        }
+    },
+    "validation": {
+        "required": "Este campo es obligatorio",
+        "email": "Introduce una dirección de correo electrónico válida",
+        "minLength": "Debe tener al menos {min} caracteres",
+        "maxLength": "No debe superar los {max} caracteres",
+        "passwordMatch": "Las contraseñas deben coincidir",
+        "invalid": "Valor no válido"
     }
 }

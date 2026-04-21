@@ -11,15 +11,18 @@ import {
     Users,
     UserCog,
 } from 'lucide-vue-next';
+import { useI18n } from 'vue-i18n';
 import { dashboard } from '@/routes';
 import { index as staffTicketsIndex } from '@/routes/staff/tickets';
 import { show as ticketShow } from '@/routes/tickets';
+
+const { t } = useI18n();
 
 defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: 'Dashboard',
+                title: () => t('dashboard.title'),
                 href: dashboard(),
             },
         ],
@@ -76,7 +79,7 @@ const statusColorMap: Record<string, string> = {
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head :title="$t('dashboard.title')" />
 
     <div class="flex h-full flex-1 flex-col gap-6 p-4 md:p-6">
         <!-- Stats overview -->
@@ -84,21 +87,25 @@ const statusColorMap: Record<string, string> = {
             <div class="rounded-xl border border-border bg-card p-5">
                 <div class="flex items-center justify-between">
                     <p class="text-sm font-medium text-muted-foreground">
-                        Active Tickets
+                        {{ $t('dashboard.activeTickets') }}
                     </p>
                     <Inbox class="h-4 w-4 text-muted-foreground" />
                 </div>
                 <p class="mt-2 text-3xl font-bold">{{ activeTickets }}</p>
                 <p class="mt-1 text-xs text-muted-foreground">
-                    {{ stats.openTickets }} open,
-                    {{ stats.inProgressTickets }} in progress
+                    {{
+                        $t('dashboard.activeDetail', {
+                            open: stats.openTickets,
+                            inProgress: stats.inProgressTickets,
+                        })
+                    }}
                 </p>
             </div>
 
             <div class="rounded-xl border border-border bg-card p-5">
                 <div class="flex items-center justify-between">
                     <p class="text-sm font-medium text-muted-foreground">
-                        Urgent
+                        {{ $t('dashboard.urgent') }}
                     </p>
                     <AlertTriangle class="h-4 w-4 text-red-500" />
                 </div>
@@ -113,14 +120,18 @@ const statusColorMap: Record<string, string> = {
                     {{ stats.urgentTickets }}
                 </p>
                 <p class="mt-1 text-xs text-muted-foreground">
-                    {{ stats.unassignedTickets }} unassigned
+                    {{
+                        $t('dashboard.unassignedDetail', {
+                            count: stats.unassignedTickets,
+                        })
+                    }}
                 </p>
             </div>
 
             <div class="rounded-xl border border-border bg-card p-5">
                 <div class="flex items-center justify-between">
                     <p class="text-sm font-medium text-muted-foreground">
-                        Resolved
+                        {{ $t('dashboard.resolvedLabel') }}
                     </p>
                     <CheckCircle2 class="h-4 w-4 text-primary" />
                 </div>
@@ -128,14 +139,14 @@ const statusColorMap: Record<string, string> = {
                     {{ stats.resolvedTickets + stats.closedTickets }}
                 </p>
                 <p class="mt-1 text-xs text-muted-foreground">
-                    of {{ stats.totalTickets }} total tickets
+                    {{ $t('dashboard.ofTotal', { total: stats.totalTickets }) }}
                 </p>
             </div>
 
             <div class="rounded-xl border border-border bg-card p-5">
                 <div class="flex items-center justify-between">
                     <p class="text-sm font-medium text-muted-foreground">
-                        Knowledge Base
+                        {{ $t('dashboard.knowledgeBase') }}
                     </p>
                     <BookOpen class="h-4 w-4 text-muted-foreground" />
                 </div>
@@ -143,7 +154,11 @@ const statusColorMap: Record<string, string> = {
                     {{ stats.publishedArticles }}
                 </p>
                 <p class="mt-1 text-xs text-muted-foreground">
-                    {{ stats.draftArticles }} drafts
+                    {{
+                        $t('dashboard.draftsCount', {
+                            count: stats.draftArticles,
+                        })
+                    }}
                 </p>
             </div>
         </div>
@@ -154,12 +169,14 @@ const statusColorMap: Record<string, string> = {
                 <div
                     class="flex items-center justify-between border-b border-border px-5 py-4"
                 >
-                    <h2 class="text-sm font-semibold">Recent Tickets</h2>
+                    <h2 class="text-sm font-semibold">
+                        {{ $t('dashboard.recentTickets') }}
+                    </h2>
                     <Link
                         :href="staffTicketsIndex()"
                         class="text-xs font-medium text-primary hover:underline"
                     >
-                        View all
+                        {{ $t('dashboard.viewAll') }}
                     </Link>
                 </div>
                 <div class="divide-y divide-border">
@@ -203,7 +220,7 @@ const statusColorMap: Record<string, string> = {
                         v-if="recentTickets.length === 0"
                         class="px-5 py-8 text-center text-sm text-muted-foreground"
                     >
-                        No tickets yet.
+                        {{ $t('dashboard.noTickets') }}
                     </div>
                 </div>
             </div>
@@ -212,13 +229,16 @@ const statusColorMap: Record<string, string> = {
             <div class="flex flex-col gap-6">
                 <!-- Ticket status breakdown -->
                 <div class="rounded-xl border border-border bg-card p-5">
-                    <h2 class="mb-4 text-sm font-semibold">Ticket Status</h2>
+                    <h2 class="mb-4 text-sm font-semibold">
+                        {{ $t('dashboard.ticketStatus') }}
+                    </h2>
                     <div class="space-y-3">
                         <div class="flex items-center justify-between text-sm">
                             <span
                                 class="flex items-center gap-2 text-muted-foreground"
                             >
-                                <Inbox class="h-3.5 w-3.5 text-blue-500" /> Open
+                                <Inbox class="h-3.5 w-3.5 text-blue-500" />
+                                {{ $t('dashboard.statusOpen') }}
                             </span>
                             <span class="font-medium">{{
                                 stats.openTickets
@@ -229,7 +249,7 @@ const statusColorMap: Record<string, string> = {
                                 class="flex items-center gap-2 text-muted-foreground"
                             >
                                 <Loader2 class="h-3.5 w-3.5 text-yellow-500" />
-                                In Progress
+                                {{ $t('dashboard.statusInProgress') }}
                             </span>
                             <span class="font-medium">{{
                                 stats.inProgressTickets
@@ -240,7 +260,7 @@ const statusColorMap: Record<string, string> = {
                                 class="flex items-center gap-2 text-muted-foreground"
                             >
                                 <Clock class="h-3.5 w-3.5 text-orange-500" />
-                                Waiting
+                                {{ $t('dashboard.statusWaiting') }}
                             </span>
                             <span class="font-medium">{{
                                 stats.waitingTickets
@@ -253,7 +273,7 @@ const statusColorMap: Record<string, string> = {
                                 <CheckCircle2
                                     class="h-3.5 w-3.5 text-green-500"
                                 />
-                                Resolved
+                                {{ $t('dashboard.statusResolved') }}
                             </span>
                             <span class="font-medium">{{
                                 stats.resolvedTickets
@@ -266,7 +286,7 @@ const statusColorMap: Record<string, string> = {
                                 <MessageSquare
                                     class="h-3.5 w-3.5 text-gray-400"
                                 />
-                                Closed
+                                {{ $t('dashboard.statusClosed') }}
                             </span>
                             <span class="font-medium">{{
                                 stats.closedTickets
@@ -277,7 +297,9 @@ const statusColorMap: Record<string, string> = {
 
                 <!-- Categories & team -->
                 <div class="rounded-xl border border-border bg-card p-5">
-                    <h2 class="mb-4 text-sm font-semibold">Categories</h2>
+                    <h2 class="mb-4 text-sm font-semibold">
+                        {{ $t('dashboard.categories') }}
+                    </h2>
                     <div class="space-y-3">
                         <div
                             v-for="cat in ticketsByCategory"
@@ -293,19 +315,22 @@ const statusColorMap: Record<string, string> = {
                             v-if="ticketsByCategory.length === 0"
                             class="text-sm text-muted-foreground"
                         >
-                            No categorized tickets yet.
+                            {{ $t('dashboard.noCategorized') }}
                         </div>
                     </div>
                 </div>
 
                 <div class="rounded-xl border border-border bg-card p-5">
-                    <h2 class="mb-4 text-sm font-semibold">Team</h2>
+                    <h2 class="mb-4 text-sm font-semibold">
+                        {{ $t('dashboard.team') }}
+                    </h2>
                     <div class="space-y-3">
                         <div class="flex items-center justify-between text-sm">
                             <span
                                 class="flex items-center gap-2 text-muted-foreground"
                             >
-                                <Users class="h-3.5 w-3.5" /> Total Users
+                                <Users class="h-3.5 w-3.5" />
+                                {{ $t('dashboard.totalUsers') }}
                             </span>
                             <span class="font-medium">{{
                                 stats.totalUsers
@@ -315,7 +340,8 @@ const statusColorMap: Record<string, string> = {
                             <span
                                 class="flex items-center gap-2 text-muted-foreground"
                             >
-                                <UserCog class="h-3.5 w-3.5" /> Staff Members
+                                <UserCog class="h-3.5 w-3.5" />
+                                {{ $t('dashboard.staffMembers') }}
                             </span>
                             <span class="font-medium">{{
                                 stats.staffCount

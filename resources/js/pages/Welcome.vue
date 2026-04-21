@@ -13,7 +13,7 @@ const user = computed(() => (page.props.auth as any)?.user);
 </script>
 
 <template>
-    <Head title="LanHelp — Event Support" />
+    <Head :title="$t('landing.headTitle')" />
 
     <div class="flex min-h-screen flex-col bg-background text-foreground">
         <header
@@ -25,16 +25,16 @@ const user = computed(() => (page.props.auth as any)?.user);
                 >
                     <LifeBuoy class="h-5 w-5 text-primary-foreground" />
                 </div>
-                <span class="text-lg font-semibold tracking-tight"
-                    >LanHelp</span
-                >
+                <span class="text-lg font-semibold tracking-tight">{{
+                    $t('common.appName')
+                }}</span>
             </div>
             <div class="flex items-center gap-3">
                 <Link
                     href="/kb"
                     class="text-sm font-medium text-muted-foreground transition hover:text-foreground"
                 >
-                    Knowledge Base
+                    {{ $t('navigation.knowledgeBase') }}
                 </Link>
                 <template v-if="user">
                     <Link
@@ -43,14 +43,14 @@ const user = computed(() => (page.props.auth as any)?.user);
                         class="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
                     >
                         <LayoutGrid class="mr-1.5 inline-block h-4 w-4" />
-                        Dashboard
+                        {{ $t('navigation.dashboard') }}
                     </Link>
                     <Link
                         v-else
                         href="/tickets"
                         class="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
                     >
-                        My Tickets
+                        {{ $t('navigation.myTickets') }}
                     </Link>
                 </template>
                 <template v-else>
@@ -58,14 +58,14 @@ const user = computed(() => (page.props.auth as any)?.user);
                         href="/login"
                         class="rounded-full border border-border px-5 py-2 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-foreground"
                     >
-                        Sign in
+                        {{ $t('landing.signIn') }}
                     </Link>
                     <Link
                         v-if="canRegister"
                         href="/register"
                         class="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
                     >
-                        Register
+                        {{ $t('landing.register') }}
                     </Link>
                 </template>
             </div>
@@ -82,14 +82,12 @@ const user = computed(() => (page.props.auth as any)?.user);
             <h1
                 class="mt-6 max-w-2xl text-4xl leading-tight font-bold sm:text-5xl"
             >
-                Need help? We've got you covered.
+                {{ $t('landing.hero') }}
             </h1>
             <p
                 class="mt-4 max-w-lg text-lg leading-relaxed text-muted-foreground"
             >
-                LanHelp is the support hub for your LAN event. Submit tickets,
-                browse the knowledge base, and get answers from event staff —
-                all in one place.
+                {{ $t('landing.heroDescription') }}
             </p>
 
             <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -100,19 +98,19 @@ const user = computed(() => (page.props.auth as any)?.user);
                         class="rounded-xl bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
                     >
                         <LayoutGrid class="mr-1.5 inline-block h-4 w-4" />
-                        Go to Dashboard
+                        {{ $t('landing.goToDashboard') }}
                     </Link>
                     <Link
                         href="/tickets"
                         class="rounded-xl border border-border px-7 py-3 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-foreground"
                     >
-                        My Tickets
+                        {{ $t('navigation.myTickets') }}
                     </Link>
                     <Link
                         href="/kb"
                         class="rounded-xl border border-border px-7 py-3 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-foreground"
                     >
-                        Knowledge Base
+                        {{ $t('navigation.knowledgeBase') }}
                     </Link>
                 </template>
                 <template v-else>
@@ -120,13 +118,13 @@ const user = computed(() => (page.props.auth as any)?.user);
                         href="/kb"
                         class="rounded-xl bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
                     >
-                        Browse Knowledge Base
+                        {{ $t('landing.browseKb') }}
                     </Link>
                     <Link
                         href="/login"
                         class="rounded-xl border border-border px-7 py-3 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-foreground"
                     >
-                        Sign in to submit a ticket
+                        {{ $t('landing.signInToSubmit') }}
                     </Link>
                 </template>
             </div>
@@ -156,12 +154,13 @@ const user = computed(() => (page.props.auth as any)?.user);
                             <path d="M10 16h4" />
                         </svg>
                     </div>
-                    <h3 class="text-sm font-semibold">Ticket System</h3>
+                    <h3 class="text-sm font-semibold">
+                        {{ $t('landing.features.tickets.title') }}
+                    </h3>
                     <p
                         class="mt-2 text-sm leading-relaxed text-muted-foreground"
                     >
-                        Submit support requests, track status, and communicate
-                        with staff directly.
+                        {{ $t('landing.features.tickets.description') }}
                     </p>
                 </div>
                 <div
@@ -185,12 +184,13 @@ const user = computed(() => (page.props.auth as any)?.user);
                             />
                         </svg>
                     </div>
-                    <h3 class="text-sm font-semibold">Knowledge Base</h3>
+                    <h3 class="text-sm font-semibold">
+                        {{ $t('landing.features.kb.title') }}
+                    </h3>
                     <p
                         class="mt-2 text-sm leading-relaxed text-muted-foreground"
                     >
-                        Browse FAQs and guides published by organizers. Find
-                        answers fast.
+                        {{ $t('landing.features.kb.description') }}
                     </p>
                 </div>
                 <div
@@ -217,19 +217,20 @@ const user = computed(() => (page.props.auth as any)?.user);
                             <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                         </svg>
                     </div>
-                    <h3 class="text-sm font-semibold">Staff Dashboard</h3>
+                    <h3 class="text-sm font-semibold">
+                        {{ $t('landing.features.staffDashboard.title') }}
+                    </h3>
                     <p
                         class="mt-2 text-sm leading-relaxed text-muted-foreground"
                     >
-                        Event staff can assign, triage, and resolve tickets from
-                        a kanban board.
+                        {{ $t('landing.features.staffDashboard.description') }}
                     </p>
                 </div>
             </div>
         </main>
 
         <footer class="py-8 text-center text-xs text-muted-foreground">
-            Powered by LanHelp &mdash; Part of the Lan-Software ecosystem
+            {{ $t('landing.footer') }}
         </footer>
     </div>
 </template>
