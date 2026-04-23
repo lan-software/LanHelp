@@ -11,18 +11,16 @@ import {
     Users,
     UserCog,
 } from 'lucide-vue-next';
-import { useI18n } from 'vue-i18n';
+import i18n from '@/i18n';
 import { dashboard } from '@/routes';
 import { index as staffTicketsIndex } from '@/routes/staff/tickets';
 import { show as ticketShow } from '@/routes/tickets';
-
-const { t } = useI18n();
 
 defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: () => t('dashboard.title'),
+                title: () => i18n.global.t('dashboard.title'),
                 href: dashboard(),
             },
         ],

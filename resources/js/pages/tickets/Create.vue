@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Form, Head } from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,7 +9,39 @@ import { index, create, store } from '@/routes/tickets';
 
 type Priority = { value: string; label: string };
 
-defineProps<{ priorities: Priority[] }>();
+type ContextSnapshot = {
+    source_product?: string;
+    source_domain?: string;
+    event_reference?: string;
+    seat_reference?: string;
+    tournament_reference?: string;
+    order_reference?: string;
+    team_reference?: string;
+    links?: string[];
+};
+
+type Prefill = {
+    subject: string;
+    category: string;
+    context_snapshot: ContextSnapshot;
+};
+
+const props = defineProps<{
+    priorities: Priority[];
+    prefill: Prefill;
+}>();
+
+const form = useForm({
+    subject: props.prefill.subject,
+    description: '',
+    priority: 'normal',
+    category: props.prefill.category,
+    context_snapshot: props.prefill.context_snapshot,
+});
+
+function submit() {
+    form.post(store().url);
+}
 
 defineOptions({
     layout: {
@@ -27,22 +59,19 @@ defineOptions({
     <div class="mx-auto max-w-2xl p-4">
         <h1 class="mb-6 text-2xl font-semibold">Open a Support Request</h1>
 
-        <Form
-            v-bind="store.form()"
-            v-slot="{ errors, processing }"
-            class="flex flex-col gap-5"
-        >
+        <form class="flex flex-col gap-5" @submit.prevent="submit">
             <div class="flex flex-col gap-1.5">
                 <Label for="subject"
                     >Subject <span class="text-destructive">*</span></Label
                 >
                 <Input
                     id="subject"
+                    v-model="form.subject"
                     name="subject"
                     placeholder="Briefly describe your issue"
                     required
                 />
-                <InputError :message="errors.subject" />
+                <InputError :message="form.errors.subject" />
             </div>
 
             <div class="flex flex-col gap-1.5">
@@ -51,12 +80,13 @@ defineOptions({
                 >
                 <Textarea
                     id="description"
+                    v-model="form.description"
                     name="description"
                     placeholder="Provide as much detail as possible..."
                     rows="6"
                     required
                 />
-                <InputError :message="errors.description" />
+                <InputError :message="form.errors.description" />
             </div>
 
             <div class="grid grid-cols-2 gap-4">
@@ -64,6 +94,7 @@ defineOptions({
                     <Label for="priority">Priority</Label>
                     <select
                         id="priority"
+                        v-model="form.priority"
                         name="priority"
                         class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus:ring-1 focus:ring-ring focus:outline-none"
                     >
@@ -75,25 +106,26 @@ defineOptions({
                             {{ p.label }}
                         </option>
                     </select>
-                    <InputError :message="errors.priority" />
+                    <InputError :message="form.errors.priority" />
                 </div>
 
                 <div class="flex flex-col gap-1.5">
                     <Label for="category">Category</Label>
                     <Input
                         id="category"
+                        v-model="form.category"
                         name="category"
                         placeholder="e.g. account, technical"
                     />
-                    <InputError :message="errors.category" />
+                    <InputError :message="form.errors.category" />
                 </div>
             </div>
 
             <div class="flex justify-end gap-3 pt-2">
-                <Button type="submit" :disabled="processing">
-                    {{ processing ? 'Submitting…' : 'Submit Ticket' }}
+                <Button type="submit" :disabled="form.processing">
+                    {{ form.processing ? 'Submitting…' : 'Submit Ticket' }}
                 </Button>
             </div>
-        </Form>
+        </form>
     </div>
 </template>

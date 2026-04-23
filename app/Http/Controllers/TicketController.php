@@ -10,6 +10,7 @@ use App\Models\Ticket;
 use App\Models\TicketReply;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -28,10 +29,15 @@ class TicketController extends Controller
         ]);
     }
 
-    public function create(): Response
+    public function create(Request $request): Response
     {
         return Inertia::render('tickets/Create', [
             'priorities' => collect(TicketPriority::cases())->map(fn ($p) => ['value' => $p->value, 'label' => $p->label()]),
+            'prefill' => [
+                'subject' => Str::limit((string) $request->string('subject'), 255, ''),
+                'category' => Str::limit((string) $request->string('category'), 100, ''),
+                'context_snapshot' => $this->sanitizeContextSnapshot($request->input('context', [])),
+            ],
         ]);
     }
 
@@ -41,6 +47,49 @@ class TicketController extends Controller
 
         return redirect()->route('tickets.show', $ticket)
             ->with('success', 'Your ticket has been submitted.');
+    }
+
+    /**
+     * Whitelist deep-link-provided context fields so a crafted URL can only
+     * populate the same keys that StoreTicketRequest already validates.
+     *
+     * @param  mixed  $context
+     * @return array<string, mixed>
+     */
+    private function sanitizeContextSnapshot($context): array
+    {
+        if (! is_array($context)) {
+            return [];
+        }
+
+        $scalarKeys = [
+            'source_product',
+            'source_domain',
+            'event_reference',
+            'seat_reference',
+            'tournament_reference',
+            'order_reference',
+            'team_reference',
+        ];
+
+        $snapshot = [];
+
+        foreach ($scalarKeys as $key) {
+            if (isset($context[$key]) && is_scalar($context[$key])) {
+                $snapshot[$key] = Str::limit((string) $context[$key], 100, '');
+            }
+        }
+
+        if (isset($context['links']) && is_array($context['links'])) {
+            $snapshot['links'] = collect($context['links'])
+                ->filter(fn ($link) => is_string($link))
+                ->map(fn ($link) => Str::limit($link, 2048, ''))
+                ->take(10)
+                ->values()
+                ->all();
+        }
+
+        return $snapshot;
     }
 
     public function show(Request $request, Ticket $ticket): Response
