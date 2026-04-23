@@ -2,6 +2,7 @@
 import { Form, Head, usePage } from '@inertiajs/vue3';
 import { ShieldCheck } from 'lucide-vue-next';
 import { computed, onUnmounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import SecurityController from '@/actions/App/Http/Controllers/Settings/SecurityController';
 import Heading from '@/components/Heading.vue';
 import InputError from '@/components/InputError.vue';
@@ -13,6 +14,8 @@ import { Label } from '@/components/ui/label';
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth';
 import { edit } from '@/routes/security';
 import { disable, enable } from '@/routes/two-factor';
+
+const { t } = useI18n();
 
 type Props = {
     canManageTwoFactor?: boolean;
@@ -30,7 +33,7 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: 'Security settings',
+                title: () => t('settings.security.layoutBreadcrumb'),
                 href: edit(),
             },
         ],
@@ -47,23 +50,22 @@ onUnmounted(() => clearTwoFactorAuthData());
 </script>
 
 <template>
-    <Head title="Security settings" />
+    <Head :title="$t('settings.security.headTitle')" />
 
-    <h1 class="sr-only">Security settings</h1>
+    <h1 class="sr-only">{{ $t('settings.security.headTitle') }}</h1>
 
     <div class="space-y-6">
         <Heading
             variant="small"
-            title="Update password"
-            description="Ensure your account is using a long, random password to stay secure"
+            :title="$t('settings.security.passwordSectionTitle')"
+            :description="$t('settings.security.passwordSectionDescription')"
         />
 
         <div
             v-if="isSsoUser"
             class="rounded-lg border border-blue-100 bg-blue-50 p-4 text-sm text-blue-800 dark:border-blue-200/10 dark:bg-blue-700/10 dark:text-blue-300"
         >
-            Password management is not available for SSO accounts. Your account
-            security is handled through LanCore.
+            {{ $t('settings.security.ssoNotice') }}
         </div>
 
         <Form
@@ -82,37 +84,37 @@ onUnmounted(() => clearTwoFactorAuthData());
             v-slot="{ errors, processing, recentlySuccessful }"
         >
             <div class="grid gap-2">
-                <Label for="current_password">Current password</Label>
+                <Label for="current_password">{{ $t('settings.security.currentPassword') }}</Label>
                 <PasswordInput
                     id="current_password"
                     name="current_password"
                     class="mt-1 block w-full"
                     autocomplete="current-password"
-                    placeholder="Current password"
+                    :placeholder="$t('settings.security.currentPasswordPlaceholder')"
                 />
                 <InputError :message="errors.current_password" />
             </div>
 
             <div class="grid gap-2">
-                <Label for="password">New password</Label>
+                <Label for="password">{{ $t('settings.security.newPassword') }}</Label>
                 <PasswordInput
                     id="password"
                     name="password"
                     class="mt-1 block w-full"
                     autocomplete="new-password"
-                    placeholder="New password"
+                    :placeholder="$t('settings.security.newPasswordPlaceholder')"
                 />
                 <InputError :message="errors.password" />
             </div>
 
             <div class="grid gap-2">
-                <Label for="password_confirmation">Confirm password</Label>
+                <Label for="password_confirmation">{{ $t('settings.security.confirmPassword') }}</Label>
                 <PasswordInput
                     id="password_confirmation"
                     name="password_confirmation"
                     class="mt-1 block w-full"
                     autocomplete="new-password"
-                    placeholder="Confirm password"
+                    :placeholder="$t('settings.security.confirmPasswordPlaceholder')"
                 />
                 <InputError :message="errors.password_confirmation" />
             </div>
@@ -122,7 +124,7 @@ onUnmounted(() => clearTwoFactorAuthData());
                     :disabled="processing"
                     data-test="update-password-button"
                 >
-                    Save password
+                    {{ $t('settings.security.savePasswordButton') }}
                 </Button>
 
                 <Transition
@@ -135,7 +137,7 @@ onUnmounted(() => clearTwoFactorAuthData());
                         v-show="recentlySuccessful"
                         class="text-sm text-neutral-600"
                     >
-                        Saved.
+                        {{ $t('common.saved') }}
                     </p>
                 </Transition>
             </div>
@@ -145,8 +147,8 @@ onUnmounted(() => clearTwoFactorAuthData());
     <div v-if="canManageTwoFactor && !isSsoUser" class="space-y-6">
         <Heading
             variant="small"
-            title="Two-factor authentication"
-            description="Manage your two-factor authentication settings"
+            :title="$t('settings.security.twoFactorSectionTitle')"
+            :description="$t('settings.security.twoFactorSectionDescription')"
         />
 
         <div
@@ -154,14 +156,12 @@ onUnmounted(() => clearTwoFactorAuthData());
             class="flex flex-col items-start justify-start space-y-4"
         >
             <p class="text-sm text-muted-foreground">
-                When you enable two-factor authentication, you will be prompted
-                for a secure pin during login. This pin can be retrieved from a
-                TOTP-supported application on your phone.
+                {{ $t('settings.security.twoFactorDisabledInfo') }}
             </p>
 
             <div>
                 <Button v-if="hasSetupData" @click="showSetupModal = true">
-                    <ShieldCheck />Continue setup
+                    <ShieldCheck />{{ $t('settings.security.continueSetup') }}
                 </Button>
                 <Form
                     v-else
@@ -170,7 +170,7 @@ onUnmounted(() => clearTwoFactorAuthData());
                     #default="{ processing }"
                 >
                     <Button type="submit" :disabled="processing">
-                        Enable 2FA
+                        {{ $t('settings.security.enable2fa') }}
                     </Button>
                 </Form>
             </div>
@@ -178,9 +178,7 @@ onUnmounted(() => clearTwoFactorAuthData());
 
         <div v-else class="flex flex-col items-start justify-start space-y-4">
             <p class="text-sm text-muted-foreground">
-                You will be prompted for a secure, random pin during login,
-                which you can retrieve from the TOTP-supported application on
-                your phone.
+                {{ $t('settings.security.twoFactorEnabledInfo') }}
             </p>
 
             <div class="relative inline">
@@ -190,7 +188,7 @@ onUnmounted(() => clearTwoFactorAuthData());
                         type="submit"
                         :disabled="processing"
                     >
-                        Disable 2FA
+                        {{ $t('settings.security.disable2fa') }}
                     </Button>
                 </Form>
             </div>

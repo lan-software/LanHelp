@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { Head, useForm } from '@inertiajs/vue3';
+import { useI18n } from 'vue-i18n';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { index, create, store } from '@/routes/tickets';
+
+const { t } = useI18n();
 
 type Priority = { value: string; label: string };
 
@@ -46,29 +49,29 @@ function submit() {
 defineOptions({
     layout: {
         breadcrumbs: [
-            { title: 'My Tickets', href: index() },
-            { title: 'New Ticket', href: create() },
+            { title: () => t('tickets.myTicketsBreadcrumb'), href: index() },
+            { title: () => t('tickets.newTicketBreadcrumb'), href: create() },
         ],
     },
 });
 </script>
 
 <template>
-    <Head title="New Ticket" />
+    <Head :title="$t('tickets.newTicketHeadTitle')" />
 
     <div class="mx-auto max-w-2xl p-4">
-        <h1 class="mb-6 text-2xl font-semibold">Open a Support Request</h1>
+        <h1 class="mb-6 text-2xl font-semibold">{{ $t('tickets.newTicketPageTitle') }}</h1>
 
         <form class="flex flex-col gap-5" @submit.prevent="submit">
             <div class="flex flex-col gap-1.5">
                 <Label for="subject"
-                    >Subject <span class="text-destructive">*</span></Label
+                    >{{ $t('tickets.subject') }} <span class="text-destructive">*</span></Label
                 >
                 <Input
                     id="subject"
                     v-model="form.subject"
                     name="subject"
-                    placeholder="Briefly describe your issue"
+                    :placeholder="$t('tickets.subjectPlaceholder')"
                     required
                 />
                 <InputError :message="form.errors.subject" />
@@ -76,13 +79,13 @@ defineOptions({
 
             <div class="flex flex-col gap-1.5">
                 <Label for="description"
-                    >Description <span class="text-destructive">*</span></Label
+                    >{{ $t('tickets.description') }} <span class="text-destructive">*</span></Label
                 >
                 <Textarea
                     id="description"
                     v-model="form.description"
                     name="description"
-                    placeholder="Provide as much detail as possible..."
+                    :placeholder="$t('tickets.descriptionPlaceholder')"
                     rows="6"
                     required
                 />
@@ -91,7 +94,7 @@ defineOptions({
 
             <div class="grid grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1.5">
-                    <Label for="priority">Priority</Label>
+                    <Label for="priority">{{ $t('tickets.priority') }}</Label>
                     <select
                         id="priority"
                         v-model="form.priority"
@@ -110,12 +113,12 @@ defineOptions({
                 </div>
 
                 <div class="flex flex-col gap-1.5">
-                    <Label for="category">Category</Label>
+                    <Label for="category">{{ $t('tickets.category') }}</Label>
                     <Input
                         id="category"
                         v-model="form.category"
                         name="category"
-                        placeholder="e.g. account, technical"
+                        :placeholder="$t('tickets.categoryPlaceholder')"
                     />
                     <InputError :message="form.errors.category" />
                 </div>
@@ -123,7 +126,7 @@ defineOptions({
 
             <div class="flex justify-end gap-3 pt-2">
                 <Button type="submit" :disabled="form.processing">
-                    {{ form.processing ? 'Submitting…' : 'Submit Ticket' }}
+                    {{ form.processing ? $t('tickets.submitting') : $t('tickets.submitTicket') }}
                 </Button>
             </div>
         </form>

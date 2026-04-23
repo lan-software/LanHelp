@@ -46,7 +46,7 @@ class TicketController extends Controller
         $ticket = $action->execute($request->user(), $request->validated());
 
         return redirect()->route('tickets.show', $ticket)
-            ->with('success', 'Your ticket has been submitted.');
+            ->with('success', __('messages.tickets.created'));
     }
 
     /**

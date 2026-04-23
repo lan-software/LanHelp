@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { index, show } from '@/routes/kb';
+
+const { t } = useI18n();
 
 type Article = {
     id: number;
@@ -20,7 +23,7 @@ const props = defineProps<{
 
 defineOptions({
     layout: {
-        breadcrumbs: [{ title: 'Knowledge Base', href: index() }],
+        breadcrumbs: [{ title: () => t('kb.breadcrumb'), href: index() }],
     },
 });
 
@@ -37,10 +40,10 @@ function filterByCategory(cat: string) {
 </script>
 
 <template>
-    <Head title="Knowledge Base" />
+    <Head :title="$t('kb.headTitle')" />
 
     <div class="mx-auto max-w-4xl p-4">
-        <h1 class="mb-6 text-3xl font-semibold">Knowledge Base</h1>
+        <h1 class="mb-6 text-3xl font-semibold">{{ $t('kb.pageTitle') }}</h1>
 
         <!-- Category filter -->
         <div v-if="categories.length > 0" class="mb-6 flex flex-wrap gap-2">
@@ -53,7 +56,7 @@ function filterByCategory(cat: string) {
                 "
                 @click="filterByCategory('')"
             >
-                All
+                {{ $t('kb.allFilter') }}
             </button>
             <button
                 v-for="cat in categories"
@@ -74,7 +77,7 @@ function filterByCategory(cat: string) {
             v-if="articles.length === 0"
             class="py-16 text-center text-muted-foreground"
         >
-            No articles found.
+            {{ $t('kb.noArticles') }}
         </div>
 
         <div v-else class="flex flex-col gap-4">

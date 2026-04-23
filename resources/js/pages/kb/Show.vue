@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { Head, Link, setLayoutProps } from '@inertiajs/vue3';
+import { useI18n } from 'vue-i18n';
 import { index } from '@/routes/kb';
+
+const { t } = useI18n();
 
 type Article = {
     id: number;
@@ -16,7 +19,7 @@ const props = defineProps<{ article: Article }>();
 
 setLayoutProps({
     breadcrumbs: [
-        { title: 'Knowledge Base', href: index() },
+        { title: t('kb.breadcrumb'), href: index() },
         { title: props.article.title, href: '#' },
     ],
 });
@@ -27,7 +30,7 @@ setLayoutProps({
 
     <div class="mx-auto max-w-3xl p-4">
         <div class="mb-2 flex items-center gap-2 text-sm text-muted-foreground">
-            <Link :href="index()" class="hover:underline">Knowledge Base</Link>
+            <Link :href="index()" class="hover:underline">{{ $t('kb.breadcrumb') }}</Link>
             <span>›</span>
             <span v-if="article.category" class="capitalize">{{
                 article.category
@@ -48,9 +51,7 @@ setLayoutProps({
         </div>
 
         <div class="mt-10 border-t pt-6">
-            <Link :href="index()" class="text-sm text-primary hover:underline"
-                >← Back to Knowledge Base</Link
-            >
+            <Link :href="index()" class="text-sm text-primary hover:underline">{{ $t('kb.backToKb') }}</Link>
         </div>
     </div>
 </template>

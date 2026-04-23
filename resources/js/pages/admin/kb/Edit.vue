@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { Form, Head, Link, setLayoutProps } from '@inertiajs/vue3';
+import { useI18n } from 'vue-i18n';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { index, create, store, update } from '@/routes/admin/kb';
+
+const { t } = useI18n();
 
 type Article = {
     id: number;
@@ -22,9 +25,9 @@ const isEdit = props.article !== null;
 
 setLayoutProps({
     breadcrumbs: [
-        { title: 'Admin: Knowledge Base', href: index() },
+        { title: t('kb.admin.breadcrumb'), href: index() },
         {
-            title: isEdit ? 'Edit Article' : 'New Article',
+            title: isEdit ? t('kb.admin.editBreadcrumb') : t('kb.admin.newBreadcrumb'),
             href: isEdit ? '#' : create(),
         },
     ],
@@ -34,11 +37,11 @@ const formAction = isEdit ? update.form(props.article!.id) : store.form();
 </script>
 
 <template>
-    <Head :title="isEdit ? 'Edit Article' : 'New Article'" />
+    <Head :title="isEdit ? $t('kb.admin.editArticle') : $t('kb.admin.newArticle')" />
 
     <div class="mx-auto max-w-3xl p-4">
         <h1 class="mb-6 text-2xl font-semibold">
-            {{ isEdit ? 'Edit Article' : 'New Article' }}
+            {{ isEdit ? $t('kb.admin.editArticle') : $t('kb.admin.newArticle') }}
         </h1>
 
         <Form
@@ -48,7 +51,7 @@ const formAction = isEdit ? update.form(props.article!.id) : store.form();
         >
             <div class="flex flex-col gap-1.5">
                 <Label for="title"
-                    >Title <span class="text-destructive">*</span></Label
+                    >{{ $t('kb.admin.titleLabel') }} <span class="text-destructive">*</span></Label
                 >
                 <Input
                     id="title"
@@ -60,20 +63,20 @@ const formAction = isEdit ? update.form(props.article!.id) : store.form();
             </div>
 
             <div class="flex flex-col gap-1.5">
-                <Label for="excerpt">Excerpt</Label>
+                <Label for="excerpt">{{ $t('kb.admin.excerptLabel') }}</Label>
                 <Textarea
                     id="excerpt"
                     name="excerpt"
                     rows="2"
                     :value="article?.excerpt ?? ''"
-                    placeholder="Short summary shown in listings…"
+                    :placeholder="$t('kb.admin.excerptPlaceholder')"
                 />
                 <InputError :message="errors.excerpt" />
             </div>
 
             <div class="flex flex-col gap-1.5">
                 <Label for="content"
-                    >Content <span class="text-destructive">*</span></Label
+                    >{{ $t('kb.admin.contentLabel') }} <span class="text-destructive">*</span></Label
                 >
                 <Textarea
                     id="content"
@@ -87,12 +90,12 @@ const formAction = isEdit ? update.form(props.article!.id) : store.form();
 
             <div class="grid grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1.5">
-                    <Label for="category">Category</Label>
+                    <Label for="category">{{ $t('kb.admin.categoryLabel') }}</Label>
                     <Input
                         id="category"
                         name="category"
                         :value="article?.category ?? ''"
-                        placeholder="e.g. general, technical"
+                        :placeholder="$t('kb.admin.categoryPlaceholder')"
                     />
                     <InputError :message="errors.category" />
                 </div>
@@ -105,7 +108,7 @@ const formAction = isEdit ? update.form(props.article!.id) : store.form();
                         :checked="article?.is_published ?? false"
                         class="rounded"
                     />
-                    <Label for="is_published">Published</Label>
+                    <Label for="is_published">{{ $t('kb.admin.publishedLabel') }}</Label>
                 </div>
             </div>
 
@@ -113,15 +116,15 @@ const formAction = isEdit ? update.form(props.article!.id) : store.form();
                 <Link
                     :href="index()"
                     class="text-sm text-muted-foreground hover:underline"
-                    >Cancel</Link
+                    >{{ $t('common.cancel') }}</Link
                 >
                 <Button type="submit" :disabled="processing">
                     {{
                         processing
-                            ? 'Saving…'
+                            ? $t('kb.admin.saving')
                             : isEdit
-                              ? 'Save Changes'
-                              : 'Create Article'
+                              ? $t('kb.admin.saveChanges')
+                              : $t('kb.admin.createArticle')
                     }}
                 </Button>
             </div>

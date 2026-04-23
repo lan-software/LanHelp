@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import { useI18n } from 'vue-i18n';
 import { Button } from '@/components/ui/button';
 import { index, create, show } from '@/routes/tickets';
+
+const { t } = useI18n();
 
 type Ticket = {
     id: number;
@@ -26,7 +29,7 @@ defineProps<{ tickets: PaginatedTickets }>();
 
 defineOptions({
     layout: {
-        breadcrumbs: [{ title: 'My Tickets', href: index() }],
+        breadcrumbs: [{ title: () => t('tickets.myTicketsBreadcrumb'), href: index() }],
     },
 });
 
@@ -40,24 +43,16 @@ const statusColor: Record<string, string> = {
         'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
     closed: 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300',
 };
-
-const statusLabel: Record<string, string> = {
-    open: 'Open',
-    in_progress: 'In Progress',
-    waiting_for_user: 'Waiting',
-    resolved: 'Resolved',
-    closed: 'Closed',
-};
 </script>
 
 <template>
-    <Head title="My Tickets" />
+    <Head :title="$t('tickets.myTicketsHeadTitle')" />
 
     <div class="flex flex-col gap-6 p-4">
         <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-semibold">My Tickets</h1>
+            <h1 class="text-2xl font-semibold">{{ $t('tickets.myTicketsHeadTitle') }}</h1>
             <Button as-child>
-                <Link :href="create()">Open a New Ticket</Link>
+                <Link :href="create()">{{ $t('tickets.openNewTicket') }}</Link>
             </Button>
         </div>
 
@@ -65,9 +60,9 @@ const statusLabel: Record<string, string> = {
             v-if="tickets.data.length === 0"
             class="py-16 text-center text-muted-foreground"
         >
-            <p class="text-lg">You have no tickets yet.</p>
+            <p class="text-lg">{{ $t('tickets.noTicketsYet') }}</p>
             <Button as-child class="mt-4">
-                <Link :href="create()">Open a support request</Link>
+                <Link :href="create()">{{ $t('tickets.openSupportRequest') }}</Link>
             </Button>
         </div>
 
@@ -94,12 +89,12 @@ const statusLabel: Record<string, string> = {
                             {{ ticket.subject }}
                         </p>
                         <p class="mt-1 text-xs text-muted-foreground">
-                            Updated
+                            {{ $t('tickets.updatedLabel') }}
                             {{
                                 new Date(ticket.updated_at).toLocaleDateString()
                             }}
                             <span v-if="ticket.assignee">
-                                · Assigned to
+                                · {{ $t('tickets.assignedTo') }}
                                 {{
                                     ticket.assignee.display_name ??
                                     ticket.assignee.name
@@ -114,7 +109,7 @@ const statusLabel: Record<string, string> = {
                             'bg-gray-100 text-gray-800'
                         "
                     >
-                        {{ statusLabel[ticket.status] ?? ticket.status }}
+                        {{ $t(`tickets.statusLabels.${ticket.status}`) || ticket.status }}
                     </span>
                 </div>
             </Link>

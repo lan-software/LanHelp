@@ -19,6 +19,6 @@ class TicketStatusController extends Controller
         $action->execute($ticket, $status, $request->user());
 
         return redirect()->route('tickets.show', $ticket)
-            ->with('success', 'Status updated to "'.$status->label().'".');
+            ->with('success', __('messages.tickets.statusUpdated', ['status' => $status->label()]));
     }
 }

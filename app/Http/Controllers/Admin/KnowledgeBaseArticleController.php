@@ -48,7 +48,7 @@ class KnowledgeBaseArticleController extends Controller
         }
 
         return redirect()->route('admin.kb.index')
-            ->with('success', 'Article created.');
+            ->with('success', __('messages.kb.articleCreated'));
     }
 
     public function edit(KnowledgeBaseArticle $article): Response
@@ -76,7 +76,7 @@ class KnowledgeBaseArticleController extends Controller
         }
 
         return redirect()->route('admin.kb.index')
-            ->with('success', 'Article updated.');
+            ->with('success', __('messages.kb.articleUpdated'));
     }
 
     public function destroy(KnowledgeBaseArticle $article): RedirectResponse
@@ -86,6 +86,6 @@ class KnowledgeBaseArticleController extends Controller
         $article->delete();
 
         return redirect()->route('admin.kb.index')
-            ->with('success', 'Article deleted.');
+            ->with('success', __('messages.kb.articleDeleted'));
     }
 }

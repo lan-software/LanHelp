@@ -4,6 +4,7 @@ import { useVueTable, getCoreRowModel } from '@tanstack/vue-table';
 import type { ColumnDef } from '@tanstack/vue-table';
 import { ArrowUpDown } from 'lucide-vue-next';
 import { ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -16,6 +17,8 @@ import {
 } from '@/components/ui/table';
 import { index, assign } from '@/routes/staff/tickets';
 import { show } from '@/routes/tickets';
+
+const { t } = useI18n();
 
 type User = { id: number; name: string; display_name: string | null };
 type Ticket = {
@@ -54,7 +57,7 @@ const props = defineProps<{
 
 defineOptions({
     layout: {
-        breadcrumbs: [{ title: 'Staff Board', href: index() }],
+        breadcrumbs: [{ title: () => t('staff.board.breadcrumb'), href: index() }],
     },
 });
 
@@ -143,28 +146,28 @@ const columns: ColumnDef<Ticket>[] = [
     },
     {
         accessorKey: 'subject',
-        header: 'Subject',
+        header: () => t('staff.board.colSubject'),
     },
     {
         id: 'requester',
-        header: 'Requester',
+        header: () => t('staff.board.colRequester'),
         accessorFn: (row) => row.requester.display_name ?? row.requester.name,
     },
     {
         accessorKey: 'status',
-        header: 'Status',
+        header: () => t('staff.board.colStatus'),
     },
     {
         accessorKey: 'priority',
-        header: 'Priority',
+        header: () => t('staff.board.colPriority'),
     },
     {
         id: 'assignee',
-        header: 'Assignee',
+        header: () => t('staff.board.colAssignee'),
     },
     {
         accessorKey: 'updated_at',
-        header: 'Updated',
+        header: () => t('staff.board.colUpdated'),
     },
 ];
 
@@ -182,14 +185,12 @@ const table = useVueTable({
 </script>
 
 <template>
-    <Head title="Staff Board" />
+    <Head :title="$t('staff.board.headTitle')" />
 
     <div class="flex flex-col gap-4 p-4">
         <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-semibold">Staff Ticket Board</h1>
-            <span class="text-sm text-muted-foreground"
-                >{{ tickets.total }} tickets</span
-            >
+            <h1 class="text-2xl font-semibold">{{ $t('staff.board.pageTitle') }}</h1>
+            <span class="text-sm text-muted-foreground">{{ $t('staff.board.ticketsCount', { count: tickets.total }) }}</span>
         </div>
 
         <!-- Search + Filters -->
@@ -198,30 +199,30 @@ const table = useVueTable({
         >
             <Input
                 v-model="searchQuery"
-                placeholder="Search tickets..."
+                :placeholder="$t('staff.board.searchPlaceholder')"
                 class="h-8 w-full sm:w-64"
             />
             <div class="flex flex-wrap items-center gap-3">
                 <div class="flex items-center gap-2">
-                    <label class="text-sm text-muted-foreground">Scope</label>
+                    <label class="text-sm text-muted-foreground">{{ $t('staff.board.scopeLabel') }}</label>
                     <select
                         v-model="selectedScope"
                         class="h-8 rounded border border-input bg-background px-2 text-sm"
                         @change="applyFilters"
                     >
-                        <option value="all">All Tickets</option>
-                        <option value="mine">Assigned to me</option>
-                        <option value="unassigned">Unassigned</option>
+                        <option value="all">{{ $t('staff.board.scopeAll') }}</option>
+                        <option value="mine">{{ $t('staff.board.scopeMine') }}</option>
+                        <option value="unassigned">{{ $t('staff.board.scopeUnassigned') }}</option>
                     </select>
                 </div>
                 <div class="flex items-center gap-2">
-                    <label class="text-sm text-muted-foreground">Status</label>
+                    <label class="text-sm text-muted-foreground">{{ $t('staff.board.statusLabel') }}</label>
                     <select
                         v-model="selectedStatus"
                         class="h-8 rounded border border-input bg-background px-2 text-sm"
                         @change="applyFilters"
                     >
-                        <option value="">Active</option>
+                        <option value="">{{ $t('staff.board.statusActive') }}</option>
                         <option
                             v-for="s in statuses"
                             :key="s.value"
@@ -232,15 +233,13 @@ const table = useVueTable({
                     </select>
                 </div>
                 <div class="flex items-center gap-2">
-                    <label class="text-sm text-muted-foreground"
-                        >Assignee</label
-                    >
+                    <label class="text-sm text-muted-foreground">{{ $t('staff.board.assigneeLabel') }}</label>
                     <select
                         v-model="selectedAssignee"
                         class="h-8 rounded border border-input bg-background px-2 text-sm"
                         @change="applyFilters"
                     >
-                        <option value="">Any</option>
+                        <option value="">{{ $t('staff.board.assigneeAny') }}</option>
                         <option
                             v-for="u in staffUsers"
                             :key="u.id"
@@ -276,11 +275,11 @@ const table = useVueTable({
                                 class="-ml-3 h-8"
                                 @click="sortBy('subject')"
                             >
-                                Subject
+                                {{ $t('staff.board.colSubject') }}
                                 <ArrowUpDown class="ml-1 h-3.5 w-3.5" />
                             </Button>
                         </TableHead>
-                        <TableHead>Requester</TableHead>
+                        <TableHead>{{ $t('staff.board.colRequester') }}</TableHead>
                         <TableHead>
                             <Button
                                 variant="ghost"
@@ -288,7 +287,7 @@ const table = useVueTable({
                                 class="-ml-3 h-8"
                                 @click="sortBy('status')"
                             >
-                                Status
+                                {{ $t('staff.board.colStatus') }}
                                 <ArrowUpDown class="ml-1 h-3.5 w-3.5" />
                             </Button>
                         </TableHead>
@@ -299,11 +298,11 @@ const table = useVueTable({
                                 class="-ml-3 h-8"
                                 @click="sortBy('priority')"
                             >
-                                Priority
+                                {{ $t('staff.board.colPriority') }}
                                 <ArrowUpDown class="ml-1 h-3.5 w-3.5" />
                             </Button>
                         </TableHead>
-                        <TableHead>Assignee</TableHead>
+                        <TableHead>{{ $t('staff.board.colAssignee') }}</TableHead>
                         <TableHead>
                             <Button
                                 variant="ghost"
@@ -311,7 +310,7 @@ const table = useVueTable({
                                 class="-ml-3 h-8"
                                 @click="sortBy('updated_at')"
                             >
-                                Updated
+                                {{ $t('staff.board.colUpdated') }}
                                 <ArrowUpDown class="ml-1 h-3.5 w-3.5" />
                             </Button>
                         </TableHead>
@@ -323,7 +322,7 @@ const table = useVueTable({
                             :colspan="7"
                             class="py-12 text-center text-muted-foreground"
                         >
-                            No tickets match the current filters.
+                            {{ $t('staff.board.noResults') }}
                         </TableCell>
                     </TableRow>
                     <TableRow
@@ -384,7 +383,7 @@ const table = useVueTable({
                                         )
                                 "
                             >
-                                <option value="">Unassigned</option>
+                                <option value="">{{ $t('staff.board.unassignedOption') }}</option>
                                 <option
                                     v-for="u in staffUsers"
                                     :key="u.id"
@@ -412,7 +411,7 @@ const table = useVueTable({
             class="flex items-center justify-between"
         >
             <p class="text-sm text-muted-foreground">
-                Page {{ tickets.current_page }} of {{ tickets.last_page }}
+                {{ $t('staff.board.pageOf', { current: tickets.current_page, total: tickets.last_page }) }}
             </p>
             <div class="flex gap-1">
                 <template v-for="link in tickets.links" :key="link.label">

@@ -17,7 +17,7 @@ class TicketReplyController extends Controller
         $action->execute($ticket, $request->user(), $request->validated());
 
         return redirect()->route('tickets.show', $ticket)
-            ->with('success', 'Reply added.');
+            ->with('success', __('messages.tickets.replyAdded'));
     }
 
     public function destroy(Ticket $ticket, TicketReply $reply): RedirectResponse
@@ -27,6 +27,6 @@ class TicketReplyController extends Controller
         $reply->delete();
 
         return redirect()->route('tickets.show', $ticket)
-            ->with('success', 'Reply deleted.');
+            ->with('success', __('messages.tickets.replyDeleted'));
     }
 }

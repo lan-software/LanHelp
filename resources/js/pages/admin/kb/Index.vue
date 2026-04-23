@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { Form, Head, Link } from '@inertiajs/vue3';
+import { useI18n } from 'vue-i18n';
 import { Button } from '@/components/ui/button';
 import { index, create, edit, destroy } from '@/routes/admin/kb';
+
+const { t } = useI18n();
 
 type Article = {
     id: number;
@@ -25,19 +28,19 @@ defineProps<{ articles: PaginatedArticles }>();
 
 defineOptions({
     layout: {
-        breadcrumbs: [{ title: 'Admin: Knowledge Base', href: index() }],
+        breadcrumbs: [{ title: () => t('kb.admin.breadcrumb'), href: index() }],
     },
 });
 </script>
 
 <template>
-    <Head title="Admin: Knowledge Base" />
+    <Head :title="$t('kb.admin.headTitle')" />
 
     <div class="flex flex-col gap-4 p-4">
         <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-semibold">Knowledge Base</h1>
+            <h1 class="text-2xl font-semibold">{{ $t('kb.admin.pageTitle') }}</h1>
             <Button as-child>
-                <Link :href="create()">New Article</Link>
+                <Link :href="create()">{{ $t('kb.admin.newArticle') }}</Link>
             </Button>
         </div>
 
@@ -47,11 +50,11 @@ defineOptions({
                     class="border-b bg-muted/50 text-left text-xs tracking-wider text-muted-foreground uppercase"
                 >
                     <tr>
-                        <th class="px-4 py-3">Title</th>
-                        <th class="px-4 py-3">Category</th>
-                        <th class="px-4 py-3">Status</th>
-                        <th class="px-4 py-3">Author</th>
-                        <th class="px-4 py-3">Updated</th>
+                        <th class="px-4 py-3">{{ $t('kb.admin.tableHeadTitle') }}</th>
+                        <th class="px-4 py-3">{{ $t('kb.admin.tableHeadCategory') }}</th>
+                        <th class="px-4 py-3">{{ $t('kb.admin.tableHeadStatus') }}</th>
+                        <th class="px-4 py-3">{{ $t('kb.admin.tableHeadAuthor') }}</th>
+                        <th class="px-4 py-3">{{ $t('kb.admin.tableHeadUpdated') }}</th>
                         <th class="px-4 py-3"></th>
                     </tr>
                 </thead>
@@ -77,7 +80,7 @@ defineOptions({
                                 "
                             >
                                 {{
-                                    article.is_published ? 'Published' : 'Draft'
+                                    article.is_published ? $t('kb.admin.published') : $t('kb.admin.draft')
                                 }}
                             </span>
                         </td>
@@ -99,7 +102,7 @@ defineOptions({
                                 <Link
                                     :href="edit(article.id)"
                                     class="text-xs text-primary hover:underline"
-                                    >Edit</Link
+                                    >{{ $t('common.edit') }}</Link
                                 >
                                 <Form
                                     v-bind="destroy.form(article.id)"
@@ -114,7 +117,7 @@ defineOptions({
                                                 ?.requestSubmit()
                                         "
                                     >
-                                        Delete
+                                        {{ $t('common.delete') }}
                                     </button>
                                 </Form>
                             </div>
@@ -126,7 +129,7 @@ defineOptions({
                 v-if="articles.data.length === 0"
                 class="py-12 text-center text-muted-foreground"
             >
-                No articles yet.
+                {{ $t('kb.admin.noArticles') }}
             </div>
         </div>
 

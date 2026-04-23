@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Form, Head } from '@inertiajs/vue3';
+import { useI18n } from 'vue-i18n';
 import InputError from '@/components/InputError.vue';
 import PasswordInput from '@/components/PasswordInput.vue';
 import { Button } from '@/components/ui/button';
@@ -7,17 +8,18 @@ import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { store } from '@/routes/password/confirm';
 
+const { t } = useI18n();
+
 defineOptions({
     layout: {
-        title: 'Confirm your password',
-        description:
-            'This is a secure area of the application. Please confirm your password before continuing.',
+        title: () => t('auth.confirmPassword.layoutTitle'),
+        description: () => t('auth.confirmPassword.layoutDescription'),
     },
 });
 </script>
 
 <template>
-    <Head title="Confirm password" />
+    <Head :title="$t('auth.confirmPassword.headTitle')" />
 
     <Form
         v-bind="store.form()"
@@ -26,7 +28,7 @@ defineOptions({
     >
         <div class="space-y-6">
             <div class="grid gap-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{{ $t('auth.confirmPassword.password') }}</Label>
                 <PasswordInput
                     id="password"
                     name="password"
@@ -46,7 +48,7 @@ defineOptions({
                     data-test="confirm-password-button"
                 >
                     <Spinner v-if="processing" />
-                    Confirm password
+                    {{ $t('auth.confirmPassword.button') }}
                 </Button>
             </div>
         </div>

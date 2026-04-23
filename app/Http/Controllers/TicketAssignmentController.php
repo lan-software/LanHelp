@@ -18,7 +18,7 @@ class TicketAssignmentController extends Controller
         $action->assign($ticket, $assignee);
 
         return redirect()->route('staff.tickets.index')
-            ->with('success', "Ticket assigned to {$assignee->displayName()}.");
+            ->with('success', __('messages.tickets.assigned', ['name' => $assignee->displayName()]));
     }
 
     public function destroy(Ticket $ticket, AssignTicketAction $action): RedirectResponse
@@ -28,6 +28,6 @@ class TicketAssignmentController extends Controller
         $action->unassign($ticket);
 
         return redirect()->route('staff.tickets.index')
-            ->with('success', 'Ticket unassigned.');
+            ->with('success', __('messages.tickets.unassigned'));
     }
 }

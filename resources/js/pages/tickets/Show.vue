@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { Form, Head, Link, setLayoutProps, usePage } from '@inertiajs/vue3';
+import { Form, Head, Link, setLayoutProps, useForm, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { index, show } from '@/routes/tickets';
 import { store as storeReply } from '@/routes/tickets/replies';
 import { update as updateStatus } from '@/routes/tickets/status';
+
+const { t } = useI18n();
 
 type User = {
     id: number;
@@ -48,7 +51,7 @@ const props = defineProps<{
 
 setLayoutProps({
     breadcrumbs: [
-        { title: 'My Tickets', href: index() },
+        { title: t('tickets.myTicketsBreadcrumb'), href: index() },
         { title: `#${props.ticket.id}`, href: show(props.ticket.id) },
     ],
 });
@@ -80,6 +83,19 @@ const priorityColor: Record<string, string> = {
 
 function formatDate(dt: string) {
     return new Date(dt).toLocaleString();
+}
+
+const replyForm = useForm({
+    body: '',
+    is_internal: false,
+    notify_mode: 'link' as 'link' | 'content',
+});
+
+function submitReply() {
+    replyForm.post(storeReply(props.ticket.id).url, {
+        preserveScroll: true,
+        onSuccess: () => replyForm.reset(),
+    });
 }
 
 const contextEntries = computed(() => {
@@ -131,18 +147,18 @@ const contextLinks = computed(() => {
                         class="text-sm"
                         :class="priorityColor[ticket.priority]"
                     >
-                        {{ ticket.priority }} priority
+                        {{ ticket.priority }} {{ $t('tickets.priority').toLowerCase() }}
                     </span>
                 </div>
                 <h1 class="mt-1 text-2xl font-semibold">
                     {{ ticket.subject }}
                 </h1>
                 <p class="mt-1 text-sm text-muted-foreground">
-                    Opened by
+                    {{ $t('tickets.openedBy') }}
                     {{ ticket.requester.display_name ?? ticket.requester.name }}
                     · {{ formatDate(ticket.created_at) }}
                     <span v-if="ticket.assignee">
-                        · Assigned to
+                        · {{ $t('tickets.assignedTo') }}
                         {{
                             ticket.assignee.display_name ?? ticket.assignee.name
                         }}</span
@@ -167,9 +183,7 @@ const contextLinks = computed(() => {
                             {{ s.label }}
                         </option>
                     </select>
-                    <Button type="submit" size="sm" variant="outline"
-                        >Update</Button
-                    >
+                    <Button type="submit" size="sm" variant="outline">{{ $t('tickets.update') }}</Button>
                 </Form>
             </div>
         </div>
@@ -215,7 +229,7 @@ const contextLinks = computed(() => {
                             v-if="reply.is_internal"
                             class="rounded-full bg-yellow-200 px-2 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200"
                         >
-                            Internal note
+                            {{ $t('tickets.internalNote') }}
                         </span>
                     </div>
                     <p class="text-sm whitespace-pre-wrap">{{ reply.body }}</p>
@@ -223,19 +237,19 @@ const contextLinks = computed(() => {
 
                 <!-- Reply form -->
                 <div v-if="canReply" class="mt-4">
-                    <Form
-                        v-bind="storeReply.form(ticket.id)"
-                        v-slot="{ errors, processing }"
+                    <form
                         class="flex flex-col gap-3 rounded-lg border bg-card p-4 shadow-sm"
+                        @submit.prevent="submitReply"
                     >
-                        <h3 class="font-medium">Add Reply</h3>
+                        <h3 class="font-medium">{{ $t('tickets.addReplyHeading') }}</h3>
                         <Textarea
+                            v-model="replyForm.body"
                             name="body"
-                            placeholder="Write your reply…"
+                            :placeholder="$t('tickets.replyBodyPlaceholder')"
                             rows="4"
                             required
                         />
-                        <InputError :message="errors.body" />
+                        <InputError :message="replyForm.errors.body" />
                         <div class="flex flex-col gap-3">
                             <div
                                 v-if="isStaff"
@@ -243,55 +257,56 @@ const contextLinks = computed(() => {
                             >
                                 <label class="flex items-center gap-2 text-sm">
                                     <input
+                                        v-model="replyForm.is_internal"
                                         type="checkbox"
-                                        name="is_internal"
-                                        value="1"
                                         class="rounded"
                                     />
-                                    Internal note (staff only)
+                                    {{ $t('tickets.internalNoteCheckbox') }}
                                 </label>
                                 <div class="flex items-center gap-2 text-sm">
-                                    <span class="text-muted-foreground"
-                                        >Email notification:</span
-                                    >
+                                    <span class="text-muted-foreground">{{ $t('tickets.emailNotification') }}</span>
                                     <label class="flex items-center gap-1">
                                         <input
+                                            v-model="replyForm.notify_mode"
                                             type="radio"
-                                            name="notify_mode"
                                             value="link"
-                                            checked
                                             class="rounded"
                                         />
-                                        Link only
+                                        {{ $t('tickets.linkOnly') }}
                                     </label>
                                     <label class="flex items-center gap-1">
                                         <input
+                                            v-model="replyForm.notify_mode"
                                             type="radio"
-                                            name="notify_mode"
                                             value="content"
                                             class="rounded"
                                         />
-                                        Include content
+                                        {{ $t('tickets.includeContent') }}
                                     </label>
                                 </div>
                             </div>
                             <div class="flex justify-end">
-                                <Button type="submit" :disabled="processing">
-                                    {{ processing ? 'Sending…' : 'Send Reply' }}
+                                <Button
+                                    type="submit"
+                                    :disabled="replyForm.processing"
+                                >
+                                    {{
+                                        replyForm.processing
+                                            ? $t('tickets.sending')
+                                            : $t('tickets.sendReplyButton')
+                                    }}
                                 </Button>
                             </div>
                         </div>
-                    </Form>
+                    </form>
                 </div>
                 <p
                     v-else-if="['resolved', 'closed'].includes(ticket.status)"
                     class="mt-4 text-center text-sm text-muted-foreground"
                 >
-                    This ticket is {{ ticket.status }}.
-                    <Link :href="index()" class="underline"
-                        >Open a new ticket</Link
-                    >
-                    if you need more help.
+                    {{ $t('tickets.ticketClosed', { status: ticket.status }) }}
+                    <Link :href="index()" class="underline">{{ $t('tickets.openNewForHelp') }}</Link>
+                    {{ $t('tickets.needMoreHelp') }}
                 </p>
             </div>
 
@@ -308,7 +323,7 @@ const contextLinks = computed(() => {
                     <h2
                         class="mb-3 text-sm font-semibold tracking-wider text-muted-foreground uppercase"
                     >
-                        Context Snapshot
+                        {{ $t('tickets.contextSnapshot') }}
                     </h2>
                     <dl class="flex flex-col gap-2 text-sm">
                         <div
@@ -328,7 +343,7 @@ const contextLinks = computed(() => {
                         v-if="contextLinks.length > 0"
                         class="mt-3 flex flex-col gap-1"
                     >
-                        <p class="text-xs text-muted-foreground">Links</p>
+                        <p class="text-xs text-muted-foreground">{{ $t('common.view') }}</p>
                         <a
                             v-for="[name, href] in contextLinks"
                             :key="name"
@@ -347,11 +362,11 @@ const contextLinks = computed(() => {
                     <h2
                         class="mb-3 text-sm font-semibold tracking-wider text-muted-foreground uppercase"
                     >
-                        Details
+                        {{ $t('tickets.details') }}
                     </h2>
                     <dl class="flex flex-col gap-2">
                         <div class="flex justify-between">
-                            <dt class="text-muted-foreground">Status</dt>
+                            <dt class="text-muted-foreground">{{ $t('tickets.status') }}</dt>
                             <dd>
                                 {{
                                     statuses.find(
@@ -361,7 +376,7 @@ const contextLinks = computed(() => {
                             </dd>
                         </div>
                         <div class="flex justify-between">
-                            <dt class="text-muted-foreground">Priority</dt>
+                            <dt class="text-muted-foreground">{{ $t('tickets.priority') }}</dt>
                             <dd :class="priorityColor[ticket.priority]">
                                 {{ ticket.priority }}
                             </dd>
@@ -370,7 +385,7 @@ const contextLinks = computed(() => {
                             v-if="ticket.assignee"
                             class="flex justify-between"
                         >
-                            <dt class="text-muted-foreground">Assignee</dt>
+                            <dt class="text-muted-foreground">{{ $t('tickets.assignee') }}</dt>
                             <dd>
                                 {{
                                     ticket.assignee.display_name ??
@@ -382,7 +397,7 @@ const contextLinks = computed(() => {
                             v-if="ticket.resolved_at"
                             class="flex justify-between"
                         >
-                            <dt class="text-muted-foreground">Resolved</dt>
+                            <dt class="text-muted-foreground">{{ $t('tickets.resolved') }}</dt>
                             <dd>{{ formatDate(ticket.resolved_at) }}</dd>
                         </div>
                     </dl>
