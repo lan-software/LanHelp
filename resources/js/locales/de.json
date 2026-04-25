@@ -77,7 +77,8 @@
             "recoveryCode": "Wiederherstellungscode",
             "useRecovery": "Wiederherstellungscode verwenden",
             "useCode": "Authentifizierungscode verwenden",
-            "button": "Verifizieren"
+            "button": "Verifizieren",
+            "headTitle": "Zwei-Faktor-Authentifizierung"
         },
         "register": {
             "layoutTitle": "Konto erstellen",
@@ -97,6 +98,16 @@
         "forgotPassword": {
             "email": "E-Mail-Adresse",
             "emailPlaceholder": "email@beispiel.de"
+        },
+        "resetPassword": {
+            "layoutTitle": "Passwort zurücksetzen",
+            "headTitle": "Passwort zurücksetzen",
+            "email": "E-Mail",
+            "password": "Passwort",
+            "passwordPlaceholder": "Passwort",
+            "confirmPassword": "Passwort bestätigen",
+            "confirmPasswordPlaceholder": "Passwort bestätigen",
+            "button": "Passwort zurücksetzen"
         }
     },
     "settings": {
@@ -303,5 +314,25 @@
         "maxLength": "Darf höchstens {max} Zeichen lang sein",
         "passwordMatch": "Passwörter müssen übereinstimmen",
         "invalid": "Ungültiger Wert"
+    },
+    "components": {
+        "twoFactorSetup": {
+            "verifyButton": "Weiter",
+            "enabledButton": "Schließen"
+        },
+        "deleteUser": {
+            "confirmButton": "Konto löschen",
+            "cancelButton": "Abbrechen",
+            "passwordPlaceholder": "Passwort",
+            "passwordLabel": "Passwort",
+            "dialogTitle": "Bist du sicher, dass du dein Konto löschen möchtest?",
+            "triggerButton": "Konto löschen",
+            "sectionDescription": "Lösche dein Konto und alle zugehörigen Daten",
+            "sectionTitle": "Konto löschen"
+        },
+        "userMenu": {
+            "logout": "Abmelden",
+            "settings": "Einstellungen"
+        }
     }
 }
