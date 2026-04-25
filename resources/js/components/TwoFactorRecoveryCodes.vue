@@ -42,7 +42,9 @@ onMounted(async () => {
     <Card class="w-full">
         <CardHeader>
             <CardTitle class="flex gap-3">
-                <LockKeyhole class="size-4" />{{ $t('components.twoFactorRecoveryCodes.cardTitle') }}
+                <LockKeyhole class="size-4" />{{
+                    $t('components.twoFactorRecoveryCodes.cardTitle')
+                }}
             </CardTitle>
             <CardDescription>
                 {{ $t('components.twoFactorRecoveryCodes.cardDescription') }}
@@ -57,7 +59,11 @@ onMounted(async () => {
                         :is="isRecoveryCodesVisible ? EyeOff : Eye"
                         class="size-4"
                     />
-                    {{ isRecoveryCodesVisible ? $t('components.twoFactorRecoveryCodes.hideButton') : $t('components.twoFactorRecoveryCodes.viewButton') }}
+                    {{
+                        isRecoveryCodesVisible
+                            ? $t('components.twoFactorRecoveryCodes.hideButton')
+                            : $t('components.twoFactorRecoveryCodes.viewButton')
+                    }}
                 </Button>
 
                 <Form
@@ -73,7 +79,12 @@ onMounted(async () => {
                         type="submit"
                         :disabled="processing"
                     >
-                        <RefreshCw /> {{ $t('components.twoFactorRecoveryCodes.regenerateButton') }}
+                        <RefreshCw />
+                        {{
+                            $t(
+                                'components.twoFactorRecoveryCodes.regenerateButton',
+                            )
+                        }}
                     </Button>
                 </Form>
             </div>
@@ -110,7 +121,14 @@ onMounted(async () => {
                     </div>
                     <p class="text-xs text-muted-foreground select-none">
                         {{ $t('components.twoFactorRecoveryCodes.usageNote') }}
-                        <span class="font-bold">{{ $t('components.twoFactorRecoveryCodes.regenerateLink') }}</span> {{ $t('components.twoFactorRecoveryCodes.usageNoteEnd') }}
+                        <span class="font-bold">{{
+                            $t(
+                                'components.twoFactorRecoveryCodes.regenerateLink',
+                            )
+                        }}</span>
+                        {{
+                            $t('components.twoFactorRecoveryCodes.usageNoteEnd')
+                        }}
                     </p>
                 </div>
             </div>

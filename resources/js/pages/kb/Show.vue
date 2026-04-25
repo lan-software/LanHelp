@@ -30,7 +30,9 @@ setLayoutProps({
 
     <div class="mx-auto max-w-3xl p-4">
         <div class="mb-2 flex items-center gap-2 text-sm text-muted-foreground">
-            <Link :href="index()" class="hover:underline">{{ $t('kb.breadcrumb') }}</Link>
+            <Link :href="index()" class="hover:underline">{{
+                $t('kb.breadcrumb')
+            }}</Link>
             <span>›</span>
             <span v-if="article.category" class="capitalize">{{
                 article.category
@@ -51,7 +53,11 @@ setLayoutProps({
         </div>
 
         <div class="mt-10 border-t pt-6">
-            <Link :href="index()" class="text-sm text-primary hover:underline">{{ $t('kb.backToKb') }}</Link>
+            <Link
+                :href="index()"
+                class="text-sm text-primary hover:underline"
+                >{{ $t('kb.backToKb') }}</Link
+            >
         </div>
     </div>
 </template>

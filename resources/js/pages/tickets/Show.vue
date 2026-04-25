@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { Form, Head, Link, setLayoutProps, useForm, usePage } from '@inertiajs/vue3';
+import {
+    Form,
+    Head,
+    Link,
+    setLayoutProps,
+    useForm,
+    usePage,
+} from '@inertiajs/vue3';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import InputError from '@/components/InputError.vue';
@@ -147,7 +154,8 @@ const contextLinks = computed(() => {
                         class="text-sm"
                         :class="priorityColor[ticket.priority]"
                     >
-                        {{ ticket.priority }} {{ $t('tickets.priority').toLowerCase() }}
+                        {{ ticket.priority }}
+                        {{ $t('tickets.priority').toLowerCase() }}
                     </span>
                 </div>
                 <h1 class="mt-1 text-2xl font-semibold">
@@ -183,7 +191,9 @@ const contextLinks = computed(() => {
                             {{ s.label }}
                         </option>
                     </select>
-                    <Button type="submit" size="sm" variant="outline">{{ $t('tickets.update') }}</Button>
+                    <Button type="submit" size="sm" variant="outline">{{
+                        $t('tickets.update')
+                    }}</Button>
                 </Form>
             </div>
         </div>
@@ -241,7 +251,9 @@ const contextLinks = computed(() => {
                         class="flex flex-col gap-3 rounded-lg border bg-card p-4 shadow-sm"
                         @submit.prevent="submitReply"
                     >
-                        <h3 class="font-medium">{{ $t('tickets.addReplyHeading') }}</h3>
+                        <h3 class="font-medium">
+                            {{ $t('tickets.addReplyHeading') }}
+                        </h3>
                         <Textarea
                             v-model="replyForm.body"
                             name="body"
@@ -264,7 +276,9 @@ const contextLinks = computed(() => {
                                     {{ $t('tickets.internalNoteCheckbox') }}
                                 </label>
                                 <div class="flex items-center gap-2 text-sm">
-                                    <span class="text-muted-foreground">{{ $t('tickets.emailNotification') }}</span>
+                                    <span class="text-muted-foreground">{{
+                                        $t('tickets.emailNotification')
+                                    }}</span>
                                     <label class="flex items-center gap-1">
                                         <input
                                             v-model="replyForm.notify_mode"
@@ -305,7 +319,9 @@ const contextLinks = computed(() => {
                     class="mt-4 text-center text-sm text-muted-foreground"
                 >
                     {{ $t('tickets.ticketClosed', { status: ticket.status }) }}
-                    <Link :href="index()" class="underline">{{ $t('tickets.openNewForHelp') }}</Link>
+                    <Link :href="index()" class="underline">{{
+                        $t('tickets.openNewForHelp')
+                    }}</Link>
                     {{ $t('tickets.needMoreHelp') }}
                 </p>
             </div>
@@ -343,7 +359,9 @@ const contextLinks = computed(() => {
                         v-if="contextLinks.length > 0"
                         class="mt-3 flex flex-col gap-1"
                     >
-                        <p class="text-xs text-muted-foreground">{{ $t('common.view') }}</p>
+                        <p class="text-xs text-muted-foreground">
+                            {{ $t('common.view') }}
+                        </p>
                         <a
                             v-for="[name, href] in contextLinks"
                             :key="name"
@@ -366,7 +384,9 @@ const contextLinks = computed(() => {
                     </h2>
                     <dl class="flex flex-col gap-2">
                         <div class="flex justify-between">
-                            <dt class="text-muted-foreground">{{ $t('tickets.status') }}</dt>
+                            <dt class="text-muted-foreground">
+                                {{ $t('tickets.status') }}
+                            </dt>
                             <dd>
                                 {{
                                     statuses.find(
@@ -376,7 +396,9 @@ const contextLinks = computed(() => {
                             </dd>
                         </div>
                         <div class="flex justify-between">
-                            <dt class="text-muted-foreground">{{ $t('tickets.priority') }}</dt>
+                            <dt class="text-muted-foreground">
+                                {{ $t('tickets.priority') }}
+                            </dt>
                             <dd :class="priorityColor[ticket.priority]">
                                 {{ ticket.priority }}
                             </dd>
@@ -385,7 +407,9 @@ const contextLinks = computed(() => {
                             v-if="ticket.assignee"
                             class="flex justify-between"
                         >
-                            <dt class="text-muted-foreground">{{ $t('tickets.assignee') }}</dt>
+                            <dt class="text-muted-foreground">
+                                {{ $t('tickets.assignee') }}
+                            </dt>
                             <dd>
                                 {{
                                     ticket.assignee.display_name ??
@@ -397,7 +421,9 @@ const contextLinks = computed(() => {
                             v-if="ticket.resolved_at"
                             class="flex justify-between"
                         >
-                            <dt class="text-muted-foreground">{{ $t('tickets.resolved') }}</dt>
+                            <dt class="text-muted-foreground">
+                                {{ $t('tickets.resolved') }}
+                            </dt>
                             <dd>{{ formatDate(ticket.resolved_at) }}</dd>
                         </div>
                     </dl>

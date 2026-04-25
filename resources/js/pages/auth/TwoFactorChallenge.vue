@@ -84,7 +84,9 @@ const code = ref<string>('');
                     </div>
                     <InputError :message="errors.code" />
                 </div>
-                <Button type="submit" class="w-full" :disabled="processing">{{ $t('auth.twoFactor.continueButton') }}</Button>
+                <Button type="submit" class="w-full" :disabled="processing">{{
+                    $t('auth.twoFactor.continueButton')
+                }}</Button>
                 <div class="text-center text-sm text-muted-foreground">
                     <span>{{ $t('auth.twoFactor.orYouCan') }} </span>
                     <button
@@ -113,7 +115,9 @@ const code = ref<string>('');
                     required
                 />
                 <InputError :message="errors.recovery_code" />
-                <Button type="submit" class="w-full" :disabled="processing">{{ $t('auth.twoFactor.continueButton') }}</Button>
+                <Button type="submit" class="w-full" :disabled="processing">{{
+                    $t('auth.twoFactor.continueButton')
+                }}</Button>
 
                 <div class="text-center text-sm text-muted-foreground">
                     <span>{{ $t('auth.twoFactor.orYouCan') }} </span>

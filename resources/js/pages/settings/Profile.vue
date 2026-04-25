@@ -112,7 +112,11 @@ const isSsoUser = computed(() => !!user.value.lancore_user_id);
             </div>
 
             <div class="flex items-center gap-4">
-                <Button :disabled="processing" data-test="update-profile-button">{{ $t('settings.profile.updateButton') }}</Button>
+                <Button
+                    :disabled="processing"
+                    data-test="update-profile-button"
+                    >{{ $t('settings.profile.updateButton') }}</Button
+                >
 
                 <Transition
                     enter-active-class="transition ease-in-out"

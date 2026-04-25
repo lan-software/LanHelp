@@ -197,7 +197,9 @@ watch(
                             <div
                                 class="absolute inset-0 top-1/2 h-px w-full bg-border"
                             />
-                            <span class="relative bg-card px-2 py-1">{{ $t('components.twoFactorSetup.orEnterManually') }}</span>
+                            <span class="relative bg-card px-2 py-1">{{
+                                $t('components.twoFactorSetup.orEnterManually')
+                            }}</span>
                         </div>
 
                         <div
@@ -277,14 +279,22 @@ watch(
                                     @click="showVerificationStep = false"
                                     :disabled="processing"
                                 >
-                                    {{ $t('components.twoFactorSetup.backButton') }}
+                                    {{
+                                        $t(
+                                            'components.twoFactorSetup.backButton',
+                                        )
+                                    }}
                                 </Button>
                                 <Button
                                     type="submit"
                                     class="w-auto flex-1"
                                     :disabled="processing || code.length < 6"
                                 >
-                                    {{ $t('components.twoFactorSetup.confirmButton') }}
+                                    {{
+                                        $t(
+                                            'components.twoFactorSetup.confirmButton',
+                                        )
+                                    }}
                                 </Button>
                             </div>
                         </div>

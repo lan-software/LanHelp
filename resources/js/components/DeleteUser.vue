@@ -32,14 +32,20 @@ const passwordInput = useTemplateRef('passwordInput');
             class="space-y-4 rounded-lg border border-red-100 bg-red-50 p-4 dark:border-red-200/10 dark:bg-red-700/10"
         >
             <div class="relative space-y-0.5 text-red-600 dark:text-red-100">
-                <p class="font-medium">{{ $t('components.deleteUser.warningTitle') }}</p>
+                <p class="font-medium">
+                    {{ $t('components.deleteUser.warningTitle') }}
+                </p>
                 <p class="text-sm">
                     {{ $t('components.deleteUser.warningMessage') }}
                 </p>
             </div>
             <Dialog>
                 <DialogTrigger as-child>
-                    <Button variant="destructive" data-test="delete-user-button">{{ $t('components.deleteUser.triggerButton') }}</Button>
+                    <Button
+                        variant="destructive"
+                        data-test="delete-user-button"
+                        >{{ $t('components.deleteUser.triggerButton') }}</Button
+                    >
                 </DialogTrigger>
                 <DialogContent>
                     <Form
@@ -53,19 +59,31 @@ const passwordInput = useTemplateRef('passwordInput');
                         v-slot="{ errors, processing, reset, clearErrors }"
                     >
                         <DialogHeader class="space-y-3">
-                            <DialogTitle>{{ $t('components.deleteUser.dialogTitle') }}</DialogTitle>
+                            <DialogTitle>{{
+                                $t('components.deleteUser.dialogTitle')
+                            }}</DialogTitle>
                             <DialogDescription>
-                                {{ $t('components.deleteUser.dialogDescription') }}
+                                {{
+                                    $t(
+                                        'components.deleteUser.dialogDescription',
+                                    )
+                                }}
                             </DialogDescription>
                         </DialogHeader>
 
                         <div class="grid gap-2">
-                            <Label for="password" class="sr-only">{{ $t('components.deleteUser.passwordLabel') }}</Label>
+                            <Label for="password" class="sr-only">{{
+                                $t('components.deleteUser.passwordLabel')
+                            }}</Label>
                             <PasswordInput
                                 id="password"
                                 name="password"
                                 ref="passwordInput"
-                                :placeholder="$t('components.deleteUser.passwordPlaceholder')"
+                                :placeholder="
+                                    $t(
+                                        'components.deleteUser.passwordPlaceholder',
+                                    )
+                                "
                             />
                             <InputError :message="errors.password" />
                         </div>
@@ -81,7 +99,9 @@ const passwordInput = useTemplateRef('passwordInput');
                                         }
                                     "
                                 >
-                                    {{ $t('components.deleteUser.cancelButton') }}
+                                    {{
+                                        $t('components.deleteUser.cancelButton')
+                                    }}
                                 </Button>
                             </DialogClose>
 

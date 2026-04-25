@@ -57,7 +57,9 @@ const props = defineProps<{
 
 defineOptions({
     layout: {
-        breadcrumbs: [{ title: () => t('staff.board.breadcrumb'), href: index() }],
+        breadcrumbs: [
+            { title: () => t('staff.board.breadcrumb'), href: index() },
+        ],
     },
 });
 
@@ -189,8 +191,12 @@ const table = useVueTable({
 
     <div class="flex flex-col gap-4 p-4">
         <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-semibold">{{ $t('staff.board.pageTitle') }}</h1>
-            <span class="text-sm text-muted-foreground">{{ $t('staff.board.ticketsCount', { count: tickets.total }) }}</span>
+            <h1 class="text-2xl font-semibold">
+                {{ $t('staff.board.pageTitle') }}
+            </h1>
+            <span class="text-sm text-muted-foreground">{{
+                $t('staff.board.ticketsCount', { count: tickets.total })
+            }}</span>
         </div>
 
         <!-- Search + Filters -->
@@ -204,25 +210,37 @@ const table = useVueTable({
             />
             <div class="flex flex-wrap items-center gap-3">
                 <div class="flex items-center gap-2">
-                    <label class="text-sm text-muted-foreground">{{ $t('staff.board.scopeLabel') }}</label>
+                    <label class="text-sm text-muted-foreground">{{
+                        $t('staff.board.scopeLabel')
+                    }}</label>
                     <select
                         v-model="selectedScope"
                         class="h-8 rounded border border-input bg-background px-2 text-sm"
                         @change="applyFilters"
                     >
-                        <option value="all">{{ $t('staff.board.scopeAll') }}</option>
-                        <option value="mine">{{ $t('staff.board.scopeMine') }}</option>
-                        <option value="unassigned">{{ $t('staff.board.scopeUnassigned') }}</option>
+                        <option value="all">
+                            {{ $t('staff.board.scopeAll') }}
+                        </option>
+                        <option value="mine">
+                            {{ $t('staff.board.scopeMine') }}
+                        </option>
+                        <option value="unassigned">
+                            {{ $t('staff.board.scopeUnassigned') }}
+                        </option>
                     </select>
                 </div>
                 <div class="flex items-center gap-2">
-                    <label class="text-sm text-muted-foreground">{{ $t('staff.board.statusLabel') }}</label>
+                    <label class="text-sm text-muted-foreground">{{
+                        $t('staff.board.statusLabel')
+                    }}</label>
                     <select
                         v-model="selectedStatus"
                         class="h-8 rounded border border-input bg-background px-2 text-sm"
                         @change="applyFilters"
                     >
-                        <option value="">{{ $t('staff.board.statusActive') }}</option>
+                        <option value="">
+                            {{ $t('staff.board.statusActive') }}
+                        </option>
                         <option
                             v-for="s in statuses"
                             :key="s.value"
@@ -233,13 +251,17 @@ const table = useVueTable({
                     </select>
                 </div>
                 <div class="flex items-center gap-2">
-                    <label class="text-sm text-muted-foreground">{{ $t('staff.board.assigneeLabel') }}</label>
+                    <label class="text-sm text-muted-foreground">{{
+                        $t('staff.board.assigneeLabel')
+                    }}</label>
                     <select
                         v-model="selectedAssignee"
                         class="h-8 rounded border border-input bg-background px-2 text-sm"
                         @change="applyFilters"
                     >
-                        <option value="">{{ $t('staff.board.assigneeAny') }}</option>
+                        <option value="">
+                            {{ $t('staff.board.assigneeAny') }}
+                        </option>
                         <option
                             v-for="u in staffUsers"
                             :key="u.id"
@@ -279,7 +301,9 @@ const table = useVueTable({
                                 <ArrowUpDown class="ml-1 h-3.5 w-3.5" />
                             </Button>
                         </TableHead>
-                        <TableHead>{{ $t('staff.board.colRequester') }}</TableHead>
+                        <TableHead>{{
+                            $t('staff.board.colRequester')
+                        }}</TableHead>
                         <TableHead>
                             <Button
                                 variant="ghost"
@@ -302,7 +326,9 @@ const table = useVueTable({
                                 <ArrowUpDown class="ml-1 h-3.5 w-3.5" />
                             </Button>
                         </TableHead>
-                        <TableHead>{{ $t('staff.board.colAssignee') }}</TableHead>
+                        <TableHead>{{
+                            $t('staff.board.colAssignee')
+                        }}</TableHead>
                         <TableHead>
                             <Button
                                 variant="ghost"
@@ -383,7 +409,9 @@ const table = useVueTable({
                                         )
                                 "
                             >
-                                <option value="">{{ $t('staff.board.unassignedOption') }}</option>
+                                <option value="">
+                                    {{ $t('staff.board.unassignedOption') }}
+                                </option>
                                 <option
                                     v-for="u in staffUsers"
                                     :key="u.id"
@@ -411,7 +439,12 @@ const table = useVueTable({
             class="flex items-center justify-between"
         >
             <p class="text-sm text-muted-foreground">
-                {{ $t('staff.board.pageOf', { current: tickets.current_page, total: tickets.last_page }) }}
+                {{
+                    $t('staff.board.pageOf', {
+                        current: tickets.current_page,
+                        total: tickets.last_page,
+                    })
+                }}
             </p>
             <div class="flex gap-1">
                 <template v-for="link in tickets.links" :key="link.label">

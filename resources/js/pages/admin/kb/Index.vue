@@ -38,7 +38,9 @@ defineOptions({
 
     <div class="flex flex-col gap-4 p-4">
         <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-semibold">{{ $t('kb.admin.pageTitle') }}</h1>
+            <h1 class="text-2xl font-semibold">
+                {{ $t('kb.admin.pageTitle') }}
+            </h1>
             <Button as-child>
                 <Link :href="create()">{{ $t('kb.admin.newArticle') }}</Link>
             </Button>
@@ -50,11 +52,21 @@ defineOptions({
                     class="border-b bg-muted/50 text-left text-xs tracking-wider text-muted-foreground uppercase"
                 >
                     <tr>
-                        <th class="px-4 py-3">{{ $t('kb.admin.tableHeadTitle') }}</th>
-                        <th class="px-4 py-3">{{ $t('kb.admin.tableHeadCategory') }}</th>
-                        <th class="px-4 py-3">{{ $t('kb.admin.tableHeadStatus') }}</th>
-                        <th class="px-4 py-3">{{ $t('kb.admin.tableHeadAuthor') }}</th>
-                        <th class="px-4 py-3">{{ $t('kb.admin.tableHeadUpdated') }}</th>
+                        <th class="px-4 py-3">
+                            {{ $t('kb.admin.tableHeadTitle') }}
+                        </th>
+                        <th class="px-4 py-3">
+                            {{ $t('kb.admin.tableHeadCategory') }}
+                        </th>
+                        <th class="px-4 py-3">
+                            {{ $t('kb.admin.tableHeadStatus') }}
+                        </th>
+                        <th class="px-4 py-3">
+                            {{ $t('kb.admin.tableHeadAuthor') }}
+                        </th>
+                        <th class="px-4 py-3">
+                            {{ $t('kb.admin.tableHeadUpdated') }}
+                        </th>
                         <th class="px-4 py-3"></th>
                     </tr>
                 </thead>
@@ -80,7 +92,9 @@ defineOptions({
                                 "
                             >
                                 {{
-                                    article.is_published ? $t('kb.admin.published') : $t('kb.admin.draft')
+                                    article.is_published
+                                        ? $t('kb.admin.published')
+                                        : $t('kb.admin.draft')
                                 }}
                             </span>
                         </td>

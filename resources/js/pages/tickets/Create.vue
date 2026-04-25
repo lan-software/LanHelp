@@ -60,12 +60,15 @@ defineOptions({
     <Head :title="$t('tickets.newTicketHeadTitle')" />
 
     <div class="mx-auto max-w-2xl p-4">
-        <h1 class="mb-6 text-2xl font-semibold">{{ $t('tickets.newTicketPageTitle') }}</h1>
+        <h1 class="mb-6 text-2xl font-semibold">
+            {{ $t('tickets.newTicketPageTitle') }}
+        </h1>
 
         <form class="flex flex-col gap-5" @submit.prevent="submit">
             <div class="flex flex-col gap-1.5">
                 <Label for="subject"
-                    >{{ $t('tickets.subject') }} <span class="text-destructive">*</span></Label
+                    >{{ $t('tickets.subject') }}
+                    <span class="text-destructive">*</span></Label
                 >
                 <Input
                     id="subject"
@@ -79,7 +82,8 @@ defineOptions({
 
             <div class="flex flex-col gap-1.5">
                 <Label for="description"
-                    >{{ $t('tickets.description') }} <span class="text-destructive">*</span></Label
+                    >{{ $t('tickets.description') }}
+                    <span class="text-destructive">*</span></Label
                 >
                 <Textarea
                     id="description"
@@ -126,7 +130,11 @@ defineOptions({
 
             <div class="flex justify-end gap-3 pt-2">
                 <Button type="submit" :disabled="form.processing">
-                    {{ form.processing ? $t('tickets.submitting') : $t('tickets.submitTicket') }}
+                    {{
+                        form.processing
+                            ? $t('tickets.submitting')
+                            : $t('tickets.submitTicket')
+                    }}
                 </Button>
             </div>
         </form>

@@ -29,7 +29,9 @@ defineProps<{ tickets: PaginatedTickets }>();
 
 defineOptions({
     layout: {
-        breadcrumbs: [{ title: () => t('tickets.myTicketsBreadcrumb'), href: index() }],
+        breadcrumbs: [
+            { title: () => t('tickets.myTicketsBreadcrumb'), href: index() },
+        ],
     },
 });
 
@@ -50,7 +52,9 @@ const statusColor: Record<string, string> = {
 
     <div class="flex flex-col gap-6 p-4">
         <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-semibold">{{ $t('tickets.myTicketsHeadTitle') }}</h1>
+            <h1 class="text-2xl font-semibold">
+                {{ $t('tickets.myTicketsHeadTitle') }}
+            </h1>
             <Button as-child>
                 <Link :href="create()">{{ $t('tickets.openNewTicket') }}</Link>
             </Button>
@@ -62,7 +66,9 @@ const statusColor: Record<string, string> = {
         >
             <p class="text-lg">{{ $t('tickets.noTicketsYet') }}</p>
             <Button as-child class="mt-4">
-                <Link :href="create()">{{ $t('tickets.openSupportRequest') }}</Link>
+                <Link :href="create()">{{
+                    $t('tickets.openSupportRequest')
+                }}</Link>
             </Button>
         </div>
 
@@ -109,7 +115,10 @@ const statusColor: Record<string, string> = {
                             'bg-gray-100 text-gray-800'
                         "
                     >
-                        {{ $t(`tickets.statusLabels.${ticket.status}`) || ticket.status }}
+                        {{
+                            $t(`tickets.statusLabels.${ticket.status}`) ||
+                            ticket.status
+                        }}
                     </span>
                 </div>
             </Link>

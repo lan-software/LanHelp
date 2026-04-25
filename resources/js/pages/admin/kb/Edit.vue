@@ -27,7 +27,9 @@ setLayoutProps({
     breadcrumbs: [
         { title: t('kb.admin.breadcrumb'), href: index() },
         {
-            title: isEdit ? t('kb.admin.editBreadcrumb') : t('kb.admin.newBreadcrumb'),
+            title: isEdit
+                ? t('kb.admin.editBreadcrumb')
+                : t('kb.admin.newBreadcrumb'),
             href: isEdit ? '#' : create(),
         },
     ],
@@ -37,11 +39,15 @@ const formAction = isEdit ? update.form(props.article!.id) : store.form();
 </script>
 
 <template>
-    <Head :title="isEdit ? $t('kb.admin.editArticle') : $t('kb.admin.newArticle')" />
+    <Head
+        :title="isEdit ? $t('kb.admin.editArticle') : $t('kb.admin.newArticle')"
+    />
 
     <div class="mx-auto max-w-3xl p-4">
         <h1 class="mb-6 text-2xl font-semibold">
-            {{ isEdit ? $t('kb.admin.editArticle') : $t('kb.admin.newArticle') }}
+            {{
+                isEdit ? $t('kb.admin.editArticle') : $t('kb.admin.newArticle')
+            }}
         </h1>
 
         <Form
@@ -51,7 +57,8 @@ const formAction = isEdit ? update.form(props.article!.id) : store.form();
         >
             <div class="flex flex-col gap-1.5">
                 <Label for="title"
-                    >{{ $t('kb.admin.titleLabel') }} <span class="text-destructive">*</span></Label
+                    >{{ $t('kb.admin.titleLabel') }}
+                    <span class="text-destructive">*</span></Label
                 >
                 <Input
                     id="title"
@@ -76,7 +83,8 @@ const formAction = isEdit ? update.form(props.article!.id) : store.form();
 
             <div class="flex flex-col gap-1.5">
                 <Label for="content"
-                    >{{ $t('kb.admin.contentLabel') }} <span class="text-destructive">*</span></Label
+                    >{{ $t('kb.admin.contentLabel') }}
+                    <span class="text-destructive">*</span></Label
                 >
                 <Textarea
                     id="content"
@@ -90,7 +98,9 @@ const formAction = isEdit ? update.form(props.article!.id) : store.form();
 
             <div class="grid grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1.5">
-                    <Label for="category">{{ $t('kb.admin.categoryLabel') }}</Label>
+                    <Label for="category">{{
+                        $t('kb.admin.categoryLabel')
+                    }}</Label>
                     <Input
                         id="category"
                         name="category"
@@ -108,7 +118,9 @@ const formAction = isEdit ? update.form(props.article!.id) : store.form();
                         :checked="article?.is_published ?? false"
                         class="rounded"
                     />
-                    <Label for="is_published">{{ $t('kb.admin.publishedLabel') }}</Label>
+                    <Label for="is_published">{{
+                        $t('kb.admin.publishedLabel')
+                    }}</Label>
                 </div>
             </div>
 

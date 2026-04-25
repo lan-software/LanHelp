@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { Monitor, Moon, Sun } from 'lucide-vue-next';
-import { useI18n } from 'vue-i18n';
 import { useAppearance } from '@/composables/useAppearance';
 
-const { t } = useI18n();
 const { appearance, updateAppearance } = useAppearance();
 
 const tabs = [
