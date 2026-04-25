@@ -33,7 +33,7 @@
         "copied": "Kopiert",
         "optional": "optional",
         "required": "erforderlich",
-        "loadingMore": "Mehr wird geladen...",
+        "loadingMore": "Mehr wird geladen…",
         "noResults": "Keine Ergebnisse gefunden",
         "showMore": "Mehr anzeigen",
         "showLess": "Weniger anzeigen"
@@ -49,7 +49,12 @@
             "rememberMe": "Angemeldet bleiben",
             "forgotPassword": "Passwort vergessen?",
             "button": "Anmelden",
-            "signInWithLanCore": "Mit LanCore anmelden"
+            "signInWithLanCore": "Mit LanCore anmelden",
+            "layoutTitle": "Bei deinem Konto anmelden",
+            "layoutDescription": "Gib unten deine E-Mail-Adresse und dein Passwort ein, um dich anzumelden",
+            "headTitle": "Anmelden",
+            "noAccount": "Noch kein Konto?",
+            "signUp": "Registrieren"
         },
         "verifyEmail": {
             "title": "E-Mail-Adresse verifizieren",
@@ -73,6 +78,25 @@
             "useRecovery": "Wiederherstellungscode verwenden",
             "useCode": "Authentifizierungscode verwenden",
             "button": "Verifizieren"
+        },
+        "register": {
+            "layoutTitle": "Konto erstellen",
+            "headTitle": "Registrieren",
+            "name": "Name",
+            "namePlaceholder": "Vollständiger Name",
+            "email": "E-Mail-Adresse",
+            "emailPlaceholder": "email@beispiel.de",
+            "password": "Passwort",
+            "passwordPlaceholder": "Passwort",
+            "confirmPassword": "Passwort bestätigen",
+            "confirmPasswordPlaceholder": "Passwort bestätigen",
+            "button": "Konto erstellen",
+            "logIn": "Anmelden",
+            "hasAccount": "Bereits ein Konto?"
+        },
+        "forgotPassword": {
+            "email": "E-Mail-Adresse",
+            "emailPlaceholder": "email@beispiel.de"
         }
     },
     "settings": {
