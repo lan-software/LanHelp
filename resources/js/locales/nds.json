@@ -49,7 +49,12 @@
             "rememberMe": "Behöll mi in'n Kopp",
             "forgotPassword": "Passwoort vergeten?",
             "button": "Anmellen",
-            "signInWithLanCore": "Mit LanCore anmellen"
+            "signInWithLanCore": "Mit LanCore anmellen",
+            "layoutTitle": "Meld di op dien Konto an",
+            "layoutDescription": "Giff dien E-Mail un Passwoort in",
+            "headTitle": "Anmellen",
+            "noAccount": "Hest du noch keen Konto?",
+            "signUp": "Aanmellen"
         },
         "verifyEmail": {
             "title": "Bestätig diene E-Mail-Adress",
@@ -73,6 +78,9 @@
             "useRecovery": "Notfall-Kood bruken",
             "useCode": "Anmell-Kood bruken",
             "button": "Bestätigen"
+        },
+        "register": {
+            "layoutTitle": "Leg en Konto an"
         }
     },
     "settings": {
