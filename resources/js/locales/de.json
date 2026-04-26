@@ -68,17 +68,31 @@
             "description": "Dies ist ein geschützter Bereich der Anwendung. Bitte bestätige dein Passwort, bevor du fortfährst.",
             "password": "Passwort",
             "passwordPlaceholder": "Passwort",
-            "button": "Bestätigen"
+            "button": "Passwort bestätigen",
+            "headTitle": "Passwort bestätigen",
+            "layoutTitle": "Passwort bestätigen",
+            "layoutDescription": "Dies ist ein geschützter Bereich der Anwendung. Bitte bestätige dein Passwort, bevor du fortfährst."
         },
         "twoFactor": {
             "title": "Zwei-Faktor-Authentifizierung",
             "description": "Gib den Authentifizierungscode aus deiner Authenticator-App ein.",
             "code": "Authentifizierungscode",
-            "recoveryCode": "Wiederherstellungscode",
+            "recoveryCode": {
+                "layoutTitle": "Wiederherstellungscode",
+                "layoutDescription": "Bitte bestätige den Zugriff auf dein Konto, indem du einen deiner Notfall-Wiederherstellungscodes eingibst.",
+                "switchButton": "mit Authentifizierungscode anmelden"
+            },
             "useRecovery": "Wiederherstellungscode verwenden",
             "useCode": "Authentifizierungscode verwenden",
             "button": "Verifizieren",
-            "headTitle": "Zwei-Faktor-Authentifizierung"
+            "headTitle": "Zwei-Faktor-Authentifizierung",
+            "continueButton": "Weiter",
+            "authCode": {
+                "layoutTitle": "Authentifizierungscode",
+                "layoutDescription": "Gib den Authentifizierungscode aus deiner Authenticator-App ein.",
+                "switchButton": "mit Wiederherstellungscode anmelden"
+            },
+            "recoveryCodeLabel": "Wiederherstellungscode"
         },
         "register": {
             "layoutTitle": "Konto erstellen",
@@ -121,7 +135,16 @@
             "displayName": "Anzeigename",
             "displayNameDescription": "Wie dein Name in Tickets und Antworten erscheint",
             "updateButton": "Speichern",
-            "updated": "Gespeichert."
+            "updated": "Gespeichert.",
+            "headTitle": "Profileinstellungen",
+            "namePlaceholder": "Vollständiger Name",
+            "emailPlaceholder": "E-Mail-Adresse",
+            "resendVerification": "Klicke hier, um die Bestätigungs-E-Mail erneut zu senden.",
+            "layoutBreadcrumb": "Profileinstellungen",
+            "sectionTitle": "Profilinformationen",
+            "sectionDescription": "Aktualisiere deinen Namen und deine E-Mail-Adresse",
+            "emailUnverified": "Deine E-Mail-Adresse ist nicht verifiziert.",
+            "verificationSent": "Ein neuer Bestätigungslink wurde an deine E-Mail-Adresse gesendet."
         },
         "appearance": {
             "title": "Erscheinungsbild",
@@ -129,7 +152,11 @@
             "theme": "Thema",
             "light": "Hell",
             "dark": "Dunkel",
-            "system": "System"
+            "system": "System",
+            "headTitle": "Erscheinungsbild-Einstellungen",
+            "layoutBreadcrumb": "Erscheinungsbild-Einstellungen",
+            "sectionTitle": "Erscheinungsbild-Einstellungen",
+            "sectionDescription": "Passe das Erscheinungsbild deines Kontos an"
         },
         "language": {
             "current": "Anzeigesprache",
@@ -149,6 +176,18 @@
             "confirmCode": "Authentifizierungscode",
             "confirm": "Bestätigen",
             "cancel": "Abbrechen"
+        },
+        "security": {
+            "currentPassword": "Aktuelles Passwort",
+            "currentPasswordPlaceholder": "Aktuelles Passwort",
+            "newPassword": "Neues Passwort",
+            "newPasswordPlaceholder": "Neues Passwort",
+            "confirmPassword": "Passwort bestätigen",
+            "confirmPasswordPlaceholder": "Passwort bestätigen",
+            "passwordSectionTitle": "Passwort ändern",
+            "passwordSectionDescription": "Stelle sicher, dass dein Konto ein langes, zufälliges Passwort verwendet, um sicher zu bleiben",
+            "savePasswordButton": "Passwort speichern",
+            "twoFactorSectionTitle": "Zwei-Faktor-Authentifizierung"
         }
     },
     "navigation": {
@@ -259,6 +298,12 @@
             "pending": "Ausstehend",
             "resolved": "Gelöst",
             "closed": "Geschlossen"
+        },
+        "myTicketsHeadTitle": "Meine Tickets",
+        "myTicketsBreadcrumb": "Meine Tickets",
+        "update": "Aktualisieren",
+        "statusLabels": {
+            "closed": "Geschlossen"
         }
     },
     "kb": {
@@ -287,7 +332,9 @@
             "draft": "Entwurf",
             "publish": "Veröffentlichen",
             "unpublish": "Zurückziehen",
-            "saved": "Artikel gespeichert"
+            "saved": "Artikel gespeichert",
+            "tableHeadStatus": "Status",
+            "cancelLink": "Abbrechen"
         }
     },
     "staff": {
@@ -295,7 +342,11 @@
         "description": "Tickets, die dem Staff-Team zugewiesen sind.",
         "myTickets": "Meine Tickets",
         "unassigned": "Nicht zugewiesen",
-        "all": "Alle Tickets"
+        "all": "Alle Tickets",
+        "board": {
+            "statusLabel": "Status",
+            "colStatus": "Status"
+        }
     },
     "admin": {
         "title": "Admin",
@@ -318,7 +369,10 @@
     "components": {
         "twoFactorSetup": {
             "verifyButton": "Weiter",
-            "enabledButton": "Schließen"
+            "enabledButton": "Schließen",
+            "enableButton": "Weiter",
+            "backButton": "Zurück",
+            "confirmButton": "Bestätigen"
         },
         "deleteUser": {
             "confirmButton": "Konto löschen",
@@ -333,6 +387,13 @@
         "userMenu": {
             "logout": "Abmelden",
             "settings": "Einstellungen"
+        },
+        "twoFactorRecoveryCodes": {
+            "regenerateButton": "Codes neu generieren",
+            "regenerateLink": "Codes neu generieren"
+        },
+        "appHeader": {
+            "navigationMenu": "Navigationsmenü"
         }
     }
 }
