@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
+import i18n from '@/i18n';
 import { index, show } from '@/routes/kb';
-
-const { t } = useI18n();
 
 type Article = {
     id: number;
@@ -23,7 +21,7 @@ const props = defineProps<{
 
 defineOptions({
     layout: {
-        breadcrumbs: [{ title: () => t('kb.breadcrumb'), href: index() }],
+        breadcrumbs: [{ title: () => i18n.global.t('kb.breadcrumb'), href: index() }],
     },
 });
 

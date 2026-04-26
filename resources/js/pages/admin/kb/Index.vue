@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { Form, Head, Link } from '@inertiajs/vue3';
-import { useI18n } from 'vue-i18n';
 import { Button } from '@/components/ui/button';
+import i18n from '@/i18n';
 import { index, create, edit, destroy } from '@/routes/admin/kb';
-
-const { t } = useI18n();
 
 type Article = {
     id: number;
@@ -28,7 +26,7 @@ defineProps<{ articles: PaginatedArticles }>();
 
 defineOptions({
     layout: {
-        breadcrumbs: [{ title: () => t('kb.admin.breadcrumb'), href: index() }],
+        breadcrumbs: [{ title: () => i18n.global.t('kb.admin.breadcrumb'), href: index() }],
     },
 });
 </script>

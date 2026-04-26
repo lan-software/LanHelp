@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { Head, useForm } from '@inertiajs/vue3';
-import { useI18n } from 'vue-i18n';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import i18n from '@/i18n';
 import { index, create, store } from '@/routes/tickets';
-
-const { t } = useI18n();
 
 type Priority = { value: string; label: string };
 
@@ -49,8 +47,8 @@ function submit() {
 defineOptions({
     layout: {
         breadcrumbs: [
-            { title: () => t('tickets.myTicketsBreadcrumb'), href: index() },
-            { title: () => t('tickets.newTicketBreadcrumb'), href: create() },
+            { title: () => i18n.global.t('tickets.myTicketsBreadcrumb'), href: index() },
+            { title: () => i18n.global.t('tickets.newTicketBreadcrumb'), href: create() },
         ],
     },
 });

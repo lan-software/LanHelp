@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
-import { useI18n } from 'vue-i18n';
 import AppearanceTabs from '@/components/AppearanceTabs.vue';
 import Heading from '@/components/Heading.vue';
+import i18n from '@/i18n';
 import { edit } from '@/routes/appearance';
-
-const { t } = useI18n();
 
 defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: () => t('settings.appearance.layoutBreadcrumb'),
+                title: () => i18n.global.t('settings.appearance.layoutBreadcrumb'),
                 href: edit(),
             },
         ],

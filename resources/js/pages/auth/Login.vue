@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Form, Head } from '@inertiajs/vue3';
-import { useI18n } from 'vue-i18n';
 import InputError from '@/components/InputError.vue';
 import PasswordInput from '@/components/PasswordInput.vue';
 import TextLink from '@/components/TextLink.vue';
@@ -9,16 +8,15 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
+import i18n from '@/i18n';
 import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
 
-const { t } = useI18n();
-
 defineOptions({
     layout: {
-        title: () => t('auth.login.layoutTitle'),
-        description: () => t('auth.login.layoutDescription'),
+        title: () => i18n.global.t('auth.login.layoutTitle'),
+        description: () => i18n.global.t('auth.login.layoutDescription'),
     },
 });
 

@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import { Form, Head } from '@inertiajs/vue3';
-import { useI18n } from 'vue-i18n';
 import TextLink from '@/components/TextLink.vue';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
+import i18n from '@/i18n';
 import { logout } from '@/routes';
 import { send } from '@/routes/verification';
 
-const { t } = useI18n();
-
 defineOptions({
     layout: {
-        title: () => t('auth.verifyEmail.layoutTitle'),
-        description: () => t('auth.verifyEmail.layoutDescription'),
+        title: () => i18n.global.t('auth.verifyEmail.layoutTitle'),
+        description: () => i18n.global.t('auth.verifyEmail.layoutDescription'),
     },
 });
 

@@ -15,6 +15,7 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
+import i18n from '@/i18n';
 import { index, assign } from '@/routes/staff/tickets';
 import { show } from '@/routes/tickets';
 
@@ -58,7 +59,7 @@ const props = defineProps<{
 defineOptions({
     layout: {
         breadcrumbs: [
-            { title: () => t('staff.board.breadcrumb'), href: index() },
+            { title: () => i18n.global.t('staff.board.breadcrumb'), href: index() },
         ],
     },
 });

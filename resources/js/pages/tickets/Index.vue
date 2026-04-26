@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { useI18n } from 'vue-i18n';
 import { Button } from '@/components/ui/button';
+import i18n from '@/i18n';
 import { index, create, show } from '@/routes/tickets';
-
-const { t } = useI18n();
 
 type Ticket = {
     id: number;
@@ -30,7 +28,7 @@ defineProps<{ tickets: PaginatedTickets }>();
 defineOptions({
     layout: {
         breadcrumbs: [
-            { title: () => t('tickets.myTicketsBreadcrumb'), href: index() },
+            { title: () => i18n.global.t('tickets.myTicketsBreadcrumb'), href: index() },
         ],
     },
 });

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Form, Head, Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
 import ProfileController from '@/actions/App/Http/Controllers/Settings/ProfileController';
 import DeleteUser from '@/components/DeleteUser.vue';
 import Heading from '@/components/Heading.vue';
@@ -9,10 +8,9 @@ import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import i18n from '@/i18n';
 import { edit } from '@/routes/profile';
 import { send } from '@/routes/verification';
-
-const { t } = useI18n();
 
 type Props = {
     mustVerifyEmail: boolean;
@@ -25,7 +23,7 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: () => t('settings.profile.layoutBreadcrumb'),
+                title: () => i18n.global.t('settings.profile.layoutBreadcrumb'),
                 href: edit(),
             },
         ],

@@ -1,19 +1,17 @@
 <script setup lang="ts">
 import { Form, Head } from '@inertiajs/vue3';
-import { useI18n } from 'vue-i18n';
 import InputError from '@/components/InputError.vue';
 import PasswordInput from '@/components/PasswordInput.vue';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
+import i18n from '@/i18n';
 import { store } from '@/routes/password/confirm';
-
-const { t } = useI18n();
 
 defineOptions({
     layout: {
-        title: () => t('auth.confirmPassword.layoutTitle'),
-        description: () => t('auth.confirmPassword.layoutDescription'),
+        title: () => i18n.global.t('auth.confirmPassword.layoutTitle'),
+        description: () => i18n.global.t('auth.confirmPassword.layoutDescription'),
     },
 });
 </script>

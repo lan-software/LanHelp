@@ -1,21 +1,19 @@
 <script setup lang="ts">
 import { Form, Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
 import InputError from '@/components/InputError.vue';
 import PasswordInput from '@/components/PasswordInput.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
+import i18n from '@/i18n';
 import { update } from '@/routes/password';
-
-const { t } = useI18n();
 
 defineOptions({
     layout: {
-        title: () => t('auth.resetPassword.layoutTitle'),
-        description: () => t('auth.resetPassword.layoutDescription'),
+        title: () => i18n.global.t('auth.resetPassword.layoutTitle'),
+        description: () => i18n.global.t('auth.resetPassword.layoutDescription'),
     },
 });
 
