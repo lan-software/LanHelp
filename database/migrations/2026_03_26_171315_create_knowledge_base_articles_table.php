@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('knowledge_base_articles', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('author_id')->constrained('users')->cascadeOnDelete();
+            $table->ulid('id')->primary();
+            $table->foreignUlid('author_id')->constrained('users')->cascadeOnDelete();
             $table->string('title');
             $table->string('slug')->unique();
             $table->longText('content');

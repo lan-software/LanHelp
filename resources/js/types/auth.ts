@@ -1,10 +1,10 @@
 export type User = {
-    id: number;
+    id: string;
     name: string;
     email: string;
     avatar?: string;
     email_verified_at: string | null;
-    lancore_user_id: number | null;
+    lancore_user_id: string | null;
     created_at: string;
     updated_at: string;
     [key: string]: unknown;

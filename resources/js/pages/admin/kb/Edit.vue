@@ -11,7 +11,7 @@ import { index, create, store, update } from '@/routes/admin/kb';
 const { t } = useI18n();
 
 type Article = {
-    id: number;
+    id: string;
     title: string;
     content: string;
     excerpt: string | null;

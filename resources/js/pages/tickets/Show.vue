@@ -19,20 +19,20 @@ import { update as updateStatus } from '@/routes/tickets/status';
 const { t } = useI18n();
 
 type User = {
-    id: number;
+    id: string;
     name: string;
     display_name: string | null;
     avatar_url: string | null;
 };
 type Reply = {
-    id: number;
+    id: string;
     body: string;
     is_internal: boolean;
     author: User;
     created_at: string;
 };
 type Ticket = {
-    id: number;
+    id: string;
     subject: string;
     description: string;
     status: string;

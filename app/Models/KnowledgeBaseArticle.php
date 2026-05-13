@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Database\Factories\KnowledgeBaseArticleFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,6 +13,8 @@ class KnowledgeBaseArticle extends Model
 {
     /** @use HasFactory<KnowledgeBaseArticleFactory> */
     use HasFactory;
+
+    use HasUlids;
 
     protected $fillable = [
         'author_id',

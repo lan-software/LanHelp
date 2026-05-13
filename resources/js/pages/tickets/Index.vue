@@ -5,14 +5,14 @@ import i18n from '@/i18n';
 import { index, create, show } from '@/routes/tickets';
 
 type Ticket = {
-    id: number;
+    id: string;
     subject: string;
     status: string;
     priority: string;
     category: string | null;
     created_at: string;
     updated_at: string;
-    assignee: { id: number; name: string; display_name: string | null } | null;
+    assignee: { id: string; name: string; display_name: string | null } | null;
 };
 
 type PaginatedTickets = {

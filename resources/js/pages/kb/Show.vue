@@ -6,7 +6,7 @@ import { index } from '@/routes/kb';
 const { t } = useI18n();
 
 type Article = {
-    id: number;
+    id: string;
     title: string;
     slug: string;
     content: string;

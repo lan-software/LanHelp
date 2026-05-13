@@ -21,9 +21,9 @@ import { show } from '@/routes/tickets';
 
 const { t } = useI18n();
 
-type User = { id: number; name: string; display_name: string | null };
+type User = { id: string; name: string; display_name: string | null };
 type Ticket = {
-    id: number;
+    id: string;
     subject: string;
     status: string;
     priority: string;
@@ -133,7 +133,7 @@ watch(searchQuery, () => {
     searchTimeout = setTimeout(applyFilters, 300);
 });
 
-function assignTicket(ticketId: number, assigneeId: string) {
+function assignTicket(ticketId: string, assigneeId: string) {
     if (!assigneeId) {
         return;
     }

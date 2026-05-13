@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tickets', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('requester_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('assignee_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->ulid('id')->primary();
+            $table->foreignUlid('requester_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignUlid('assignee_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('subject');
             $table->text('description');
             $table->string('status')->default('open');

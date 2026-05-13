@@ -43,7 +43,7 @@ const props = defineProps<{
         staffCount: number;
     };
     recentTickets: Array<{
-        id: number;
+        id: string;
         subject: string;
         status: string;
         statusLabel: string;

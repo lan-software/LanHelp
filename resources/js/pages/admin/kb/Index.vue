@@ -5,7 +5,7 @@ import i18n from '@/i18n';
 import { index, create, edit, destroy } from '@/routes/admin/kb';
 
 type Article = {
-    id: number;
+    id: string;
     title: string;
     slug: string;
     category: string | null;

@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ticket_replies', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('ticket_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('author_id')->constrained('users')->cascadeOnDelete();
+            $table->ulid('id')->primary();
+            $table->foreignUlid('ticket_id')->constrained()->cascadeOnDelete();
+            $table->foreignUlid('author_id')->constrained('users')->cascadeOnDelete();
             $table->text('body');
             $table->boolean('is_internal')->default(false);
             $table->timestamps();
