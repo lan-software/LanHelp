@@ -28,7 +28,10 @@ defineProps<{ tickets: PaginatedTickets }>();
 defineOptions({
     layout: {
         breadcrumbs: [
-            { title: () => i18n.global.t('tickets.myTicketsBreadcrumb'), href: index() },
+            {
+                title: () => i18n.global.t('tickets.myTicketsBreadcrumb'),
+                href: index(),
+            },
         ],
     },
 });

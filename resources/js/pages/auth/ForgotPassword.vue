@@ -13,7 +13,8 @@ import { email } from '@/routes/password';
 defineOptions({
     layout: {
         title: () => i18n.global.t('auth.forgotPassword.layoutTitle'),
-        description: () => i18n.global.t('auth.forgotPassword.layoutDescription'),
+        description: () =>
+            i18n.global.t('auth.forgotPassword.layoutDescription'),
     },
 });
 

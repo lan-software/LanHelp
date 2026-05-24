@@ -47,8 +47,14 @@ function submit() {
 defineOptions({
     layout: {
         breadcrumbs: [
-            { title: () => i18n.global.t('tickets.myTicketsBreadcrumb'), href: index() },
-            { title: () => i18n.global.t('tickets.newTicketBreadcrumb'), href: create() },
+            {
+                title: () => i18n.global.t('tickets.myTicketsBreadcrumb'),
+                href: index(),
+            },
+            {
+                title: () => i18n.global.t('tickets.newTicketBreadcrumb'),
+                href: create(),
+            },
         ],
     },
 });

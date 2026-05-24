@@ -21,7 +21,9 @@ const props = defineProps<{
 
 defineOptions({
     layout: {
-        breadcrumbs: [{ title: () => i18n.global.t('kb.breadcrumb'), href: index() }],
+        breadcrumbs: [
+            { title: () => i18n.global.t('kb.breadcrumb'), href: index() },
+        ],
     },
 });
 

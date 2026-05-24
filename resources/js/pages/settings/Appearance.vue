@@ -9,7 +9,8 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: () => i18n.global.t('settings.appearance.layoutBreadcrumb'),
+                title: () =>
+                    i18n.global.t('settings.appearance.layoutBreadcrumb'),
                 href: edit(),
             },
         ],

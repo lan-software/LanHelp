@@ -31,7 +31,8 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: () => i18n.global.t('settings.security.layoutBreadcrumb'),
+                title: () =>
+                    i18n.global.t('settings.security.layoutBreadcrumb'),
                 href: edit(),
             },
         ],

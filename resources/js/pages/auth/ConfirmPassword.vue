@@ -11,7 +11,8 @@ import { store } from '@/routes/password/confirm';
 defineOptions({
     layout: {
         title: () => i18n.global.t('auth.confirmPassword.layoutTitle'),
-        description: () => i18n.global.t('auth.confirmPassword.layoutDescription'),
+        description: () =>
+            i18n.global.t('auth.confirmPassword.layoutDescription'),
     },
 });
 </script>

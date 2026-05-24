@@ -59,7 +59,10 @@ const props = defineProps<{
 defineOptions({
     layout: {
         breadcrumbs: [
-            { title: () => i18n.global.t('staff.board.breadcrumb'), href: index() },
+            {
+                title: () => i18n.global.t('staff.board.breadcrumb'),
+                href: index(),
+            },
         ],
     },
 });

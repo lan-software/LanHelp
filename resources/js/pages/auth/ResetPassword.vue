@@ -13,7 +13,8 @@ import { update } from '@/routes/password';
 defineOptions({
     layout: {
         title: () => i18n.global.t('auth.resetPassword.layoutTitle'),
-        description: () => i18n.global.t('auth.resetPassword.layoutDescription'),
+        description: () =>
+            i18n.global.t('auth.resetPassword.layoutDescription'),
     },
 });
 

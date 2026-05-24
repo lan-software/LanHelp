@@ -26,7 +26,12 @@ defineProps<{ articles: PaginatedArticles }>();
 
 defineOptions({
     layout: {
-        breadcrumbs: [{ title: () => i18n.global.t('kb.admin.breadcrumb'), href: index() }],
+        breadcrumbs: [
+            {
+                title: () => i18n.global.t('kb.admin.breadcrumb'),
+                href: index(),
+            },
+        ],
     },
 });
 </script>
