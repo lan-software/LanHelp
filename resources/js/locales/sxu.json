@@ -43,7 +43,7 @@
             "title": "Meldde dich bei LanHelp an",
             "description": "Meldde dich mit dein LanCore-Gondo an",
             "email": "Mähl-Adrässe",
-            "emailPlaceholder": "mähl@beispiel.de",
+            "emailPlaceholder": "mähl{'@'}beispiel.de",
             "password": "Basswort",
             "passwordPlaceholder": "Basswort",
             "rememberMe": "Merg mich dir",
