@@ -3,6 +3,7 @@
 use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 
 uses(RefreshDatabase::class);
 
@@ -20,12 +21,13 @@ beforeEach(function () {
 });
 
 it('syncs LanHelp roles from the LanCore webhook payload', function () {
-    $user = User::factory()->lanCoreUser(42)->create(['role' => UserRole::User]);
+    $lancoreUserId = (string) Str::ulid();
+    $user = User::factory()->lanCoreUser($lancoreUserId)->create(['role' => UserRole::User]);
 
     $body = json_encode([
         'event' => 'user.roles_updated',
         'user' => [
-            'id' => 42,
+            'id' => $lancoreUserId,
             'username' => $user->name,
             'roles' => ['moderator'],
         ],
